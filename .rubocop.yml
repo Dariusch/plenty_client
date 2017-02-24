@@ -1,0 +1,43 @@
+# This is the configuration used to check the rubocop source code.
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'db/schema.rb'
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/console'
+    - 'bin/eun'
+    - 'bin/setup'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Encoding:
+  Enabled: true
+Style/NumericLiterals:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/GuardClause:
+  Description: Check for conditionals that can be replaced with guard clauses
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
+  Enabled: true
+  MinBodyLength: 1
+
+Metrics/LineLength:
+  Max: 120
+Metrics/AbcSize:
+  Max: 999
+Metrics/ClassLength:
+  Max: 999
+Metrics/CyclomaticComplexity:
+  Max: 99
+Metrics/MethodLength:
+  Max: 999
+Metrics/ModuleLength:
+  Max: 999
+Metrics/ParameterLists:
+  Max: 10
+Metrics/PerceivedComplexity:
+  Max: 99
