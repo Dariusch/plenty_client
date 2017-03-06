@@ -2,6 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/Dariusch/plenty_client/badges/gpa.svg)](https://codeclimate.com/github/Dariusch/plenty_client)
 [![Issue Count](https://codeclimate.com/github/Dariusch/plenty_client/badges/issue_count.svg)](https://codeclimate.com/github/Dariusch/plenty_client)
 [![Test Coverage](https://codeclimate.com/github/Dariusch/plenty_client/badges/coverage.svg)](https://codeclimate.com/github/Dariusch/plenty_client/coverage)
+[![Build Status](https://travis-ci.org/Dariusch/plenty_client.svg?branch=master)](https://travis-ci.org/Dariusch/plenty_client)
 
 This Client is a ruby wrapper around the PlentyMarkets REST API.  
 The complete documentation can be found [here](https://developers.plentymarkets.com/rest-doc).  
