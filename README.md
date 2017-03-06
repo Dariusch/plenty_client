@@ -104,7 +104,6 @@ If you are not sure which required parameters to pass in simply call
 PlentyClient::Item::Variation.routes
 ```
 
-
 ## Todo:
 
 - write some specs
@@ -134,6 +133,8 @@ PlentyClient::Item::Variation.routes
 - missing [OrderItem OrderItemDate](https://developers.plentymarkets.com/rest-doc/order_order_item_order_item_date/details#get-all-order-item-dates-for-one-order-item-by-its-order-item-id) - its just a mess
 - missing [OrderProperty](https://developers.plentymarkets.com/rest-doc/order#rest-orderproperty) - its just a mess
 - missing [OrderItem OrderItemProperty ](https://developers.plentymarkets.com/rest-doc/order_order_item_order_item_property/details#get-all-order-item-propertys-for-one-order-item-by-its-order-item-id) - its just a mess
+- update all modules to classes and make it inherit from a base class to remove `extend PlentyClient::Request` etc
+- create a configure block to set authentication parameters
 
 ## Contributing
 
