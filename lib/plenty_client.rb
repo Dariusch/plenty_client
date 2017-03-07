@@ -8,10 +8,11 @@ module PlentyClient
   autoload :Request,    'plenty_client/request'
   autoload :Constants,  'plenty_client/constants'
 
-  autoload :Accounting, 'plenty_client/accounting'
-  autoload :Order,      'plenty_client/order'
-  autoload :Item,       'plenty_client/item'
-  autoload :ItemSet,    'plenty_client/item_set'
+  autoload :Accounting,     'plenty_client/accounting'
+  autoload :Authentication, 'plenty_client/authentication'
+  autoload :Order,          'plenty_client/order'
+  autoload :Item,           'plenty_client/item'
+  autoload :ItemSet,        'plenty_client/item_set'
 
   module Item
     autoload :Attribute,                  'plenty_client/item/attribute'

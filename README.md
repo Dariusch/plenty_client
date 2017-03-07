@@ -117,7 +117,7 @@ PlentyClient::Item::Variation.routes
 * create classes for
   * [`Account`](https://developers.plentymarkets.com/rest-doc/account)
   * [~~`Accounting`~~](https://developers.plentymarkets.com/rest-doc/accounting)
-  * [`Authentication`](https://developers.plentymarkets.com/rest-doc/authentication)
+  * [~~`Authentication`~~](https://developers.plentymarkets.com/rest-doc/authentication)
   * [`Authorization`](https://developers.plentymarkets.com/rest-doc/authorization)
   * [`Basket`](https://developers.plentymarkets.com/rest-doc/basket)
   * [`Category`](https://developers.plentymarkets.com/rest-doc/category)
