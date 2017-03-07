@@ -116,7 +116,7 @@ PlentyClient::Item::Variation.routes
 - clean up `plenty_client/request.rb`
 * create classes for
   * [`Account`](https://developers.plentymarkets.com/rest-doc/account)
-  * [`Accounting`](https://developers.plentymarkets.com/rest-doc/accounting)
+  * [~~`Accounting`~~](https://developers.plentymarkets.com/rest-doc/accounting)
   * [`Authentication`](https://developers.plentymarkets.com/rest-doc/authentication)
   * [`Authorization`](https://developers.plentymarkets.com/rest-doc/authorization)
   * [`Basket`](https://developers.plentymarkets.com/rest-doc/basket)
