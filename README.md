@@ -122,7 +122,7 @@ PlentyClient::Item::Variation.routes
   * [~~`Basket`~~](https://developers.plentymarkets.com/rest-doc/basket)
   * [~~`Category`~~](https://developers.plentymarkets.com/rest-doc/category)
   * [`Cloud`](https://developers.plentymarkets.com/rest-doc/cloud)
-  * [`Comment`](https://developers.plentymarkets.com/rest-doc/comment)
+  * [~~`Comment`~~](https://developers.plentymarkets.com/rest-doc/comment)
   * [`Document`](https://developers.plentymarkets.com/rest-doc/document)
   * [`Export`](https://developers.plentymarkets.com/rest-doc/export)
   * [`ExportSettings`](https://developers.plentymarkets.com/rest-doc/export_settings)
