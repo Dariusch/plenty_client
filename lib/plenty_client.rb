@@ -11,12 +11,19 @@ module PlentyClient
   autoload :Accounting,     'plenty_client/accounting'
   autoload :Authentication, 'plenty_client/authentication'
   autoload :Authorization,  'plenty_client/authorization'
-  autoload :Order,          'plenty_client/order'
+  autoload :Basket,         'plenty_client/basket'
+  autoload :Category,       'plenty_client/category'
   autoload :Item,           'plenty_client/item'
   autoload :ItemSet,        'plenty_client/item_set'
+  autoload :Order,          'plenty_client/order'
 
   module Basket
     autoload :Item, 'plenty_client/basket/item'
+  end
+
+  module Category
+    autoload :Branch,   'plenty_client/category/branch'
+    autoload :Template, 'plenty_client/category/template'
   end
 
   module Item
