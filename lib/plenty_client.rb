@@ -10,6 +10,7 @@ module PlentyClient
 
   autoload :Accounting,     'plenty_client/accounting'
   autoload :Authentication, 'plenty_client/authentication'
+  autoload :Authorization,  'plenty_client/authorization'
   autoload :Order,          'plenty_client/order'
   autoload :Item,           'plenty_client/item'
   autoload :ItemSet,        'plenty_client/item_set'

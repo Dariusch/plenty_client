@@ -118,7 +118,7 @@ PlentyClient::Item::Variation.routes
   * [`Account`](https://developers.plentymarkets.com/rest-doc/account)
   * [~~`Accounting`~~](https://developers.plentymarkets.com/rest-doc/accounting)
   * [~~`Authentication`~~](https://developers.plentymarkets.com/rest-doc/authentication)
-  * [`Authorization`](https://developers.plentymarkets.com/rest-doc/authorization)
+  * [~~`Authorization`~~](https://developers.plentymarkets.com/rest-doc/authorization)
   * [`Basket`](https://developers.plentymarkets.com/rest-doc/basket)
   * [`Category`](https://developers.plentymarkets.com/rest-doc/category)
   * [`Cloud`](https://developers.plentymarkets.com/rest-doc/cloud)
