@@ -15,6 +15,10 @@ module PlentyClient
   autoload :Item,           'plenty_client/item'
   autoload :ItemSet,        'plenty_client/item_set'
 
+  module Basket
+    autoload :Item, 'plenty_client/basket/item'
+  end
+
   module Item
     autoload :Attribute,                  'plenty_client/item/attribute'
     autoload :Barcode,                    'plenty_client/item/barcode'
