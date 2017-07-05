@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Variation
       class SalesPrice
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_VARIATION_SALES_PRICES_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
 

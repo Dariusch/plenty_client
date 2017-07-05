@@ -1,7 +1,7 @@
 module PlentyClient
   module Authentication
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     AUTH_LOGIN    = '/login'.freeze
     AUTH_REFRESH  = '/login/refresh'.freeze

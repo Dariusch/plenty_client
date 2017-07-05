@@ -1,8 +1,8 @@
 module PlentyClient
   module SalesPrice
     class Country
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_SALES_PRICE_COUNTRIES      = '/items/sales_prices/{salesPriceId}/countries'.freeze
       ACTIVATE_SALES_PRICE_COUNTRY    = '/items/sales_prices/{salesPriceId}/countries'.freeze

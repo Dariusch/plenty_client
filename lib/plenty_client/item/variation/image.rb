@@ -2,8 +2,9 @@ module PlentyClient
   module Item
     module Variation
       class Image
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
+
         ITEM_IMAGE_BASE_PATH        = '/items/{itemId}'.freeze
 
         LIST_IMAGES_IMAGE_LINKS     = '/images/{imageId}/variation_images'.freeze

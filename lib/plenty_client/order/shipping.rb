@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     module Shipping
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       class << self
       end

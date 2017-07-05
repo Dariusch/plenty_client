@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     module Manufacturer
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ALL_MANUFACTURERS  = '/items/manufacturers'.freeze
       GET_MANUFACTURER        = '/items/manufacturers/{manufacturerId}'.freeze

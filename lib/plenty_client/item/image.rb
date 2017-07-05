@@ -1,8 +1,9 @@
 module PlentyClient
   module Item
     module Image
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
+
       ITEM_IMAGE_BASE_PATH        = '/items/{itemId}'.freeze
 
       LIST_ALL_ITEM_IMAGES      = '/images'.freeze

@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Attribute
       class Name
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_ATTRIBUTE_PATH    = '/items/attributes'.freeze
 

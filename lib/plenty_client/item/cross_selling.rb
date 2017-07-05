@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class CrossSelling
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       CREATE_ITEMS_CROSS_SELLING = '/items/{itemId}/item_cross_selling'.freeze
       GET_ITEMS_CROSS_SELLING    = '/items/{itemId}/item_cross_selling'.freeze

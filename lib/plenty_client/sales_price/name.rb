@@ -1,8 +1,8 @@
 module PlentyClient
   module SalesPrice
     class Name
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_SALES_PRICE_NAMES        = '/items/sales_prices/{salesPriceId}/names'.freeze
       GET_SALES_PRICE_NAMES_BY_LANG = '/items/sales_prices/{salesPriceId}/names/{lang}'.freeze

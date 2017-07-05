@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     module Item
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       DELETE_ORDERS_ORDER_ITEM = '/orders/{orderId}/items/{orderItemId}'.freeze
 

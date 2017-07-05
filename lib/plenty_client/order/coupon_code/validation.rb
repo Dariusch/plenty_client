@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module CouponCode
       class Validation
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         VALIDATE_COUPON  = '/orders/coupons/codes/{coupon}'.freeze
 

@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class PropertyGroupName
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       PROPERTY_GROUP_BASE_PATH        = 'items/property_groups/{propertyGroupId}'
 

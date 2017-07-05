@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     module Property
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ALL_PROPERTIES = '/items/properties'.freeze
       GET_PROPERTY        = '/items/properties/{propertyId}'.freeze

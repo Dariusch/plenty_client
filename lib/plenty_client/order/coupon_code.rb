@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     module CouponCode
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       UPDATE_COUPON_CODE  = '/orders/{orderId}/coupons/{coupon}'.freeze
 

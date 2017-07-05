@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module Item
       class Date
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         # get /orders/items/{orderItemId}/dates
         # get /orders/items/{orderItemId}/dates/{typeId}

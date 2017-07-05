@@ -1,8 +1,8 @@
 module PlentyClient
   module SalesPrice
     class OnlineStore
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_SALES_PRICE_ONLINE_STORES      = '/items/sales_prices/{salesPriceId}/online_stores'.freeze
       ACTIVATE_SALES_PRICE_ONLINE_STORE   = '/items/sales_prices/{salesPriceId}/online_stores'.freeze

@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     class Currency
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_CURRENCIES             = '/orders/currencies'.freeze
       FIND_CURRENCY_ISO           = '/orders/currencies/{currencyIso}'.freeze

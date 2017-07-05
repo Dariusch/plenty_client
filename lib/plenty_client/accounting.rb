@@ -1,7 +1,7 @@
 module PlentyClient
   module Accounting
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     LIST_VAT_OF_LOCATION    = '/vat/locations/{locationId}'.freeze
     LIST_VAT_OF_COUNTRY     = '/vat/locations/{locationId}/countries/{countryId}'.freeze

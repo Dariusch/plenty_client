@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module Shipping
       class Information
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         BASE_ORDERS_SHIPPING_INFORMATION_PATH = '/orders/{orderId}/shipping'.freeze
 

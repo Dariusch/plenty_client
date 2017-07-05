@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module Shipping
       class Profile
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         LIST_SHIPPING_PRESET  = '/orders/shipping/presets'.freeze
         FIND_SHIPPING_PRESETS = '/orders/shipping/presets/{presetId}'.freeze

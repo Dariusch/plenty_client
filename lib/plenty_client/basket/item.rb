@@ -1,8 +1,8 @@
 module PlentyClient
   module Basket
     class Item
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       CREATE_BASKET_ITEM  = '/basket/items'.freeze
       LIST_BASKET_ITEMS   = '/basket/items'.freeze

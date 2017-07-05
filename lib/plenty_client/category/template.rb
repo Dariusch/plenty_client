@@ -1,8 +1,8 @@
 module PlentyClient
   module Category
     class Template
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       FIND_CATEGORY_TEMPLATE    = '/categories/{catId}/templates'.freeze
       UPDATE_CATEGORY_TEMPLATE  = '/categories/{catId}/templates'.freeze

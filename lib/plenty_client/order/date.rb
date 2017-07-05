@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     class Date
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ORDER_DATE_TYPE_NAMES  = '/orders/dates/types/{typeId}/names'.freeze
       FIND_ORDER_DATE_TYPE_NAME   = '/orders/dates/types/{typeId}/names/{lang}'.freeze

@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     class Property
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       # get /rest/orders/{orderId}/properties/{typeId?}
       # post /rest/orders/{orderId}/properties

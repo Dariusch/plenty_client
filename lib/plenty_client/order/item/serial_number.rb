@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module Item
       class SerialNumber
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         LIST_SERIAL_NUMBERS             = '/orders/{orderId}/items/serialNumbers'.freeze
         LIST_ORDER_ITEM_SERIAL_NUMBERS  = '/orders/{orderId}/items/{orderItemId}/serialNumbers'.freeze

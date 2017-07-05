@@ -1,7 +1,7 @@
 module PlentyClient
   module Comment
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     FIND_COMMENT    = '/comments/{commentId}'.freeze
     LIST_COMMENTS   = '/comments/{referenceType}/{referenceValue}'.freeze

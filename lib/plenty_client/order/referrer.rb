@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     class Referrer
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_REFERRERS        = '/orders/referrers'.freeze
       CREATE_ORDER_REFERRER = '/orders/referrers/{parentReferrerId}'.freeze

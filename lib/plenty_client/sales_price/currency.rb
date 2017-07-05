@@ -1,8 +1,8 @@
 module PlentyClient
   module SalesPrice
     class Currency
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_SALES_PRICE_CURRENCIES      = '/items/sales_prices/{salesPriceId}/currencies'.freeze
       ACTIVATE_SALES_PRICE_CURRENCY    = '/items/sales_prices/{salesPriceId}/currencies'.freeze

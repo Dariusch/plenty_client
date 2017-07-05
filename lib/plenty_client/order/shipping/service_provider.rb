@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module Shipping
       class ServiceProvider
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         BASE_ORDERS_SHIPPING_SERVICE_PROVIDER_PATH = '/orders/shipping'.freeze
 

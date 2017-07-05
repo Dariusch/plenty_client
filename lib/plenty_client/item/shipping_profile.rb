@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     module ShippingProfile
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       GET_ITEMS_SHIPPING_PROFILE    = '/items/{itemId}/item_shipping_profiles'.freeze
       CREATE_ITEMS_SHIPPING_PROFILE = '/items/{itemId}/item_shipping_profiles'.freeze

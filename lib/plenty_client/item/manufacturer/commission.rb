@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Manufacturer
       class Commission
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_MANUFACTURER_COMMISSION          = '/items/manufacturers/{manufacturerId}'.freeze
 

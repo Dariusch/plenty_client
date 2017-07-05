@@ -1,7 +1,7 @@
 module PlentyClient
   module Item
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     LIST_ITEMS    = '/items'.freeze
     CREATE_ITEM   = '/items'.freeze

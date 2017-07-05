@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class UnitName
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       ITEM_UNIT_PATH    = '/items/{itemId}/units'.freeze
 

@@ -1,9 +1,8 @@
 module PlentyClient
   module Item
     class Unit
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
-
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       CREATE_ITEMS_UNITS = '/items/{itemId}/units'.freeze
       GET_ITEMS_UNIT     = '/items/{itemId}/units'.freeze

@@ -1,9 +1,8 @@
 module PlentyClient
   module Item
     class SalesPrice
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
-
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ALL_SALES_PRICES = '/items/sales_prices'.freeze
       GET_SALES_PRICE       = '/items/sales_prices/{salesPriceId}'.freeze

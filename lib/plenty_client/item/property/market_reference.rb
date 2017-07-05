@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Property
       class MarketReference
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_PROPERTY_MARKET_REFERENCE_PATH     = '/items/properties'.freeze
 

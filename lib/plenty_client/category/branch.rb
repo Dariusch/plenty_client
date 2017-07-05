@@ -1,8 +1,8 @@
 module PlentyClient
   module Category
     class Branch
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       FIND_CATEGORY_BRANCH = '/category_branches/{catId}'.freeze
       LIST_CATEGORY_BRANCH = '/category_branches'.freeze

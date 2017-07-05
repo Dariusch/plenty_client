@@ -1,7 +1,7 @@
 module PlentyClient
   module Basket
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     FIND_BASKET = '/basket'.freeze
 

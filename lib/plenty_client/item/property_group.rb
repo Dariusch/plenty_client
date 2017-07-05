@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class PropertyGroup
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ALL_PROPERTY_GROUPS  = '/items/property_groups'.freeze
       GET_PROPERTY_GROUP        = '/items/property_groups/{propertyGroupId}'.freeze

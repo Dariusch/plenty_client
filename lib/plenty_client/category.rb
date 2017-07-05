@@ -1,7 +1,7 @@
 module PlentyClient
   module Category
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     FIND_CATEGORY           = '/categories/{catId}'.freeze
     LIST_CATEGORIES         = '/categories'.freeze

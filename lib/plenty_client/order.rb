@@ -1,7 +1,7 @@
 module PlentyClient
   module Order
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     CREATE_ORDER                = '/orders'.freeze
     LIST_ORDERS                 = '/orders'.freeze

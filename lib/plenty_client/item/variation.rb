@@ -1,8 +1,9 @@
 module PlentyClient
   module Item
     module Variation
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
+
       ALL_VARIATIONS          = '/items/variations'.freeze
       DELETE_ITEMS_VARIATION  = '/items/{itemId}/variations/{variationId}'.freeze
       GET_ITEMS_VARIATION     = '/items/{itemId}/variations/{variationId}'.freeze

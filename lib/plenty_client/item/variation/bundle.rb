@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Variation
       class Bundle
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_VARIATION_BUNDLE_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
 

@@ -1,8 +1,8 @@
 module PlentyClient
   module Order
     module ContactWish
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       FIND_ORDER_COTACT_WISH = '/orders/{orderId}/contactWish'.freeze
 

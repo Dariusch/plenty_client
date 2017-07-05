@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class VariationPropertyValue
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       VARIATION_PROPERTY_VALUE_BASE_PATH = '/items/{itemId}/variation_properties/{variationId}'.freeze
 

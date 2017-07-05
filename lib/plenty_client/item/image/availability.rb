@@ -2,8 +2,9 @@ module PlentyClient
   module Item
     module Image
       class Availability
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
+
         ITEM_IMAGE_AVAILABILITY_PATH    = '/items/{itemId}/images'.freeze
 
         LIST_ITEM_IMAGE_AVAILABILITY    = '/{imageId}/availabilities'.freeze

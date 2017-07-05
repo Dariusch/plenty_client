@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Variation
       class Sku
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_VARIATION_SKU_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
 

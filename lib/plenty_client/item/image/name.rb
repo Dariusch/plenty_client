@@ -2,8 +2,8 @@ module PlentyClient
   module Item
     module Image
       class Name
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         ITEM_IMAGE_NAME_PATH    = '/items/{itemId}/images'.freeze
 

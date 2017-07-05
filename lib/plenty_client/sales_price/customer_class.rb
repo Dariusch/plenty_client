@@ -1,8 +1,8 @@
 module PlentyClient
   module SalesPrice
     class CustomerClass
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       SALES_PRICE_PATH = '/items/sales_prices/{salesPriceId}'.freeze
       LIST_SALES_PRICE_CUSTOMER_CLASSES       = '/customer_classes'.freeze

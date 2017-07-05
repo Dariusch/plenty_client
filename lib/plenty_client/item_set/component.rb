@@ -1,8 +1,9 @@
 module PlentyClient
   module ItemSet
     class Component
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
+
       LIST_ITEM_SET_COMPONENT     = '/item_sets/{itemSetId}/components/{componentId}'.freeze
       LIST_ITEM_SETS_COMPONENT    = '/item_sets/{itemSetId}/components'.freeze
       CREATE_ITEM_SET_COMPONENTS  = '/item_sets/{itemSetId}/components'.freeze

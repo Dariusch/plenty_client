@@ -1,8 +1,9 @@
 module PlentyClient
   module ItemSet
     class Config
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
+
       FIND_ITEM_SET_CONFIGS   = '/item_sets/{itemSetId}/config'.freeze
       UPDATE_ITEM_SET_CONFIGS = '/item_sets/{itemSetId}/config'.freeze
 

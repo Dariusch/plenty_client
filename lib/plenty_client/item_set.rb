@@ -1,7 +1,7 @@
 module PlentyClient
   module ItemSet
-    extend PlentyClient::Endpoint
-    extend PlentyClient::Request
+    include PlentyClient::Endpoint
+    include PlentyClient::Request
 
     LIST_ITEM_SETS    = '/item_sets'.freeze
     GET_ITEM_SET      = '/item_sets/{itemSetId}'.freeze

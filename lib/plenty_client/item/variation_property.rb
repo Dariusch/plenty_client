@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class VariationProperty
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ALL_VARIATION_PROPERTIES = '/items/{itemId}/variation_properties'.freeze
       GET_VARIATION_PROPERTY        = '/items/{itemId}/variation_properties/{variationId}'.freeze

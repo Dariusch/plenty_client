@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     class Barcode
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_ALL_BARCODES         = '/items/barcodes'.freeze
       CREATE_BARCODE            = '/items/barcodes'.freeze

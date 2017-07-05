@@ -1,8 +1,8 @@
 module PlentyClient
   module Item
     module Attribute
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       CREATE_ATTRIBUTE  = '/items/attributes'.freeze
       LIST_ATTRIBUTES   = '/items/attributes'.freeze

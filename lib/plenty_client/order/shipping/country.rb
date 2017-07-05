@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module Shipping
       class Country
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         LIST_SHIPPING_COUNTRIES = '/orders/shipping/countries'.freeze
 

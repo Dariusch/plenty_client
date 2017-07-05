@@ -2,8 +2,8 @@ module PlentyClient
   module Order
     module CouponCode
       class Contact
-        extend PlentyClient::Endpoint
-        extend PlentyClient::Request
+        include PlentyClient::Endpoint
+        include PlentyClient::Request
 
         LIST_COUPON_CONTACTS  = '/orders/coupons/codes/contacts/{contactId}'.freeze
 

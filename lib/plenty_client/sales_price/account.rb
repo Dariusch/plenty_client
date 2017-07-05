@@ -1,9 +1,8 @@
 module PlentyClient
   module SalesPrice
     class Account
-      extend PlentyClient::Endpoint
-      extend PlentyClient::Request
-
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
 
       LIST_REFERRER_ACCOUNTS      = '/items/sales_prices/{salesPriceId}/accounts'.freeze
       ACTIVATE_REFERRER_ACCOUNT   = '/items/sales_prices/{salesPriceId}/accounts'.freeze
