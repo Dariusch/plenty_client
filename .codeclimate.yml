@@ -1,0 +1,11 @@
+engines:
+  rubocop:
+    enabled: true
+    config:
+      file: .rubocop.yml
+  duplication:
+    enabled: false
+    config:
+      languages:
+      - ruby:
+      - javascript:

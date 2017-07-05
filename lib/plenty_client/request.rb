@@ -9,9 +9,7 @@ module PlentyClient
       start_time = Time.now
       response = perform(http_method, path, params)
       body = parse_body(response, http_method, path, params)
-      if PlentyClient::Config.log
-        log_output(http_method, base_url(path), params, time_diff_ms(start_time, Time.now))
-      end
+      log_output(http_method, base_url(path), params, time_diff_ms(start_time, Time.now)) if PlentyClient::Config.log
       body
     end
 
@@ -42,8 +40,7 @@ module PlentyClient
           break if response['isLastPage'] == true
         end
       else
-        response = request(:get, path, params.merge(page: page))
-        rval_array << rval
+        rval_array << request(:get, path, params.merge(page: page))
       end
       rval_array.flatten
     end
