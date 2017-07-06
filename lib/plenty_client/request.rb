@@ -67,7 +67,7 @@ module PlentyClient
             curl_options(curl)
           end
         when 'post'
-          Curl.post(base_url(path), params) do |curl|
+          Curl.post(base_url(path), params.to_json) do |curl|
             curl_options(curl)
           end
         when 'put'

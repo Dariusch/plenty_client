@@ -38,6 +38,7 @@ module PlentyClient
     autoload :PropertyGroupName,          'plenty_client/item/property_group_name'
     autoload :SalesPrice,                 'plenty_client/item/sales_price'
     autoload :SalesPriceShippingProfile,  'plenty_client/item/sales_price_shipping_profile'
+    autoload :ShippingProfile,            'plenty_client/item/shipping_profile'
     autoload :Unit,                       'plenty_client/item/unit'
     autoload :UnitName,                   'plenty_client/item/unit_name'
     autoload :Variation,                  'plenty_client/item/variation'

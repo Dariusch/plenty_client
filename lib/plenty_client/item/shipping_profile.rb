@@ -1,6 +1,6 @@
 module PlentyClient
   module Item
-    module ShippingProfile
+    class ShippingProfile
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
@@ -14,11 +14,11 @@ module PlentyClient
         end
 
         def create(item_id, headers = {})
-          post(build_endpoint(CREATE_ITEMS_CROSS_SELLING, item: item_id), headers)
+          post(build_endpoint(CREATE_ITEMS_SHIPPING_PROFILE, item: item_id), headers)
         end
 
-        def delete(item_id, cross_item_id)
-          delete(build_endpoint(DELETE_ITEMS_CROSS_SELLING, item: item_id, cross_item: cross_item_id))
+        def delete(item_id, profile_id)
+          delete(build_endpoint(DELETE_ITEMS_SHIPPING_PROFILE, item: item_id, profile: profile_id))
         end
       end
     end
