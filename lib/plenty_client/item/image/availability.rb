@@ -13,17 +13,16 @@ module PlentyClient
 
         class << self
           def create(item_id, image_id, headers = {})
-            post(build_endpoint("#{ITEM_IMAGE_AVAILABILITY_PATH}#{CREATE_ITEM_IMAGE_AVAILABILITY}"),
+            post(build_endpoint("#{ITEM_IMAGE_AVAILABILITY_PATH}#{CREATE_ITEM_IMAGE_AVAILABILITY}",
                                 item: item_id,
-                                image: image_id,
-                                headers)
+                                image: image_id), headers)
           end
 
           def list(item_id, image_id, headers = {}, &block)
-            get(build_endpoint("#{ITEM_IMAGE_AVAILABILITY_PATH}#{LIST_ITEM_IMAGE_AVAILABILITY}"),
-                                item: item_id,
-                                image: image_id,
-                                headers, &block)
+            get(build_endpoint("#{ITEM_IMAGE_AVAILABILITY_PATH}#{LIST_ITEM_IMAGE_AVAILABILITY}",
+                               item: item_id,
+                               image: image_id),
+                headers, &block)
           end
 
           def destroy(item_id, image_id)

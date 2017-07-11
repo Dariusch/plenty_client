@@ -5,7 +5,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_VARIATION_STOCK_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
+        ITEM_VARIATION_STOCK_PATH = '/items/{itemId}/variations/{variationId}'.freeze
 
         LIST_ITEM_VARIATIONS_STOCK                    = '/stock'.freeze
         LIST_ITEM_VARIATIONS_STOCK_STORAGE_LOCATIONS  = '/stock/storageLocations'.freeze

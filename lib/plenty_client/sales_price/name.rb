@@ -22,12 +22,12 @@ module PlentyClient
         def create(sales_price_id, headers = {})
           post(build_endpoint(CREATE_SALES_PRICE_NAME, sales_price: sales_price_id), headers)
         end
-        
+
         def update(sales_price_id, lang, headers = {})
           post(build_endpoint(UPDATE_SALES_PRICE_NAME, sales_price: sales_price_id, lang: lang), headers)
         end
 
-        def destroy(sales_price_id, lang, cross_sales_price_id)
+        def destroy(sales_price_id, lang)
           delete(build_endpoint(DELETE_SALES_PRICE_NAME, sales_price: sales_price_id, lang: lang))
         end
       end

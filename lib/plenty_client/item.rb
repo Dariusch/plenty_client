@@ -20,7 +20,7 @@ module PlentyClient
       def update(item_id, body = {})
         put(build_endpoint(UPDATE_ITEM, item: item_id), body)
       end
- 
+
       def create(body = {})
         post(CREATE_ITEM, body)
       end

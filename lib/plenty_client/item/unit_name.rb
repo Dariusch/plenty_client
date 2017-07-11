@@ -1,10 +1,11 @@
+# TODO: Fix class, PlentyMarkets changed syntax
 module PlentyClient
   module Item
     class UnitName
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      ITEM_UNIT_PATH    = '/items/{itemId}/units'.freeze
+      ITEM_UNIT_PATH     = '/items/{itemId}/units'.freeze
 
       ITEM_UNITS         = '/names'.freeze
       LIST_ITEM_UNIT     = '/names'.freeze
@@ -14,23 +15,23 @@ module PlentyClient
 
       class << self
         def create(item_id, headers = {})
-          post(build_endpoint(CREATE_ITEMS_UNITS), headers)
+          post(build_endpoint(CREATE_ITEMS_UNITS, item: item_id), headers)
         end
 
         def list(item_id, headers = {}, &block)
-          get(build_endpoint(LIST_ITEM_UNIT), headers, &block)
+          get(build_endpoint(LIST_ITEM_UNIT, item: item_id), headers, &block)
         end
 
-        def find(unit_id, lang, headers = {}, &block)
-          get(build_endpoint(GET_ITEMS_UNIT, unit: unit_id, lang: lang), headers, &block)
+        def find(item_id, unit_id, lang, headers = {}, &block)
+          get(build_endpoint(GET_ITEMS_UNIT, item: item_id, unit: unit_id, lang: lang), headers, &block)
         end
 
-        def update(unit_id, lang, headers = {}, &block)
-          put(build_endpoint(UPDATE_ITEMS_UNIT, unit: unit_id, lang: lang), headers, &block)
+        def update(item_id, unit_id, lang, headers = {}, &block)
+          put(build_endpoint(UPDATE_ITEMS_UNIT, item: item_id, unit: unit_id, lang: lang), headers, &block)
         end
 
-        def destroy(unit_id, lang)
-          delete(build_endpoint(DELETE_ITEMS_UNIT, unit: unit_id, lang: lang))
+        def destroy(item_id, unit_id, lang)
+          delete(build_endpoint(DELETE_ITEMS_UNIT, item: item_id, unit: unit_id, lang: lang))
         end
       end
     end

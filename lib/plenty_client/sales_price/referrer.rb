@@ -1,7 +1,9 @@
 module PlentyClient
   module SalesPrice
     class Referrer
-      include Endpoint
+      include PlentyClient::Endpoint
+      include PlentyClient::Request
+
       LIST_SALES_PRICE_REFERRER       = '/items/sales_prices/{salesPriceId}/referrers'.freeze
       ACTIVATE_SALES_PRICE_REFERRER   = '/items/sales_prices/{salesPriceId}/referrers'.freeze
       DEACTIVATE_SALES_PRICE_REFERRER = '/items/sales_prices/{salesPriceId}/referrers/{referrerId}'.freeze
@@ -22,4 +24,3 @@ module PlentyClient
     end
   end
 end
-

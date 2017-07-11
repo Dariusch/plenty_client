@@ -12,7 +12,7 @@ module PlentyClient
         GET_ITEM_IMAGES             = '/variation_images'.freeze
         UPDATE_ITEM_IMAGES          = '/variations/{variationId}/variation_images'.freeze
         DELETE_ITEM_IMAGES          = '/variations/{variationId}/variation_images/{imageId}'.freeze
-        
+
         class << self
           def list_images_image_links(item_id, image_id, headers = {}, &block)
             get(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{LIST_IMAGES_IMAGE_LINKS}",

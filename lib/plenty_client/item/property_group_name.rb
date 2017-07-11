@@ -4,7 +4,7 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      PROPERTY_GROUP_BASE_PATH        = 'items/property_groups/{propertyGroupId}'
+      PROPERTY_GROUP_BASE_PATH        = 'items/property_groups/{propertyGroupId}'.freeze
 
       LIST_ALL_PROPERTY_GROUP_NAMES   = '/names'.freeze
       GET_PROPERTY_GROUP_NAMES        = '/names/{lang}'.freeze
@@ -19,8 +19,8 @@ module PlentyClient
 
         def find(property_group_id, lang, headers = {}, &block)
           get(build_endpoint("#{PROPERTY_GROUP_BASE_PATH}#{GET_PROPERTY_GROUP_NAMES}",
-                             property_group: property_group_id,
-                             lang: lang), headers, &block)
+                             property_group: property_group_id, lang: lang),
+              headers, &block)
         end
 
         def create(headers = {})
@@ -29,14 +29,12 @@ module PlentyClient
 
         def update(property_group_id, lang, headers = {})
           put(build_endpoint("#{PROPERTY_GROUP_BASE_PATH}#{UPDATE_PROPERTY_GROUP_NAMES}",
-                             property_group: property_group_id,
-                             lang: lang), headers)
+                             property_group: property_group_id, lang: lang), headers)
         end
 
         def destroy(property_group_id, lang)
           delete(build_endpoint("#{PROPERTY_GROUP_BASE_PATH}#{DELETE_PROPERTY_GROUP_NAMES}",
-                                property_group: property_group_id,
-                                lang: lang))
+                                property_group: property_group_id, lang: lang))
         end
       end
     end

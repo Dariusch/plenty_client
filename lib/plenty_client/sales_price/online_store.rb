@@ -26,4 +26,3 @@ module PlentyClient
     end
   end
 end
-

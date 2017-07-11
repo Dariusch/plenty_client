@@ -4,7 +4,7 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      ITEM_IMAGE_BASE_PATH        = '/items/{itemId}'.freeze
+      ITEM_IMAGE_BASE_PATH      = '/items/{itemId}'.freeze
 
       LIST_ALL_ITEM_IMAGES      = '/images'.freeze
       CREATE_ITEM_IMAGES        = '/images/upload'.freeze
@@ -34,7 +34,7 @@ module PlentyClient
         def create(headers = {})
           post(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{CREATE_ITEM_IMAGES}"), headers)
         end
-        self.send(:alias_method, :upload, :create)
+        send(:alias_method, :upload, :create)
 
         def update(item_id, image_id, headers = {})
           put(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{UPDATE_ITEM_IMAGES}",

@@ -18,7 +18,7 @@ module PlentyClient
           get(build_endpoint(FIND_ORDER_DATE_TYPE_NAME, type: type_id, lang: lang), headers, &block)
         end
 
-        def list(currency_iso, headers = {}, &block)
+        def list(order_id, headers = {}, &block)
           get(build_endpoint(LIST_ORDER_DATES, order: order_id), headers, &block)
         end
 
@@ -29,4 +29,3 @@ module PlentyClient
     end
   end
 end
-
