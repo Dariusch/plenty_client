@@ -34,7 +34,7 @@ module PlentyClient
                                order: order_id), body)
           end
 
-          def delete(order_id, body = {})
+          def destroy(order_id, body = {})
             delete(build_endpoint("#{BASE_ORDERS_SHIPPING_INFORMATION_PATH}#{DELETE_ORDER_SHIPPING_INFORMATION}",
                                   order: order_id), body)
           end

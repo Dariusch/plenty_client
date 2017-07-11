@@ -39,7 +39,7 @@ module PlentyClient
                                 variation: variation_id), body)
           end
 
-          def delete(item_id, variation_id, bundle_id)
+          def destroy(item_id, variation_id, bundle_id)
             delete(build_endpoint("#{ITEM_VARIATION_BUNDLE_PATH}#{DELETE_ITEM_VARIATIONS_BUNDLE}",
                                   item: item_id,
                                   variation: variation_id,

@@ -27,7 +27,7 @@ module PlentyClient
           post(build_endpoint(UPDATE_ATTRIBUTE, attribute: attribute_id), headers)
         end
 
-        def delete(attribute_id)
+        def destroy(attribute_id)
           delete(build_endpoint(DELETE_attribute, attribute: attribute_id))
         end
       end

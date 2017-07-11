@@ -40,7 +40,7 @@ module PlentyClient
                                body)
           end
 
-          def delete(property_id, market_id)
+          def destroy(property_id, market_id)
             delete(build_endpoint("#{ITEM_PROPERTY_MARKET_REFERENCE_PATH}#{DELETE_ITEMS_PROPERTY_MARKET_REFERENCE}",
                                   property: property_id,
                                   market: market_id))

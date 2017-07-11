@@ -19,7 +19,7 @@ module PlentyClient
                              cat: cat_id), body)
         end
 
-        def delete(cat_id, body = {})
+        def destroy(cat_id, body = {})
           delete(build_endpoint(DELETE_CATEGORY_TEMPLATE,
                                 cat: cat_id), body)
         end

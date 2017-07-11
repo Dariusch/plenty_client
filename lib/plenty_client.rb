@@ -2,11 +2,11 @@ require 'curl'
 require 'json'
 
 module PlentyClient
-  autoload :Config,     'plenty_client/config'
-  autoload :Constants,  'plenty_client/constants'
-  autoload :Endpoint,   'plenty_client/endpoint'
-  autoload :Request,    'plenty_client/request'
-  autoload :Version,    'plenty_client/version'
+  autoload :Config,       'plenty_client/config'
+  autoload :Constants,    'plenty_client/constants'
+  autoload :Endpoint,     'plenty_client/endpoint'
+  autoload :Request,      'plenty_client/request'
+  autoload :Version,      'plenty_client/version'
 
   autoload :Accounting,     'plenty_client/accounting'
   autoload :Authentication, 'plenty_client/authentication'

@@ -27,7 +27,7 @@ module PlentyClient
           put(build_endpoint(UPDATE_PROPERTY_GROUP, property_group: property_group_id), body)
         end
 
-        def delete(property_group_id)
+        def destroy(property_group_id)
           delete(build_endpoint(DELETE_PROPERTY_GROUP, property_group: property_group_id))
         end
       end

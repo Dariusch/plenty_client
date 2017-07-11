@@ -24,7 +24,7 @@ module PlentyClient
             get(build_endpoint("#{ITEM_VARIATION_CATEGORY_PATH}#{GET_ITEM_VARIATIONS_CATEGORY}",
                                item: item_id,
                                variation: variation_id,
-                               category: category_id), headers, &block)
+                               cat: category_id), headers, &block)
           end
 
           def create(item_id, variation_id, body = {})
@@ -39,11 +39,11 @@ module PlentyClient
                                 variation: variation_id), body)
           end
 
-          def delete(item_id, variation_id, category_id)
+          def destroy(item_id, variation_id, category_id)
             delete(build_endpoint("#{ITEM_VARIATION_CATEGORY_PATH}#{DELETE_ITEM_VARIATIONS_CATEGORY}",
                                   item: item_id,
                                   variation: variation_id,
-                                  category: category_id))
+                                  cat: category_id))
           end
         end
       end

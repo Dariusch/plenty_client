@@ -39,7 +39,7 @@ module PlentyClient
           post(build_endpoint(UPDATE_BARCODE, barcode: barcode_id), body)
         end
 
-        def delete(barcode_id)
+        def destroy(barcode_id)
           delete(build_endpoint(DELETE_BARCODE, barcode: barcode_id))
         end
 

@@ -32,11 +32,11 @@ module PlentyClient
         put(build_endpoint(UPDATE_ITEM_SETS), body)
       end
 
-      def delete(item_set_id, body = {})
+      def destroy(item_set_id, body = {})
         put(build_endpoint(DELETE_ITEM_SET, item_set: item_set_id), body)
       end
 
-      def delete_sets(body = {})
+      def destroy_sets(body = {})
         put(build_endpoint(DELETE_ITEM_SETS), body)
       end
     end

@@ -26,23 +26,22 @@ module PlentyClient
       end
 
       def update(cat_id, body = {})
-        post(build_endpoint(UPDATE_CATEGORY,
-                            cat: cat_id), body)
+        post(build_endpoint(UPDATE_CATEGORY, cat: cat_id), body)
       end
 
       def update_all(body = {})
         post(build_endpoint(UPDATE_CATEGORIES), body)
       end
 
-      def delete(cat_id, body = {})
+      def destroy(cat_id, body = {})
         delete(build_endpoint(DELETE_CATEGORY, cat: cat_id), body)
       end
 
-      def delete_details(cat_id, body = {})
+      def destroy_details(cat_id, body = {})
         delete(build_endpoint(DELETE_CATEGORY_DETAILS, cat: cat_id), body)
       end
 
-      def delete_clients(cat_id, body = {})
+      def destroy_clients(cat_id, body = {})
         delete(build_endpoint(DELETE_CATEGORY_CLIENTS, cat: cat_id), body)
       end
     end

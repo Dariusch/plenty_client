@@ -40,7 +40,7 @@ module PlentyClient
                                lang: lang), body)
           end
 
-          def delete(item_id, variation_id, lang)
+          def destroy(item_id, variation_id, lang)
             delete(build_endpoint("#{ITEM_VARIATION_DESCRIPTION_BASE_PATH}#{DELETE_ITEM_VARIATIONS_DESCRIPTION}",
                                   item: item_id,
                                   variation: variation_id,

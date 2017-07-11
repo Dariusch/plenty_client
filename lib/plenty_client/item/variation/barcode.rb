@@ -40,7 +40,7 @@ module PlentyClient
                                barcode: barcode_id), body)
           end
 
-          def delete(item_id, variation_id, barcode_id)
+          def destroy(item_id, variation_id, barcode_id)
             delete(build_endpoint("#{ITEM_VARIATION_BARCODE_PATH}#{DELETE_ITEM_VARIATIONS_BARCODE}",
                                   item: item_id,
                                   variation: variation_id,

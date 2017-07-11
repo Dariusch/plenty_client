@@ -33,14 +33,14 @@ module PlentyClient
                                 variation: variation_id), body)
           end
 
-          def update(item_id, variation_id, price_id. body = {})
+          def update(item_id, variation_id, price_id, body = {})
             put(build_endpoint("#{ITEM_VARIATION_SALES_PRICES_PATH}#{UPDATE_ITEM_VARIATIONS_SALES_PRICES}",
                                 item: item_id,
                                 variation: variation_id,
                                 price: price_id), body)
           end
 
-          def delete(item_id, variation_id, price_id)
+          def destroy(item_id, variation_id, price_id)
             delete(build_endpoint("#{ITEM_VARIATION_SALES_PRICES_PATH}#{DELETE_ITEM_VARIATIONS_SALES_PRICES}",
                                   item: item_id,
                                   variation: variation_id,

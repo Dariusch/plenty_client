@@ -9,6 +9,7 @@ module PlentyClient
       GET_ITEMS_VARIATION     = '/items/{itemId}/variations/{variationId}'.freeze
       GET_ITEMS_VARIATIONS    = '/items/{itemId}/variations'.freeze
       POST_ITEMS_VARIATION    = '/items/{itemId}/variations'.freeze
+      UPDATE_ITEMS_VARIATION  = '/items/{itemId}/variations/{variationId}'.freeze
 
       class << self
         def all(headers = {}, &block)
@@ -23,11 +24,15 @@ module PlentyClient
           get(build_endpoint(GET_ITEMS_VARIATIONS, item: item_id), headers, &block)
         end
 
-        def update(item_id, body = {})
+        def create(item_id, body = {})
           post(build_endpoint(POST_ITEMS_VARIATION, item: item_id), body)
         end
 
-        def delete(item_id, variation_id)
+        def update(item_id, variation_id, body = {})
+          put(build_endpoint(UPDATE_ITEMS_VARIATION, item: item_id, variation: variation_id), body)
+        end
+
+        def destroy(item_id, variation_id)
           delete(build_endpoint(DELETE_ITEMS_VARIATION, item: item_id, variation: variation_id))
         end
       end

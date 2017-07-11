@@ -40,7 +40,7 @@ module PlentyClient
                 body)
           end
 
-          def delete(manufacturer_id, commission_id)
+          def destroy(manufacturer_id, commission_id)
             delete(build_endpoint("#{ITEM_MANUFACTURER_COMMISSION}#{DELETE_ITEMS_MANUFACTURER_COMMISSION}",
                                   manufacturer: manufacturer_id,
                                   commission: commission_id))

@@ -12,7 +12,7 @@ module PlentyClient
 
       class << self
         def list(headers = {}, &block)
-          get(build_endpoint(LIST_ALL_MANUFACTURER), headers, &block)
+          get(build_endpoint(LIST_ALL_MANUFACTURERS), headers, &block)
         end
 
         def find(manufacturer_id, headers = {}, &block)
@@ -27,7 +27,7 @@ module PlentyClient
           put(build_endpoint(UPDATE_MANUFACTURER, manufacturer: manufacturer_id), headers)
         end
 
-        def delete(manufacturer_id)
+        def destroy(manufacturer_id)
           delete(build_endpoint(DELETE_MANUFACTURER, manufacturer: manufacturer_id))
         end
       end

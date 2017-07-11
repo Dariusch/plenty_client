@@ -39,13 +39,13 @@ module PlentyClient
                              item_set: item_set_id), body)
         end
 
-        def delete_item_set_component(item_set_id, component_id, body = {})
+        def destroy_item_set_component(item_set_id, component_id, body = {})
           delete(build_endpoint(DELETE_ITEM_SET_COMPONENT,
                                 item_set: item_set_id,
                                 component: component_id), body)
         end
 
-        def delete_item_sets_components(item_set_id, body = {})
+        def destroy_item_sets_components(item_set_id, body = {})
           delete(build_endpoint(DELETE_ITEM_SETS_COMPONENTS,
                                 item_set: item_set_id), body)
         end

@@ -33,7 +33,7 @@ module PlentyClient
                              lang: lang), headers)
         end
 
-        def delete(property_group_id, lang)
+        def destroy(property_group_id, lang)
           delete(build_endpoint("#{PROPERTY_GROUP_BASE_PATH}#{DELETE_PROPERTY_GROUP_NAMES}",
                                 property_group: property_group_id,
                                 lang: lang))

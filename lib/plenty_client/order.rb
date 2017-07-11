@@ -23,7 +23,8 @@ module PlentyClient
       def list_contacts_orders(contact_id, headers = {}, &block)
         get(build_endpoint(LIST_CONTACTS_ORDERS, contact: contact_id), headers, &block)
       end
-      def list_contacts_orders(order_id, headers = {}, &block)
+
+      def list_package_numbers(order_id, headers = {}, &block)
         get(build_endpoint(LIST_ORDERS_PACKAGE_NUMBERS, order: order_id), headers, &block)
       end
 
@@ -35,7 +36,7 @@ module PlentyClient
         put(build_endpoint(UPDATE_ORDER, order: order_id), body)
       end
 
-      def delete(order_id, body = {})
+      def destroy(order_id, body = {})
         delete(build_endpoint(DELETE_ORDER, order: order_id), body)
       end
     end

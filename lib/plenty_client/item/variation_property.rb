@@ -27,7 +27,7 @@ module PlentyClient
           put(build_endpoint(UPDATE_VARIATION_PROPERTY, item: item_id, variation: variation_id), headers)
         end
 
-        def delete(item_id, variation_id)
+        def destroy(item_id, variation_id)
           delete(build_endpoint(DELETE_VARIATION_PROPERTY, item: item_id, variation: variation_id))
         end
       end

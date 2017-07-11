@@ -27,7 +27,7 @@ module PlentyClient
           put(build_endpoint(UPDATE_SALES_PRICE, sales_price: sales_price_id), headers)
         end
 
-        def delete(sales_price_id)
+        def destroy(sales_price_id)
           delete(build_endpoint(DELETE_SALES_PRICE, sales_price: sales_price_id))
         end
       end

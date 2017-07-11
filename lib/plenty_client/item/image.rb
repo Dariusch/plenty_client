@@ -25,7 +25,6 @@ module PlentyClient
                              variation: variation_id), headers, &block)
         end
 
-
         def find(item_id, image_id, headers = {}, &block)
           get(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{GET_ITEM_IMAGES}",
                              property_group: item_id,
@@ -43,7 +42,7 @@ module PlentyClient
                              image: image_id), headers)
         end
 
-        def delete(item_id, image_id)
+        def destroy(item_id, image_id)
           delete(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{DELETE_ITEM_IMAGES}",
                                 property_group: item_id,
                                 image: image_id))

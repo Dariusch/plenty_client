@@ -29,7 +29,7 @@ module PlentyClient
           put(build_endpoint(UPDATE_ITEMS_UNIT, unit: unit_id, lang: lang), headers, &block)
         end
 
-        def delete(unit_id, lang)
+        def destroy(unit_id, lang)
           delete(build_endpoint(DELETE_ITEMS_UNIT, unit: unit_id, lang: lang))
         end
       end

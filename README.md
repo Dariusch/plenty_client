@@ -36,14 +36,15 @@ PlentyClient::Config.site_url     = 'http://plenty7.plentymarkets.de/rest'
 PlentyClient::Config.api_user     = 'myusername'
 PlentyClient::Config.api_password = 'mypassword'
 PlentyClient::Config.log          = true || false
+PlentyClient::Config.plenty_id    = 111111
 ```
 
 # Calls
-Once you are set up you can use the client with the following methods:  
-
 Note:
-  - required parameters need to be passed in, otherwise you will get an error
+  - required parameters need to be passed in, otherwise you will receive an PlentyMarketsResponseError
   - This Client handles no validation, it is only a gateway to the API
+
+Once you are set up you can use the client like so:  
 
 ```ruby
 PlentyClient::Item.find(103)
@@ -56,52 +57,23 @@ PlentyClient::Item.create(parameters)
 
 PlentyClient::Item::Variation.update(103, update_parameters)
 
-PlentyClient::Item::Variation.delete(103, 105)
+PlentyClient::Item::Variation.destroy(103, 105)
 
-```
-
-### Blocks
-
-```ruby
 # Use blocks to iterate in batches
 PlentyClient::Item.list do |item|
   puts item
 end
 
 # You can set optional headers after the required parameters of each request
-PlentyClient::Item::Variation.list(103, {'itemsPerPage' => 1, 'page' => 4}) do |item|
+PlentyClient::Item::Variation.list(103, { 'itemsPerPage' => 1, 'page' => 4 }) do |item|
   puts item
-end
-```
-
-### HTTP-Methods
-
-If there is no resource available you can still make the request like so:
-```ruby
-PlentyClient::Request.patch(path, body = {})
-PlentyClient::Request.put(path, body = {})
-PlentyClient::Request.post(path, body = {})
-PlentyClient::Request.delete(path, params = {})
-PlentyClient::Request.get(path, params = {})
-PlentyClient::Request.get(path, params = {}) do |body|
 end
 ```
 
 ### Warnings
 There is a difference in the get method with and without a block.
-This returns the raw body with all parameters
-
-```ruby
-PlentyClient::Request.get(path, params = {})
-
-```
-The get-call with the block only returns the entries
-```ruby
-PlentyClient::Request.get(path, params = {}) do |body|
-  puts entries
-end
-
-```
+The Call without the block will return the complete response.  
+With the block you will only receive the entries.
 
 ### Debugging
 If you are not sure which required parameters to pass in simply call
@@ -128,6 +100,7 @@ PlentyClient::Item::Variation.routes
   * [`ExportSettings`](https://developers.plentymarkets.com/rest-doc/export_settings)
   * [~~`Item`~~](https://developers.plentymarkets.com/rest-doc/item)
   * [`LegalInformation`](https://developers.plentymarkets.com/rest-doc/legal_information)
+  * [`Listing`](https://developers.plentymarkets.com/rest-doc/listing)
   * [`Market`](https://developers.plentymarkets.com/rest-doc/market)
   * [~~`Order`~~](https://developers.plentymarkets.com/rest-doc/order)
   * [`OrderSummary`](https://developers.plentymarkets.com/rest-doc/order_summary)

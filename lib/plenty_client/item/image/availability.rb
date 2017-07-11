@@ -26,7 +26,7 @@ module PlentyClient
                                 headers, &block)
           end
 
-          def delete(item_id, image_id)
+          def destroy(item_id, image_id)
             delete(build_endpoint("#{ITEM_IMAGE_AVAILABILITY_PATH}#{DELETE_ITEMS_IMAGE_AVAILABILITY}",
                                   item: item_id,
                                   image: image_id))

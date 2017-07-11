@@ -71,7 +71,7 @@ module PlentyClient
             curl_options(curl)
           end
         when 'put'
-          Curl.put(base_url(path), params) do |curl|
+          Curl.put(base_url(path), params.to_json) do |curl|
             curl_options(curl)
           end
         when 'delete'
@@ -79,7 +79,7 @@ module PlentyClient
             curl_options(curl)
           end
         when 'patch'
-          Curl.patch(base_url(path), params) do |curl|
+          Curl.patch(base_url(path), params.to_json) do |curl|
             curl_options(curl)
           end
         end
@@ -103,7 +103,8 @@ module PlentyClient
 
       def parse_body(response, http_method, rest_path, params = {})
         result = JSON.parse(response.body)
-        raise InvalidResponseException.new(http_method, rest_path, params) if result.nil?
+        errors = error_check(result)
+        raise PlentyMarketsResponseError.new(errors, http_method, rest_path, params) unless errors.blank?
         result
       end
 
@@ -114,6 +115,26 @@ module PlentyClient
       def time_diff_ms(start, finish)
         ((finish - start) * 1000.0).round(2)
       end
+
+      def error_check(response)
+        rval = []
+        if response.is_a?(Array) && !response.blank? && response.first.key?('error')
+          response.each do |res|
+            rval << extract_message(res)
+          end
+        elsif response.is_a?(Hash) && response&.key?('error')
+          rval << extract_message(response)
+        end
+        rval
+      end
+
+      def extract_message(response)
+        if response.key?('validation_errors') && !response['validation_errors'].blank?
+          response['validation_errors'].values.flatten.join(', ')
+        else
+          response['error']['message']
+        end
+      end
     end
 
     def self.included(base)
@@ -122,8 +143,8 @@ module PlentyClient
   end
 end
 
-class InvalidResponseException < StandardError
-  def initialize(http_method, rest_path, params)
-    super("The response was null. http_Method: #{http_method}, Path: #{rest_path}, options: #{params}")
+class PlentyMarketsResponseError < StandardError
+  def initialize(errors, http_method, rest_path, params)
+    super("#{errors.join(', ')}, http_Method: #{http_method}, path: #{rest_path}, options: #{params}")
   end
 end

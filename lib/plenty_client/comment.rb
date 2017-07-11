@@ -23,7 +23,7 @@ module PlentyClient
         post(CREATE_CATEGORY, body)
       end
 
-      def delete(cat_id, body = {})
+      def destroy(cat_id, body = {})
         delete(build_endpoint(DELETE_CATEGORY, comment: cat_id), body)
       end
     end
