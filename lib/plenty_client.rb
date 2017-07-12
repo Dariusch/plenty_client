@@ -2,6 +2,8 @@ require 'curl'
 require 'json'
 
 module PlentyClient
+  class ResponseError < StandardError; end
+
   autoload :Config,       'plenty_client/config'
   autoload :Constants,    'plenty_client/constants'
   autoload :Endpoint,     'plenty_client/endpoint'

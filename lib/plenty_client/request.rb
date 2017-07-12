@@ -104,7 +104,10 @@ module PlentyClient
       def parse_body(response, http_method, rest_path, params = {})
         result = JSON.parse(response.body)
         errors = error_check(result)
-        raise PlentyMarketsResponseError.new(errors, http_method, rest_path, params) unless errors.blank?
+        unless errors.blank?
+          raise PlentyClient::ResponseError, [*errors].join(', ')
+          log_output(http_method, path, params, '')
+        end
         result
       end
 
@@ -140,11 +143,5 @@ module PlentyClient
     def self.included(base)
       base.extend(ClassMethods)
     end
-  end
-end
-
-class PlentyMarketsResponseError < StandardError
-  def initialize(errors, http_method, rest_path, params)
-    super("#{errors.join(', ')}, http_Method: #{http_method}, path: #{rest_path}, options: #{params}")
   end
 end

@@ -41,7 +41,7 @@ PlentyClient::Config.plenty_id    = 111111
 
 # Calls
 Note:
-  - required parameters need to be passed in, otherwise you will receive an PlentyMarketsResponseError
+  - required parameters need to be passed in, otherwise you will receive an PlentyClient::ResponseError
   - This Client handles no validation, it is only a gateway to the API
 
 Once you are set up you can use the client like so:  
