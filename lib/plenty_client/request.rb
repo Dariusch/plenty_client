@@ -121,11 +121,12 @@ module PlentyClient
 
       def error_check(response)
         rval = []
-        if response.is_a?(Array) && !response.blank? && response.first.key?('error')
+        return rval if response.blank?
+        if response.is_a?(Array) && response.first.key?('error')
           response.each do |res|
             rval << extract_message(res)
           end
-        elsif response.is_a?(Hash) && response&.key?('error')
+        elsif response.is_a?(Hash) && response.key?('error')
           rval << extract_message(response)
         end
         rval
