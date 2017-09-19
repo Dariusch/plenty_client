@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['dariusch.ochlast@gmail.com']
 
   spec.summary       = 'This is Version 1 of the PlentyMarkets Rest Client for Ruby.'
-  spec.description   = 'This Client is a wrapper arount the PlentyMarkets REST API providing simple classes to interact.'
+  spec.description   = 'This is a simple client for the PlentyMarkets REST API providing classes to interact with it.'
   spec.homepage      = 'https://github.com/Dariusch/plenty_client'
   spec.license       = 'MIT'
 
@@ -25,5 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
 
   spec.add_dependency 'json', '~> 1.8', '>= 1.8.0'
-  spec.add_dependency 'curb', '~> 0.9.3'
+  spec.add_dependency 'faraday', '~> 0.9'
+  spec.add_dependency 'typhoeus', '~> 1.3.0'
 end

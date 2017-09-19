@@ -1,4 +1,6 @@
-require 'curl'
+require 'typhoeus'
+require 'typhoeus/adapters/faraday'
+
 module PlentyClient
   module Request
     module ClassMethods
@@ -6,14 +8,10 @@ module PlentyClient
         return false if http_method.nil? || path.nil?
         return false unless %w[post put patch delete get].include?(http_method.to_s)
 
-        if PlentyClient::Config.access_token.nil? || time_diff_ms(Time.now, PlentyClient::Config.expiry_date).negative?
+        if PlentyClient::Config.access_token.nil? || (PlentyClient::Config.expiry_date - Time.now).negative?
           login_check
         end
-        start_time = Time.now
-        response = perform(http_method, path, params)
-        body = parse_body(response, http_method, path, params)
-        log_output(http_method, base_url(path), params, time_diff_ms(start_time, Time.now)) if PlentyClient::Config.log
-        body
+        parse_body(perform(http_method, path, params))
       end
 
       def post(path, body = {})
@@ -52,46 +50,35 @@ module PlentyClient
       private
 
       def login_check
-        url = "/login?username=#{PlentyClient::Config.api_user}&password=#{PlentyClient::Config.api_password}"
-        response = perform(:post, url)
-        result = parse_body(response, :post, 'login')
+        response = perform(:post, '/login', username: PlentyClient::Config.api_user,
+                                            password: PlentyClient::Config.api_password)
+        result = parse_body(response)
         PlentyClient::Config.access_token  = result['accessToken']
         PlentyClient::Config.refresh_token = result['refreshToken']
         PlentyClient::Config.expiry_date   = Time.now + result['expiresIn']
       end
 
       def perform(http_method, path, params = {})
-        case http_method.to_s.downcase
-        when 'get'
-          Curl.get(base_url(path), params) do |curl|
-            curl_options(curl)
-          end
-        when 'post'
-          Curl.post(base_url(path), params.to_json) do |curl|
-            curl_options(curl)
-          end
-        when 'put'
-          Curl.put(base_url(path), params.to_json) do |curl|
-            curl_options(curl)
-          end
-        when 'delete'
-          Curl.delete(base_url(path), params) do |curl|
-            curl_options(curl)
-          end
-        when 'patch'
-          Curl.patch(base_url(path), params.to_json) do |curl|
-            curl_options(curl)
+        conn = Faraday.new(url: PlentyClient::Config.site_url) do |faraday|
+          faraday = headers(faraday)
+          if PlentyClient::Config.log
+            faraday.response :logger do |logger|
+              logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
+            end
           end
         end
+        conn.adapter :typhoeus
+        converted_parameters = http_method.to_s.casecmp('get').zero? ? params : params.to_json
+        conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
       end
 
-      def curl_options(curl)
-        curl.headers['Content-type'] = 'application/json'
+      def headers(adapter)
+        adapter.headers['Content-type'] = 'application/json'
         unless PlentyClient::Config.access_token.nil?
-          curl.headers['Authorization'] = "Bearer #{PlentyClient::Config.access_token}"
+          adapter.headers['Authorization'] = "Bearer #{PlentyClient::Config.access_token}"
         end
-        curl.headers['Accept'] = 'application/x.plentymarkets.v1+json'
-        curl
+        adapter.headers['Accept'] = 'application/x.plentymarkets.v1+json'
+        adapter
       end
 
       def base_url(path)
@@ -101,22 +88,11 @@ module PlentyClient
         url
       end
 
-      def parse_body(response, http_method, rest_path, params = {})
+      def parse_body(response)
         result = JSON.parse(response.body)
         errors = error_check(result)
-        unless errors.blank?
-          raise PlentyClient::ResponseError, [*errors].join(', ')
-          log_output(http_method, path, params, '')
-        end
+        raise PlentyClient::ResponseError, [*errors].join(', ') unless errors.blank?
         result
-      end
-
-      def log_output(http_method, path, params, duration)
-        puts [Time.now, "#{duration} ms", http_method.upcase, path, params].join(' # ')
-      end
-
-      def time_diff_ms(start, finish)
-        ((finish - start) * 1000.0).round(2)
       end
 
       def error_check(response)
