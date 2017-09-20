@@ -6,7 +6,7 @@ module PlentyClient
     module ClassMethods
       def request(http_method, path, params = {})
         return false if http_method.nil? || path.nil?
-        return false unless %w[post put patch delete get].include?(http_method.to_s)
+        return false unless %w(post put patch delete get).include?(http_method.to_s)
 
         if PlentyClient::Config.access_token.nil? || (PlentyClient::Config.expiry_date - Time.now).negative?
           login_check
@@ -30,7 +30,7 @@ module PlentyClient
         request(:delete, path, body)
       end
 
-      def get(path, params = {}, &block)
+      def get(path, params = {})
         page = 1
         rval_array = []
         if block_given?
@@ -68,7 +68,7 @@ module PlentyClient
           end
         end
         conn.adapter :typhoeus
-        converted_parameters = %w[get delete].include?(http_method.to_s.downcase) ? params : params.to_json
+        converted_parameters = %w(get delete).include?(http_method.to_s.downcase) ? params : params.to_json
         conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
       end
 
