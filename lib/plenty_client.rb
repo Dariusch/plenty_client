@@ -93,6 +93,7 @@ module PlentyClient
   module Listing
     autoload :Market,         'plenty_client/listing/market'
     autoload :MarketHistory,  'plenty_client/listing/market_history'
+    autoload :OptionTemplate, 'plenty_client/listing/option_template'
   end
 
   module Order

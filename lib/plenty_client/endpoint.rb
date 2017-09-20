@@ -37,6 +37,7 @@ module PlentyClient
           market_listing:             /\{marketListingId\}/,
           market_listing_history:     /\{marketListingHistoryId\}/,
           marketplace:                /\{marketplaceId\}/,
+          option_template:            /\{optionTemplateId}/,
           order:                      /\{orderId\}/,
           order_item:                 /\{orderItemId\}/,
           parent_referrer:            /\{parentReferrerId\}/,
