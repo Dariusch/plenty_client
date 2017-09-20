@@ -38,6 +38,7 @@ module PlentyClient
           market_ident_number:        /\{marketIdentNumberId\}/,
           market_listing:             /\{marketListingId\}/,
           market_listing_history:     /\{marketListingHistoryId\}/,
+          market_text:                /\{marketTextId\}/,
           marketplace:                /\{marketplaceId\}/,
           option_template:            /\{optionTemplateId}/,
           order:                      /\{orderId\}/,

@@ -96,6 +96,7 @@ module PlentyClient
     autoload :MarketDirectory,      'plenty_client/listing/market_directory'
     autoload :MarketInfo,           'plenty_client/listing/market_info'
     autoload :MarketHistory,        'plenty_client/listing/market_history'
+    autoload :MarketText,           'plenty_client/listing/market_text'
     autoload :OptionTemplate,       'plenty_client/listing/option_template'
     autoload :ShippingProfile,      'plenty_client/listing/shipping_profile'
     autoload :StockDependenceType,  'plenty_client/listing/stock_dependencetype'
