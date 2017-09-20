@@ -98,6 +98,7 @@ module PlentyClient
     autoload :MarketHistory,    'plenty_client/listing/market_history'
     autoload :OptionTemplate,   'plenty_client/listing/option_template'
     autoload :ShippingProfile,  'plenty_client/listing/shipping_profile'
+    autoload :Type,             'plenty_client/listing/type'
   end
 
   module Order
