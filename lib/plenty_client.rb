@@ -91,14 +91,15 @@ module PlentyClient
   end
 
   module Listing
-    autoload :LayoutTemplate,   'plenty_client/listing/layout_template'
-    autoload :Market,           'plenty_client/listing/market'
-    autoload :MarketDirectory,  'plenty_client/listing/market_directory'
-    autoload :MarketInfo,       'plenty_client/listing/market_info'
-    autoload :MarketHistory,    'plenty_client/listing/market_history'
-    autoload :OptionTemplate,   'plenty_client/listing/option_template'
-    autoload :ShippingProfile,  'plenty_client/listing/shipping_profile'
-    autoload :Type,             'plenty_client/listing/type'
+    autoload :LayoutTemplate,       'plenty_client/listing/layout_template'
+    autoload :Market,               'plenty_client/listing/market'
+    autoload :MarketDirectory,      'plenty_client/listing/market_directory'
+    autoload :MarketInfo,           'plenty_client/listing/market_info'
+    autoload :MarketHistory,        'plenty_client/listing/market_history'
+    autoload :OptionTemplate,       'plenty_client/listing/option_template'
+    autoload :ShippingProfile,      'plenty_client/listing/shipping_profile'
+    autoload :StockDependenceType,  'plenty_client/listing/stock_dependencetype'
+    autoload :Type,                 'plenty_client/listing/type'
   end
 
   module Order
