@@ -1,6 +1,6 @@
 module PlentyClient
   module Listing
-    class Market
+    module Market
       include PlentyClient::Endpoint
       include PlentyClient::Request
 

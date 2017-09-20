@@ -11,7 +11,8 @@ The complete documentation can be found [here](https://developers.plentymarkets.
 ## Installation
 
 Add this line to your application's Gemfile:
-```
+
+```ruby
 gem 'plenty_client'
 ```
 
@@ -100,7 +101,7 @@ PlentyClient::Item::Variation.routes
   * [`ExportSettings`](https://developers.plentymarkets.com/rest-doc/export_settings)
   * [~~`Item`~~](https://developers.plentymarkets.com/rest-doc/item)
   * [`LegalInformation`](https://developers.plentymarkets.com/rest-doc/legal_information)
-  * [`Listing`](https://developers.plentymarkets.com/rest-doc/listing)
+  * [~~`Listing`~~](https://developers.plentymarkets.com/rest-doc/listing)
   * [`Market`](https://developers.plentymarkets.com/rest-doc/market)
   * [~~`Order`~~](https://developers.plentymarkets.com/rest-doc/order)
   * [`OrderSummary`](https://developers.plentymarkets.com/rest-doc/order_summary)
