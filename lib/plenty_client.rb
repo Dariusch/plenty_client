@@ -93,6 +93,7 @@ module PlentyClient
   module Listing
     autoload :LayoutTemplate,   'plenty_client/listing/layout_template'
     autoload :Market,           'plenty_client/listing/market'
+    autoload :MarketDirectory,  'plenty_client/listing/market_directory'
     autoload :MarketInfo,       'plenty_client/listing/market_info'
     autoload :MarketHistory,    'plenty_client/listing/market_history'
     autoload :OptionTemplate,   'plenty_client/listing/option_template'

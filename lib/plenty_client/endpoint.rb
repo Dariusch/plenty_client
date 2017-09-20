@@ -25,6 +25,7 @@ module PlentyClient
           cross_item:                 /\{crossItemId\}/,
           currency:                   /\{currencyIso\}/,
           customer_class:             /\{customerClassId\}/,
+          directory:                  /\{directoryId\}/,
           image:                      /\{imageId\}/,
           item:                       /\{itemId\}/,
           item_set:                   /\{itemSetId\}/,
