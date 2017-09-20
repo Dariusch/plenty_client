@@ -1,4 +1,3 @@
-require 'curl'
 require 'json'
 
 module PlentyClient
