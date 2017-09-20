@@ -29,6 +29,7 @@ module PlentyClient
           item:                       /\{itemId\}/,
           item_set:                   /\{itemSetId\}/,
           lang:                       /\{lang\}/,
+          layout_template:            /\{layoutTemplateId}/,
           location:                   /\{locationId\}/,
           listing:                    /\{listingId\}/,
           manufacturer:               /\{manufacturerId\}/,
