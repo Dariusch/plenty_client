@@ -68,7 +68,7 @@ module PlentyClient
           end
         end
         conn.adapter :typhoeus
-        converted_parameters = http_method.to_s.casecmp('get').zero? ? params : params.to_json
+        converted_parameters = %w[get delete].include?(http_method.to_s.downcase) ? params : params.to_json
         conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
       end
 

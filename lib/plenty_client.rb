@@ -18,6 +18,7 @@ module PlentyClient
   autoload :Comment,        'plenty_client/comment'
   autoload :Item,           'plenty_client/item'
   autoload :ItemSet,        'plenty_client/item_set'
+  autoload :Listing,        'plenty_client/listing'
   autoload :Order,          'plenty_client/order'
 
   module Basket
@@ -88,6 +89,11 @@ module PlentyClient
   module ItemSet
     autoload :Component,  'plenty_client/item_set/component'
     autoload :Config,     'plenty_client/item_set/config'
+  end
+
+  module Listing
+    autoload :Market,         'plenty_client/listing/market'
+    autoload :MarketHistory,  'plenty_client/listing/market_history'
   end
 
   module Order
