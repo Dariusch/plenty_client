@@ -10,6 +10,7 @@ module PlentyClient
         # Endpoint parameters hash that links symbols to regex
         endpoint_parameters = {
           account:                    /\{accountId\}/,
+          address:                    /\{addressId\}/,
           account_ype:                /\{accountType\}/,
           attribute:                  /\{attributeId\}/,
           attribute_value:            /\{attributeValueId\}/,
@@ -43,6 +44,7 @@ module PlentyClient
           option_template:            /\{optionTemplateId}/,
           order:                      /\{orderId\}/,
           order_item:                 /\{orderItemId\}/,
+          order_summary:              /\{orderSummaryId\}/,
           parent_referrer:            /\{parentReferrerId\}/,
           plenty:                     /\{plentyId\}/,
           preset:                     /\{presetId\}/,

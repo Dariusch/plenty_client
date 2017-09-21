@@ -19,6 +19,7 @@ module PlentyClient
   autoload :ItemSet,        'plenty_client/item_set'
   autoload :Listing,        'plenty_client/listing'
   autoload :Order,          'plenty_client/order'
+  autoload :OrderSummary,   'plenty_client/order_summary'
   autoload :Webstore,       'plenty_client/webstore'
 
   module Basket
