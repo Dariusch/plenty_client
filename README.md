@@ -109,7 +109,7 @@ PlentyClient::Item::Variation.routes
   * [`Plugins`](https://developers.plentymarkets.com/rest-doc/plugins)
   * [`StockManagement`](https://developers.plentymarkets.com/rest-doc/stock_management)
   * [`Ticket`](https://developers.plentymarkets.com/rest-doc/ticket)
-  * [`Webstore`](https://developers.plentymarkets.com/rest-doc/webstore)
+  * [~~`Webstore`~](https://developers.plentymarkets.com/rest-doc/webstore)
 - missing [OrderItem OrderItemDate](https://developers.plentymarkets.com/rest-doc/order_order_item_order_item_date/details#get-all-order-item-dates-for-one-order-item-by-its-order-item-id) - its just a mess
 - missing [OrderProperty](https://developers.plentymarkets.com/rest-doc/order#rest-orderproperty) - its just a mess
 - missing [OrderItem OrderItemProperty ](https://developers.plentymarkets.com/rest-doc/order_order_item_order_item_property/details#get-all-order-item-propertys-for-one-order-item-by-its-order-item-id) - its just a mess
