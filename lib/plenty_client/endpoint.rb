@@ -57,6 +57,7 @@ module PlentyClient
           shipping_package:           /\{orderShippingPackageId\}/,
           shipping_service_provider:  /\{shippingServiceProviderID\}/,
           sku:                        /\{skuId\}/,
+          ticket:                     /\{ticketId\}/,
           type:                       /\{typeId\}/,
           type_string:                /\{type\}/,
           unit:                       /\{unitId\}/,
