@@ -96,7 +96,7 @@ PlentyClient::Item::Variation.routes
   * [~~`Category`~~](https://developers.plentymarkets.com/rest-doc/category)
   * [`Cloud`](https://developers.plentymarkets.com/rest-doc/cloud)
   * [~~`Comment`~~](https://developers.plentymarkets.com/rest-doc/comment)
-  * [`Document`](https://developers.plentymarkets.com/rest-doc/document)
+  * [~~`Document`~~](https://developers.plentymarkets.com/rest-doc/document)
   * [`Export`](https://developers.plentymarkets.com/rest-doc/export)
   * [`ExportSettings`](https://developers.plentymarkets.com/rest-doc/export_settings)
   * [~~`Item`~~](https://developers.plentymarkets.com/rest-doc/item)

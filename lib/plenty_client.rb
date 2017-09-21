@@ -15,6 +15,7 @@ module PlentyClient
   autoload :Basket,         'plenty_client/basket'
   autoload :Category,       'plenty_client/category'
   autoload :Comment,        'plenty_client/comment'
+  autoload :Document,       'plenty_client/document'
   autoload :Item,           'plenty_client/item'
   autoload :ItemSet,        'plenty_client/item_set'
   autoload :Listing,        'plenty_client/listing'
@@ -29,6 +30,11 @@ module PlentyClient
   module Category
     autoload :Branch,   'plenty_client/category/branch'
     autoload :Template, 'plenty_client/category/template'
+  end
+
+  module Document
+    autoload :Category, 'plenty_client/document/category'
+    autoload :Order,    'plenty_client/document/order'
   end
 
   module Item

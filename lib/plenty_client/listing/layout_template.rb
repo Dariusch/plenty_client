@@ -4,9 +4,9 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_LISTINGS_LAYOUT_TEMPLATE   = '/rest/listings/layout_templates/{layoutTemplateId}'.freeze
-      CREATE_LISTINGS_LAYOUT_TEMPLATE = '/rest/listings/layout_templates'.freeze
-      DELTE_LISTINGS_LAYOUT_TEMPLATE  = '/rest/listings/layout_templates/{layoutTemplateId}'.freeze
+      FIND_LISTINGS_LAYOUT_TEMPLATE   = '/listings/layout_templates/{layoutTemplateId}'.freeze
+      CREATE_LISTINGS_LAYOUT_TEMPLATE = '/listings/layout_templates'.freeze
+      DELTE_LISTINGS_LAYOUT_TEMPLATE  = '/listings/layout_templates/{layoutTemplateId}'.freeze
 
       class << self
         def find(layout_template_id, headers = {}, &block)

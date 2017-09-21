@@ -5,7 +5,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_LISTINGS_MARKET_INFO = '/rest/listings/markets/info'.freeze
+        LIST_LISTINGS_MARKET_INFO = '/listings/markets/info'.freeze
 
         class << self
           def list(headers = {}, &block)

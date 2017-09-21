@@ -4,8 +4,8 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_LISTINGS_SHIPPING_PROFILE   = '/rest/listings/shipping_profiles/{shippingProfileId}'.freeze
-      LIST_LISTINGS_SHIPPING_PROFILES  = '/rest/listings/shipping_profiles'.freeze
+      FIND_LISTINGS_SHIPPING_PROFILE   = '/listings/shipping_profiles/{shippingProfileId}'.freeze
+      LIST_LISTINGS_SHIPPING_PROFILES  = '/listings/shipping_profiles'.freeze
 
       class << self
         def find(shipping_profile_id, headers = {}, &block)

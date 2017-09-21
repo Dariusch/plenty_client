@@ -4,11 +4,11 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      PREVIEW_LISTINGS_OPTION_TEMPLATE  = '/rest/listings/option_templates/preview'.freeze
-      FIND_LISTINGS_OPTION_TEMPLATE     = '/rest/listings/option_templates/{optionTemplateId}'.freeze
-      CREATE_LISTINGS_OPTION_TEMPLATE   = '/rest/listings/option_templates'.freeze
-      UPDATE_LISTINGS_OPTION_TEMPLATE   = '/rest/listings/option_templates/{optionTemplateId}'.freeze
-      DELTE_LISTINGS_OPTION_TEMPLATE    = '/rest/listings/option_templates/{optionTemplateId}'.freeze
+      PREVIEW_LISTINGS_OPTION_TEMPLATE  = '/listings/option_templates/preview'.freeze
+      FIND_LISTINGS_OPTION_TEMPLATE     = '/listings/option_templates/{optionTemplateId}'.freeze
+      CREATE_LISTINGS_OPTION_TEMPLATE   = '/listings/option_templates'.freeze
+      UPDATE_LISTINGS_OPTION_TEMPLATE   = '/listings/option_templates/{optionTemplateId}'.freeze
+      DELTE_LISTINGS_OPTION_TEMPLATE    = '/listings/option_templates/{optionTemplateId}'.freeze
 
       class << self
         def preview(headers = {}, &block)

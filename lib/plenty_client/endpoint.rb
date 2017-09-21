@@ -27,6 +27,7 @@ module PlentyClient
           currency:                   /\{currencyIso\}/,
           customer_class:             /\{customerClassId\}/,
           directory:                  /\{directoryId\}/,
+          document:                   /\{documentId\}/,
           image:                      /\{imageId\}/,
           item:                       /\{itemId\}/,
           item_set:                   /\{itemSetId\}/,

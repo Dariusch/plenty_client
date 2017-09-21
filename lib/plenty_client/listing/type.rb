@@ -4,8 +4,8 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_LISTINGS_TYPE   = '/rest/listings/types/{typeId}'.freeze
-      LIST_LISTINGS_TYPES  = '/rest/listings/types'.freeze
+      FIND_LISTINGS_TYPE   = '/listings/types/{typeId}'.freeze
+      LIST_LISTINGS_TYPES  = '/listings/types'.freeze
 
       class << self
         def find(type_id, headers = {}, &block)
