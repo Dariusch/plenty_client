@@ -21,6 +21,7 @@ module PlentyClient
   autoload :Listing,        'plenty_client/listing'
   autoload :Order,          'plenty_client/order'
   autoload :OrderSummary,   'plenty_client/order_summary'
+  autoload :Payment,        'plenty_client/payment'
   autoload :Stock,          'plenty_client/stock'
   autoload :Warehouse,      'plenty_client/warehouse'
   autoload :Webstore,       'plenty_client/webstore'
@@ -148,6 +149,11 @@ module PlentyClient
       autoload :Profile,          'plenty_client/order/shipping/profile'
       autoload :ServiceProvider,  'plenty_client/order/shipping/service_provider'
     end
+  end
+
+  module Payment
+    autoload :Method,     'plenty_client/payment/method'
+    autoload :MethodName, 'plenty_client/payment/method_name'
   end
 
   module SalesPrice
