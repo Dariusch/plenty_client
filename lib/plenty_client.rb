@@ -21,6 +21,8 @@ module PlentyClient
   autoload :Listing,        'plenty_client/listing'
   autoload :Order,          'plenty_client/order'
   autoload :OrderSummary,   'plenty_client/order_summary'
+  autoload :Stock,          'plenty_client/stock'
+  autoload :Warehouse,      'plenty_client/warehouse'
   autoload :Webstore,       'plenty_client/webstore'
 
   module Basket
@@ -156,5 +158,16 @@ module PlentyClient
     autoload :Name,           'plenty_client/sales_price/name'
     autoload :OnlineStore,    'plenty_client/sales_price/online_store'
     autoload :Referrer,       'plenty_client/sales_price/referrer'
+  end
+
+  module Warehouse
+    autoload :Stock,      'plenty_client/warehouse/stock'
+    autoload :Management, 'plenty_client/warehouse/management'
+
+    module Management
+      autoload :Rack,             'plenty_client/warehouse/management/rack'
+      autoload :Shelf,            'plenty_client/warehouse/management/shelf'
+      autoload :StorageLocation,  'plenty_client/warehouse/management/storage_location'
+    end
   end
 end
