@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Dariusch Ochlast']
   spec.email         = ['dariusch.ochlast@gmail.com']
 
-  spec.summary       = 'This is Version 1 of the PlentyMarkets Rest Client for Ruby.'
+  spec.summary       = 'This the first draft of a PlentyMarkets Rest Client for Ruby.'
   spec.description   = 'This is a simple client for the PlentyMarkets REST API providing classes to interact with it.'
   spec.homepage      = 'https://github.com/Dariusch/plenty_client'
   spec.license       = 'MIT'
