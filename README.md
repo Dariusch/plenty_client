@@ -102,7 +102,7 @@ PlentyClient::Item::Variation.routes
   * [~~`Item`~~](https://developers.plentymarkets.com/rest-doc/item)
   * [`LegalInformation`](https://developers.plentymarkets.com/rest-doc/legal_information)
   * [~~`Listing`~~](https://developers.plentymarkets.com/rest-doc/listing)
-  * [`Market`](https://developers.plentymarkets.com/rest-doc/market)
+  * [~~`Market`~~](https://developers.plentymarkets.com/rest-doc/market)
   * [~~`Order`~~](https://developers.plentymarkets.com/rest-doc/order)
   * [~~`OrderSummary`~~](https://developers.plentymarkets.com/rest-doc/order_summary)
   * [`Payment`](https://developers.plentymarkets.com/rest-doc/payment)

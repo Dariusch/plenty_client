@@ -114,6 +114,16 @@ module PlentyClient
     end
   end
 
+  module Market
+    autoload :Credentials, 'plenty_client/market/credentials'
+
+    module Ebay
+      autoload :Authentication, 'plenty_client/market/ebay/authentication'
+      autoload :PartsFitment,   'plenty_client/market/ebay/parts_fitment'
+      autoload :ShopCategory,   'plenty_client/market/ebay/shop_category'
+    end
+  end
+
   module Order
     autoload :CouponCode,       'plenty_client/order/coupon_code'
     autoload :Currency,         'plenty_client/order/currency'
