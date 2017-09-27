@@ -11,6 +11,7 @@ module PlentyClient
         endpoint_parameters = {
           account:                    /\{accountId\}/,
           address:                    /\{addressId\}/,
+          address_type:               /\{addressTypeId\}/,
           account_ype:                /\{accountType\}/,
           attribute:                  /\{attributeId\}/,
           attribute_value:            /\{attributeValueId\}/,
@@ -21,6 +22,7 @@ module PlentyClient
           component:                  /\{componentId\}/,
           comment:                    /\{commentId\}/,
           contact:                    /\{contactId\}/,
+          contact_bank:               /\{contactBankId\}/,
           country:                    /\{countryId\}/,
           coupon_string:              /\{coupon\}/,
           credentials:                /\{credentialsId\}/,

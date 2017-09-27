@@ -9,6 +9,7 @@ module PlentyClient
   autoload :Request,      'plenty_client/request'
   autoload :Version,      'plenty_client/version'
 
+  autoload :Account,        'plenty_client/account'
   autoload :Accounting,     'plenty_client/accounting'
   autoload :Authentication, 'plenty_client/authentication'
   autoload :Authorization,  'plenty_client/authorization'
@@ -25,6 +26,16 @@ module PlentyClient
   autoload :Stock,          'plenty_client/stock'
   autoload :Warehouse,      'plenty_client/warehouse'
   autoload :Webstore,       'plenty_client/webstore'
+
+  module Account
+    autoload :Contact, 'plenty_client/account/contact'
+
+    module Contact
+      autoload :Address,  'plenty_client/account/contact/address'
+      autoload :Bank,     'plenty_client/account/contact/bank'
+      autoload :Type,     'plenty_client/account/contact/type'
+    end
+  end
 
   module Basket
     autoload :Item, 'plenty_client/basket/item'
