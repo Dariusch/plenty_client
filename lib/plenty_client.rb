@@ -152,8 +152,21 @@ module PlentyClient
   end
 
   module Payment
-    autoload :Method,     'plenty_client/payment/method'
-    autoload :MethodName, 'plenty_client/payment/method_name'
+    autoload :Contact,      'plenty_client/payment/contact'
+    autoload :Method,       'plenty_client/payment/method'
+    autoload :MethodName,   'plenty_client/payment/method_name'
+    autoload :Order,        'plenty_client/payment/order'
+    autoload :Property,     'plenty_client/payment/property'
+    autoload :Status,       'plenty_client/payment/status'
+    autoload :Transaction,  'plenty_client/payment/transaction'
+
+    module Property
+      autoload :Type, 'plenty_client/payment/property/type'
+
+      module Type
+        autoload :Name, 'plenty_client/payment/property/type/name'
+      end
+    end
   end
 
   module SalesPrice

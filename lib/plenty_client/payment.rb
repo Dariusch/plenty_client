@@ -19,8 +19,8 @@ module PlentyClient
         get(build_endpoint(FIND_PAYMENT, payment: payment_id), headers, &block)
       end
 
-      def update(payment_id, headers = {}, &block)
-        get(build_endpoint(FIND_PAYMENT, payment: payment_id), headers, &block)
+      def update(payment_id, body = {})
+        put(build_endpoint(FIND_PAYMENT, payment: payment_id), body)
       end
 
       def list_by_entry_date(headers = {}, &block)
