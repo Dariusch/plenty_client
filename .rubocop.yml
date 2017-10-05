@@ -41,3 +41,9 @@ Metrics/ParameterLists:
   Max: 10
 Metrics/PerceivedComplexity:
   Max: 99
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'config/**/*.rb'
