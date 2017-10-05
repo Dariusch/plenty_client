@@ -53,5 +53,57 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         end
       end
     end
+    
+    describe 'wrappers for #request' do
+      describe '#post' do
+        it 'calls #request with :post and rest of params' do
+          expect(ic).to receive(:request).with(:post, '/index.php', { 'param1' => 'value1' })
+          ic.post('/index.php', { 'param1' => 'value1' })
+        end
+      end
+
+      describe '#put' do
+        it 'calls #request with :put and rest of params' do
+          expect(ic).to receive(:request).with(:put, '/index.php', { 'param1' => 'value1' })
+          ic.put('/index.php', { 'param1' => 'value1' })
+        end
+      end
+
+      describe '#patch' do
+        it 'calls #request with :patch and rest of params' do
+          expect(ic).to receive(:request).with(:patch, '/index.php', { 'param1' => 'value1' })
+          ic.patch('/index.php', { 'param1' => 'value1' })
+        end
+      end
+      
+      describe '#delete' do
+        it 'calls #request with :delete and rest of params' do
+          expect(ic).to receive(:request).with(:delete, '/index.php', { 'param1' => 'value1' })
+          ic.delete('/index.php', { 'param1' => 'value1' })
+        end
+      end
+
+      describe '#get' do
+        context 'when called without a block' do
+          context 'when called without page param' do
+            it 'calls #request with :get and rest of params, merged with page: 1' do
+              expect(ic).to receive(:request).with(:get, '/index.php', { 'p1' => 'v1', 'page' => 1 })
+              ic.get('/index.php', { 'p1' => 'v1' })
+            end
+          end
+
+          context 'when called with page param' do
+            it 'calls #request with :get and unchanged params' do
+              expect(ic).to receive(:request).with(:get, '/index.php', hash_including('p1' => 'v1', 'page' => 100))
+              ic.get('/index.php', { 'p1' => 'v1', 'page' => 100 })
+            end
+          end
+        end
+
+        context 'when called with a block' do
+
+        end
+      end
+    end
   end
 end

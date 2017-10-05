@@ -35,13 +35,13 @@ module PlentyClient
         rval_array = []
         if block_given?
           loop do
-            response = request(:get, path, params.merge(page: page))
-            yield response['entries'] if block_given?
+            response = request(:get, path, params.merge('page' => page))
+            yield response['entries']
             page += 1
             break if response['isLastPage'] == true
           end
         else
-          rval_array = request(:get, path, params.merge(page: page))
+          rval_array = request(:get, path, {'page' => page}.merge(params))
         end
         return rval_array.flatten if rval_array.is_a?(Array)
         rval_array
