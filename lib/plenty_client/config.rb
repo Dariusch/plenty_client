@@ -9,8 +9,11 @@ module PlentyClient
 
       def validate
         raise NoCredentials if site_url.nil? || api_user.nil? || api_password.nil?
+      end
+
+      def validate_tokens
         raise NoToken if access_token.nil? || refresh_token.nil?
-        raise NoPlentyId if plenty_id.blank?
+        raise NoPlentyId if plenty_id.nil? || plenty_id&.empty?
       end
     end
   end

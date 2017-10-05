@@ -8,7 +8,7 @@ module PlentyClient
         return false if http_method.nil? || path.nil?
         return false unless %w(post put patch delete get).include?(http_method.to_s)
 
-        if PlentyClient::Config.access_token.nil? || (PlentyClient::Config.expiry_date - Time.now).negative?
+        if PlentyClient::Config.access_token.nil? || (PlentyClient::Config.expiry_date < Time.now)
           login_check
         end
         parse_body(perform(http_method, path, params))
@@ -91,13 +91,13 @@ module PlentyClient
       def parse_body(response)
         result = JSON.parse(response.body)
         errors = error_check(result)
-        raise PlentyClient::ResponseError, [*errors].join(', ') unless errors.blank?
+        raise PlentyClient::ResponseError, [*errors].join(', ') unless !errors || errors&.empty?
         result
       end
 
       def error_check(response)
         rval = []
-        return rval if response.blank?
+        return rval if !response || response&.empty?
         if response.is_a?(Array) && response.first.key?('error')
           response.each do |res|
             rval << extract_message(res)
@@ -109,7 +109,7 @@ module PlentyClient
       end
 
       def extract_message(response)
-        if response.key?('validation_errors') && !response['validation_errors'].blank?
+        if response.key?('validation_errors') && response['validation_errors'] && !response['validation_errors']&.empty?
           response['validation_errors'].values.flatten.join(', ')
         else
           response['error']['message']
