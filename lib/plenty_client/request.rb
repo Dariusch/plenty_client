@@ -37,8 +37,8 @@ module PlentyClient
           loop do
             response = request(:get, path, params.merge('page' => page))
             yield response['entries']
-            page += 1
             break if response['isLastPage'] == true
+            page += 1
           end
         else
           rval_array = request(:get, path, {'page' => page}.merge(params))

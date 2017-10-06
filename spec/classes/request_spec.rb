@@ -101,7 +101,32 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         end
 
         context 'when called with a block' do
+          before do
+            stub_request(:get, /example/)
+              .to_return do |r|
+                query = CGI.parse(r.uri.query)
+                page = query['page'][0].to_i
+                {
+                  body: {
+                    page: page,
+                    totalsCount: 3,
+                    isLastPage: (page == 3),
+                    entries: ['a', 'b']
+                  }.to_json
+                } 
+              end
+          end
 
+          it 'calls #request with get until it gets last page' do
+            ic.get('/index.php', {}) do |entries|
+              "Hello world"
+            end
+            expect(WebMock).to have_requested(:get, /example/).times(3)
+          end
+
+          it 'yields entries n times' do
+            expect { |b| ic.get('/index.php', {}, &b) }.to yield_control.exactly(3).times
+          end
         end
       end
     end
