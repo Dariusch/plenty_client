@@ -8,9 +8,7 @@ module PlentyClient
         return false if http_method.nil? || path.nil?
         return false unless %w(post put patch delete get).include?(http_method.to_s)
 
-        if PlentyClient::Config.access_token.nil? || (PlentyClient::Config.expiry_date < Time.now)
-          login_check
-        end
+        login_check unless PlentyClient::Config.tokens_valid?
         parse_body(perform(http_method, path, params))
       end
 
@@ -50,7 +48,7 @@ module PlentyClient
       private
 
       def login_check
-        PlentyClient::Config.validate
+        PlentyClient::Config.validate_credentials
         response = perform(:post, '/login', username: PlentyClient::Config.api_user,
                                             password: PlentyClient::Config.api_password)
         result = parse_body(response)
