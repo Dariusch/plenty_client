@@ -3,6 +3,7 @@ module PlentyClient
     class NoCredentials < StandardError; end
     class NoToken < StandardError; end
     class NoPlentyId < StandardError; end
+    class InvalidCredentials < StandardError; end
 
     class << self
       attr_accessor :site_url, :api_user, :api_password, :access_token, :refresh_token, :log, :expiry_date, :plenty_id

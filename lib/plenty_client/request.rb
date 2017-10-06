@@ -50,6 +50,7 @@ module PlentyClient
       private
 
       def login_check
+        PlentyClient::Config.validate
         response = perform(:post, '/login', username: PlentyClient::Config.api_user,
                                             password: PlentyClient::Config.api_password)
         result = parse_body(response)
@@ -99,13 +100,20 @@ module PlentyClient
         rval = []
         return rval if !response || response&.empty?
         if response.is_a?(Array) && response.first.key?('error')
+          check_for_invalid_credentials(response.first)
           response.each do |res|
             rval << extract_message(res)
           end
         elsif response.is_a?(Hash) && response.key?('error')
+          check_for_invalid_credentials(response)
           rval << extract_message(response)
         end
         rval
+      end
+
+      def check_for_invalid_credentials(response)
+        return unless response['error'] == 'invalid_credentials'
+        raise PlentyClient::Config::InvalidCredentials
       end
 
       def extract_message(response)
