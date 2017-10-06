@@ -198,13 +198,10 @@ RSpec.describe PlentyClient::Request::ClassMethods do
           it 'performs the actual request' do
             expect(@actual_request).to have_been_made.once
           end
-
         end
 
         context 'when credentials are incorrect' do
           before do
-            PlentyClient::Config.api_user = 'foouser2'
-            PlentyClient::Config.api_password = 'abcdef'
             @login_request = stub_request(:post, /login/).to_return(body: {
               'error' => 'invalid_credentials',
               'message' => 'The user credentials were incorrect.',
@@ -244,6 +241,45 @@ RSpec.describe PlentyClient::Request::ClassMethods do
             end
           end
         end
+      end
+    end
+  end
+
+  describe 'renewing API tokens' do
+    before do
+      PlentyClient::Config.access_token = 'old_token'
+      PlentyClient::Config.refresh_token = 'old_refresh_token'
+      @login_request = stub_request(:post, /login/).to_return(body: {
+        'tokenType' => 'Bearer',
+        'expiresIn' => 86400,
+        'accessToken' => 'new_token',
+        'refreshToken' => 'new_refresh_token'
+      }.to_json)
+      @actual_request = stub_request(:post, /index\.html/).to_return(body: {
+      }.to_json)
+    end
+
+    context 'when expiry_date is in the past' do
+      it 'sends login request' do
+        PlentyClient::Config.expiry_date = Time.now - 600
+        ic.request(:post, '/index.html')
+        expect(@login_request).to have_been_made.once
+      end
+    end
+
+    context 'when expiry_date is <60s from now' do
+      it 'sends login request' do
+        PlentyClient::Config.expiry_date = Time.now + 45
+        ic.request(:post, '/index.html')
+        expect(@login_request).to have_been_made.once
+      end
+    end
+
+    context 'when expiry_date is >60s from now' do
+      it 'does not send login request' do
+        PlentyClient::Config.expiry_date = Time.now + 600
+        ic.request(:post, '/index.html')
+        expect(@login_request).not_to have_been_made
       end
     end
   end

@@ -9,7 +9,6 @@ RSpec.describe PlentyClient::Config do
         config.site_url = 'https://www.example.com'
         config.api_user = 'foobar'
         config.api_password = 'foobar'
-        config.log = true
       end
 
       context 'when an attribute is missing' do

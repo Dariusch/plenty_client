@@ -5,6 +5,9 @@ module PlentyClient
     class NoPlentyId < StandardError; end
     class InvalidCredentials < StandardError; end
 
+    # When expiry_date is less than this many seconds from now, it should renew API keys
+    LOGIN_RENEW_BUFFER = 60
+
     class << self
       attr_accessor :site_url, :api_user, :api_password, :access_token, :refresh_token, :log, :expiry_date, :plenty_id
 
@@ -17,7 +20,7 @@ module PlentyClient
       end
 
       def tokens_valid?
-        tokens_present? && expiry_date.instance_of?(Time) && expiry_date > Time.now
+        tokens_present? && expiry_date.instance_of?(Time) && expiry_date > Time.now && (expiry_date - Time.now > LOGIN_RENEW_BUFFER)
       end
     end
   end
