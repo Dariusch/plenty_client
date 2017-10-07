@@ -9,7 +9,7 @@ module PlentyClient
 
     class << self
       def list(headers = {}, &block)
-        get(build_endpoint(LIST_STOCK), headers, &block)
+        get(build_endpoint(LIST_WAREHOUSES), headers, &block)
       end
 
       def find(warehouse_id, headers = {}, &block)
