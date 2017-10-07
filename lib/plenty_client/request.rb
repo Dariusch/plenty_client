@@ -6,7 +6,7 @@ module PlentyClient
     module ClassMethods
       def request(http_method, path, params = {})
         return false if http_method.nil? || path.nil?
-        return false unless %w(post put patch delete get).include?(http_method.to_s)
+        return false unless %w[post put patch delete get].include?(http_method.to_s)
 
         login_check unless PlentyClient::Config.tokens_valid?
         parse_body(perform(http_method, path, params))
@@ -39,7 +39,7 @@ module PlentyClient
             page += 1
           end
         else
-          rval_array = request(:get, path, {'page' => page}.merge(params))
+          rval_array = request(:get, path, { 'page' => page }.merge(params))
         end
         return rval_array.flatten if rval_array.is_a?(Array)
         rval_array
@@ -67,7 +67,7 @@ module PlentyClient
           end
         end
         conn.adapter :typhoeus
-        converted_parameters = %w(get delete).include?(http_method.to_s.downcase) ? params : params.to_json
+        converted_parameters = %w[get delete].include?(http_method.to_s.downcase) ? params : params.to_json
         conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
       end
 
@@ -110,8 +110,7 @@ module PlentyClient
       end
 
       def check_for_invalid_credentials(response)
-        return unless response['error'] == 'invalid_credentials'
-        raise PlentyClient::Config::InvalidCredentials
+        raise PlentyClient::Config::InvalidCredentials if response['error'] == 'invalid_credentials'
       end
 
       def extract_message(response)

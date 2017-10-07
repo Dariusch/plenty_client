@@ -16,11 +16,14 @@ module PlentyClient
       end
 
       def tokens_present?
-        !!(access_token && refresh_token)
+        !access_token.nil? && !refresh_token.nil?
       end
 
       def tokens_valid?
-        tokens_present? && expiry_date.instance_of?(Time) && expiry_date > Time.now && (expiry_date - Time.now > LOGIN_RENEW_BUFFER)
+        tokens_present? &&
+          expiry_date.instance_of?(Time) &&
+          expiry_date > Time.now &&
+          (expiry_date - Time.now > LOGIN_RENEW_BUFFER)
       end
     end
   end
