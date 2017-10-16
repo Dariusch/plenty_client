@@ -66,8 +66,6 @@ module PlentyClient
     autoload :Unit,                       'plenty_client/item/unit'
     autoload :UnitName,                   'plenty_client/item/unit_name'
     autoload :Variation,                  'plenty_client/item/variation'
-    autoload :VariationProperty,          'plenty_client/item/variation_property'
-    autoload :VariationPropertyValue,     'plenty_client/item/variation_property_value'
 
     module Attribute
       autoload :Name,       'plenty_client/item/attribute/name'
@@ -99,11 +97,16 @@ module PlentyClient
       autoload :Image,              'plenty_client/item/variation/image'
       autoload :Market,             'plenty_client/item/variation/market'
       autoload :MarketIdentNumber,  'plenty_client/item/variation/market_ident_number'
+      autoload :Property,           'plenty_client/item/variation/property'
       autoload :SalesPrice,         'plenty_client/item/variation/sales_price'
       autoload :Sku,                'plenty_client/item/variation/sku'
       autoload :Stock,              'plenty_client/item/variation/stock'
       autoload :Supplier,           'plenty_client/item/variation/supplier'
       autoload :Warehouse,          'plenty_client/item/variation/warehouse'
+
+      module Property
+        autoload :Text, 'plenty_client/item/variation_property_value'
+      end
     end
   end
 
