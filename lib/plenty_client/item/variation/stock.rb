@@ -45,8 +45,8 @@ module PlentyClient
                                variation: variation_id), body)
           end
 
-          def update_rediestributions(item_id, variation_id, body = {})
-            put(build_endpoint("#{ITEM_VARIATION_STOCK_PATH}#{UPDATE_ITEM_VARIATIONS_STOCK_INCOMING_ITEMS}",
+          def update_redistributions(item_id, variation_id, body = {})
+            put(build_endpoint("#{ITEM_VARIATION_STOCK_PATH}#{UPDATE_ITEM_VARIATIONS_STOCK_REDISTRIBUTE}",
                                item: item_id,
                                variation: variation_id), body)
           end
