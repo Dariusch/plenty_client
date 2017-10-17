@@ -115,7 +115,10 @@ module PlentyClient
 
       def extract_message(response)
         if response.key?('validation_errors') && response['validation_errors'] && !response['validation_errors']&.empty?
-          response['validation_errors'].values.flatten.join(', ')
+          errors = response['validation_errors']
+          rval = errors.values         if response['validation_errors'].is_a?(Hash)
+          rval = errors.flatten.values if response['validation_errors'].is_a?(Array)
+          rval.flatten.join(', ')
         else
           response['error']['message']
         end

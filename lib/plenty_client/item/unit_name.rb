@@ -1,37 +1,36 @@
-# TODO: Fix class, PlentyMarkets changed syntax
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     class UnitName
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      ITEM_UNIT_PATH     = '/items/{itemId}/units'.freeze
-
-      ITEM_UNITS         = '/names'.freeze
-      LIST_ITEM_UNIT     = '/names'.freeze
-      GET_ITEMS_UNIT     = '/names/{lang}'.freeze
-      UPDATE_ITEMS_UNIT  = '/names/{lang}'.freeze
-      DELETE_ITEMS_UNIT  = '/names/{lang}'.freeze
+      LIST_ITEM_UNIT_NAMES    = '/item/units/{unitID}/names'.freeze
+      FIND_ITEM_UNIT_NAME     = '/item/units/{unitID}/names/{lang}'.freeze
+      CREATE_ITEMS_UNIT_NAME  = '/item/units/{unitID}/names'.freeze
+      UPDATE_ITEMS_UNIT_NAME  = '/item/units/{unitID}/names/{lang}'.freeze
+      DELETE_ITEMS_UNIT_NAME  = '/item/units/{unitID}/names/{lang}'.freeze
 
       class << self
-        def create(item_id, headers = {})
-          post(build_endpoint(CREATE_ITEMS_UNITS, item: item_id), headers)
+        def list(unit_id, headers = {}, &block)
+          get(build_endpoint(LIST_ITEM_UNIT_NAMES, unit: unit_id), headers, &block)
         end
 
-        def list(item_id, headers = {}, &block)
-          get(build_endpoint(LIST_ITEM_UNIT, item: item_id), headers, &block)
+        def find(unit_id, lang, headers = {}, &block)
+          get(build_endpoint(FIND_ITEM_UNIT_NAME, unit: unit_id, lang: lang), headers, &block)
         end
 
-        def find(item_id, unit_id, lang, headers = {}, &block)
-          get(build_endpoint(GET_ITEMS_UNIT, item: item_id, unit: unit_id, lang: lang), headers, &block)
+        def create(unit_id, headers = {})
+          post(build_endpoint(CREATE_ITEMS_UNIT_NAME, unit: unit_id), headers)
         end
 
-        def update(item_id, unit_id, lang, headers = {}, &block)
-          put(build_endpoint(UPDATE_ITEMS_UNIT, item: item_id, unit: unit_id, lang: lang), headers, &block)
+        def update(unit_id, lang, headers = {}, &block)
+          put(build_endpoint(UPDATE_ITEMS_UNIT_NAME, unit: unit_id, lang: lang), headers, &block)
         end
 
-        def destroy(item_id, unit_id, lang)
-          delete(build_endpoint(DELETE_ITEMS_UNIT, item: item_id, unit: unit_id, lang: lang))
+        def destroy(unit_id, lang)
+          delete(build_endpoint(DELETE_ITEMS_UNIT_NAME, unit: unit_id, lang: lang))
         end
       end
     end
