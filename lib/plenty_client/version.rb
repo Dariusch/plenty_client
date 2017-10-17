@@ -1,3 +1,3 @@
 module PlentyClient
-  VERSION = '0.0.6'.freeze
+  VERSION = '0.0.7'.freeze
 end
