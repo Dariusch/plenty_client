@@ -28,7 +28,7 @@ module PlentyClient
             delete(build_endpoint("#{ITEM_VARIATION_CLIENTS_PATH}#{DELETE_ITEM_VARIATIONS_CLIENTS}",
                                   item: item_id,
                                   variation: variation_id,
-                                  plenty_id: plenty_id))
+                                  plenty: plenty_id))
           end
         end
       end
