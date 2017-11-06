@@ -105,7 +105,7 @@ module PlentyClient
       autoload :Warehouse,          'plenty_client/item/variation/warehouse'
 
       module Property
-        autoload :Text, 'plenty_client/item/variation/propertyi/text'
+        autoload :Text, 'plenty_client/item/variation/property/text'
       end
     end
   end
