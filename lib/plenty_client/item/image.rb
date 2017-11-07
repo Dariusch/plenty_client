@@ -27,24 +27,25 @@ module PlentyClient
 
         def find(item_id, image_id, headers = {}, &block)
           get(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{GET_ITEM_IMAGES}",
-                             property_group: item_id,
+                             item: item_id,
                              image: image_id), headers, &block)
         end
 
-        def create(headers = {})
-          post(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{CREATE_ITEM_IMAGES}"), headers)
+        def create(item_id, headers = {})
+          post(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{CREATE_ITEM_IMAGES}",
+                              item: item_id), headers)
         end
         send(:alias_method, :upload, :create)
 
         def update(item_id, image_id, headers = {})
           put(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{UPDATE_ITEM_IMAGES}",
-                             property_group: item_id,
+                             item: item_id,
                              image: image_id), headers)
         end
 
         def destroy(item_id, image_id)
           delete(build_endpoint("#{ITEM_IMAGE_BASE_PATH}#{DELETE_ITEM_IMAGES}",
-                                property_group: item_id,
+                                item: item_id,
                                 image: image_id))
         end
       end
