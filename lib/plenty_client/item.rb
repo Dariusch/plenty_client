@@ -7,6 +7,7 @@ module PlentyClient
     CREATE_ITEM   = '/items'.freeze
     UPDATE_ITEM   = '/items/{itemId}'.freeze
     GET_ITEM      = '/items/{itemId}'.freeze
+    DELETE_ITEM   = '/items/{itemId}'.freeze
 
     class << self
       def list(headers = {}, &block)
@@ -23,6 +24,10 @@ module PlentyClient
 
       def create(body = {})
         post(CREATE_ITEM, body)
+      end
+
+      def destroy(item_id, body = {})
+        delete(build_endpoint(DELETE_ITEM, item: item_id), body)
       end
     end
   end
