@@ -139,12 +139,21 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         stub_api_tokens
       end
 
-      it 'raises error' do
+      it 'fails and raises error' do
         stub_request(:post, /index\.html/)
-          .to_return(headers: { 'Content-Type' => 'Content-Type:text/html; charset=UTF-8' },
+          .to_return(headers: { 'Content-Type' => 'text/html; charset=UTF-8' },
                      body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
         expect { request_client.request(:post, '/index.html') }
           .to raise_exception(PlentyClient::ResponseError)
+      end
+
+      it 'fails and retries' do
+        stub_request(:post, /index\.html/)
+          .to_return(headers: { 'Content-Type' => 'text/html; charset=UTF-8' },
+                     body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
+          .to_return(headers: { 'Content-Type' => 'application/json' }, body: {}.to_json)
+        expect { request_client.request(:post, '/index.html') }
+          .not_to raise_exception(PlentyClient::ResponseError)
       end
     end
   end

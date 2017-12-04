@@ -61,7 +61,7 @@ module PlentyClient
         begin
           retries ||= 0
           conn = Faraday.new(url: PlentyClient::Config.site_url) do |faraday|
-          faraday = headers(faraday)
+            faraday = headers(faraday)
             if PlentyClient::Config.log
               faraday.response :logger do |logger|
                 logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
