@@ -58,17 +58,27 @@ module PlentyClient
       end
 
       def perform(http_method, path, params = {})
-        conn = Faraday.new(url: PlentyClient::Config.site_url) do |faraday|
+        begin
+          retries ||= 0
+          conn = Faraday.new(url: PlentyClient::Config.site_url) do |faraday|
           faraday = headers(faraday)
-          if PlentyClient::Config.log
-            faraday.response :logger do |logger|
-              logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
+            if PlentyClient::Config.log
+              faraday.response :logger do |logger|
+                logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
+              end
             end
           end
+          conn.adapter :typhoeus
+          converted_parameters = %w[get delete].include?(http_method.to_s.downcase) ? params : params.to_json
+          req = conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
+          if req.env.response_headers['Content-Type']&.include?('html')
+            raise PlentyClient::ResponseError, 'HTML Response, trying again'
+          end
+          req
+        rescue PlentyClient::ResponseError
+          retry if (retries += 1) < 3
         end
-        conn.adapter :typhoeus
-        converted_parameters = %w[get delete].include?(http_method.to_s.downcase) ? params : params.to_json
-        conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
+        req
       end
 
       def headers(adapter)
@@ -87,8 +97,22 @@ module PlentyClient
         url
       end
 
+      # 2017-12-04 DO: there has to be a supervisor watching over the users limits
+      #                BEFORE the request actually happens
+      #                response_header is after the request and useless if you have multiple instances of the Client
+      def throttle_check_short_period(response_header)
+        short_calls_left = response_header['X-Plenty-Global-Short-Period-Calls-Left']
+        short_seconds_left = response_header['X-Plenty-Global-Short-Period-Decay']
+        return if short_calls_left&.empty? || short_seconds_left&.empty?
+        sleep(short_seconds_left.to_i + 1) if short_calls_left.to_i <= 10 && short_seconds_left.to_i < 3
+      end
+
       def parse_body(response)
-        result = JSON.parse(response.body)
+        begin
+          result = JSON.parse(response.body)
+        rescue JSON::ParserError
+          result = ['invalid response']
+        end
         errors = error_check(result)
         raise PlentyClient::ResponseError, [*errors].join(', ') unless !errors || errors&.empty?
         result
@@ -97,7 +121,9 @@ module PlentyClient
       def error_check(response)
         rval = []
         return rval if !response || response&.empty?
-        if response.is_a?(Array) && response.first.key?('error')
+        if response.is_a?(Array) && response.length == 1
+          rval << response.first
+        elsif response.is_a?(Array) && response.first.key?('error')
           check_for_invalid_credentials(response.first)
           response.each do |res|
             rval << extract_message(res)

@@ -133,6 +133,50 @@ RSpec.describe PlentyClient::Request::ClassMethods do
     end
   end
 
+  describe 'wrong conent type' do
+    context 'response is a text\html type' do
+      before do
+        stub_api_tokens
+      end
+
+      it 'raises error' do
+        stub_request(:post, /index\.html/)
+          .to_return(headers: { 'Content-Type' => 'Content-Type:text/html; charset=UTF-8' },
+                     body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
+        expect { request_client.request(:post, '/index.html') }
+          .to raise_exception(PlentyClient::ResponseError)
+      end
+    end
+  end
+
+  xdescribe 'throttle check' do
+    context 'short period' do
+      before do
+        stub_api_tokens
+      end
+
+      it 'enough calls left' do
+        valid_request = stub_request(:post, /index\.html/).to_return(
+          body: {}.to_json,
+          headers: { 'X-Plenty-Global-Short-Period-Calls-Left' => 50, 'X-Plenty-Global-Short-Period-Decay' => 5 }
+        )
+        expect(Object).not_to receive(:sleep)
+        request_client.request(:post, '/index.html')
+        expect(valid_request).to have_been_made.once
+      end
+
+      it 'limit reached' do
+        limited_request = stub_request(:post, /index\.html/).to_return(
+          body: {}.to_json,
+          headers: { 'X-Plenty-Global-Short-Period-Calls-Left' => 5, 'X-Plenty-Global-Short-Period-Decay' => 2 }
+        )
+        expect(Object).to receive(:sleep).with(3)
+        request_client.request(:post, '/index.html')
+        expect(limited_request).to have_been_made.once
+      end
+    end
+  end
+
   describe 'authentication' do
     context 'when no accessToken is present' do
       before do
