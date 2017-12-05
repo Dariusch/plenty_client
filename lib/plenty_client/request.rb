@@ -74,8 +74,8 @@ module PlentyClient
         end
         conn.adapter :typhoeus
         verb = http_method.to_s.downcase
-        converted_parameters = %w[get delete].include?(verb) ? params : params.to_json
-        response = conn.send(verb, base_url(path), converted_parameters)
+        params = params.to_json unless %w[get delete].include?(verb)
+        response = conn.send(verb, base_url(path), params)
         parse_body(response)
       end
 
@@ -111,7 +111,7 @@ module PlentyClient
         when %r{application/json}
           json = JSON.parse(response.body)
           errors = error_check(json)
-          raise PlentyClient::ResponseError, errors if errors.present?
+          raise PlentyClient::ResponseError, errors if errors && !errors&.empty?
           json
         when %r{application/pdf}
           response.body
@@ -119,7 +119,7 @@ module PlentyClient
       end
 
       def error_check(response)
-        return if response.blank?
+        return if response.nil? || response&.empty?
         return response if response.is_a?(Array) && response.length == 1
         response = response.first if response.is_a?(Array)
         return unless response.key?('error')
@@ -132,7 +132,7 @@ module PlentyClient
       end
 
       def extract_message(response)
-        if response.key?('validation_errors') && response['validation_errors'].present?
+        if response.key?('validation_errors') && response['validation_errors'] && !response['validation_errors']&.empty?
           errors = response['validation_errors']
           rval = errors.values         if response['validation_errors'].is_a?(Hash)
           rval = errors.flatten.values if response['validation_errors'].is_a?(Array)

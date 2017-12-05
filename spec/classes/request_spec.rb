@@ -13,12 +13,18 @@ RSpec.describe PlentyClient::Request::ClassMethods do
     PlentyClient::Config.expiry_date = expiry_date
   end
 
+  def response_headers(mimetype = 'application/json')
+    {
+      'Content-Type' => "#{mimetype}; charset=UTF-8"
+    }
+  end
+
   describe 'requests' do
     describe '#request' do
       before(:each) do
         stub_api_tokens
         stub_request(:any, /example/)
-          .to_return(status: 200, body: '{}', headers: {})
+          .to_return(status: 200, body: '{}', headers: response_headers)
       end
 
       context 'with valid arguments' do
@@ -113,7 +119,8 @@ RSpec.describe PlentyClient::Request::ClassMethods do
                   totalsCount: 3,
                   isLastPage: (page == 3),
                   entries: %w[a b c]
-                }.to_json
+                }.to_json,
+                headers: response_headers
               }
             end
           end
@@ -134,14 +141,14 @@ RSpec.describe PlentyClient::Request::ClassMethods do
   end
 
   describe 'wrong conent type' do
-    context 'response is a text\html type' do
+    context 'when response has mimetype text/html' do
       before do
         stub_api_tokens
       end
 
       it 'fails and raises error' do
         stub_request(:post, /index\.html/)
-          .to_return(headers: { 'Content-Type' => 'text/html; charset=UTF-8' },
+          .to_return(headers: response_headers('text/html'),
                      body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
         expect { request_client.request(:post, '/index.html') }
           .to raise_exception(PlentyClient::ResponseError)
@@ -149,9 +156,9 @@ RSpec.describe PlentyClient::Request::ClassMethods do
 
       it 'fails and retries' do
         stub_request(:post, /index\.html/)
-          .to_return(headers: { 'Content-Type' => 'text/html; charset=UTF-8' },
+          .to_return(headers: response_headers('text/html'),
                      body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
-          .to_return(headers: { 'Content-Type' => 'application/json' }, body: {}.to_json)
+          .to_return(headers: response_headers, body: {}.to_json)
         expect { request_client.request(:post, '/index.html') }
           .not_to raise_exception(PlentyClient::ResponseError)
       end
@@ -165,22 +172,22 @@ RSpec.describe PlentyClient::Request::ClassMethods do
       end
 
       it 'enough calls left' do
-        valid_request = stub_request(:post, /index\.html/).to_return(
+        valid_request = stub_request(:post, /foobar/).to_return(
           body: {}.to_json,
           headers: { 'X-Plenty-Global-Short-Period-Calls-Left' => 50, 'X-Plenty-Global-Short-Period-Decay' => 5 }
         )
         expect(Object).not_to receive(:sleep)
-        request_client.request(:post, '/index.html')
+        request_client.request(:post, '/foobar')
         expect(valid_request).to have_been_made.once
       end
 
       it 'limit reached' do
-        limited_request = stub_request(:post, /index\.html/).to_return(
+        limited_request = stub_request(:post, /foobar/).to_return(
           body: {}.to_json,
           headers: { 'X-Plenty-Global-Short-Period-Calls-Left' => 5, 'X-Plenty-Global-Short-Period-Decay' => 2 }
         )
         expect(Object).to receive(:sleep).with(3)
-        request_client.request(:post, '/index.html')
+        request_client.request(:post, '/foobar')
         expect(limited_request).to have_been_made.once
       end
     end
@@ -194,13 +201,15 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         PlentyClient::Config.expiry_date = nil
         @login_request = stub_request(:post, /login/)
                          .to_return(body: {
-                           'tokenType' => 'Bearer',
-                           'expiresIn' => 86400,
-                           'accessToken' => 'foo_access_token',
-                           'refreshToken' => 'foo_refresh_token'
-                         }.to_json)
+                                      'tokenType' => 'Bearer',
+                                      'expiresIn' => 86400,
+                                      'accessToken' => 'foo_access_token',
+                                      'refreshToken' => 'foo_refresh_token'
+                                    }.to_json,
+                                    headers: response_headers
+                                   )
         @actual_request = stub_request(:post, /index\.html/)
-                          .to_return(body: {}.to_json)
+                          .to_return(body: {}.to_json, headers: response_headers)
       end
 
       context 'when credentials are missing' do
@@ -265,7 +274,7 @@ RSpec.describe PlentyClient::Request::ClassMethods do
               'expiresIn' => nil,
               'accessToken' => nil,
               'refreshToken' => nil
-            }.to_json)
+            }.to_json, headers: response_headers)
           end
 
           it 'raises PlentyClient::Config::InvalidCredentials' do
@@ -311,9 +320,9 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         'expiresIn' => 86400,
         'accessToken' => 'new_token',
         'refreshToken' => 'new_refresh_token'
-      }.to_json)
+      }.to_json, headers: response_headers)
       @actual_request = stub_request(:post, /index\.html/).to_return(body: {
-      }.to_json)
+      }.to_json, headers: response_headers)
     end
 
     context 'when expiry_date is in the past' do
