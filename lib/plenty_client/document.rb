@@ -7,7 +7,7 @@ module PlentyClient
 
     class << self
       def download(document_id, headers = {}, &block)
-        get(build_endpoint(FIND_LISTING, download: document_id), headers, &block)
+        get(build_endpoint(DOWNLOAD_DOCUMENT, document: document_id), headers, &block)
       end
     end
   end
