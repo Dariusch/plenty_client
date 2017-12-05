@@ -4,12 +4,19 @@ require 'typhoeus/adapters/faraday'
 module PlentyClient
   module Request
     module ClassMethods
+      ATTEMPT_COUNT = 3
+
       def request(http_method, path, params = {})
         return false if http_method.nil? || path.nil?
         return false unless %w[post put patch delete get].include?(http_method.to_s)
 
         login_check unless PlentyClient::Config.tokens_valid?
-        parse_body(perform(http_method, path, params))
+
+        ATTEMPT_COUNT.times do
+          response = perform(http_method, path, params)
+          return response if response
+        end
+        raise PlentyClient::ResponseError, "unable to get valid response after #{ATTEMPT_COUNT} attempts"
       end
 
       def post(path, body = {})
@@ -49,36 +56,27 @@ module PlentyClient
 
       def login_check
         PlentyClient::Config.validate_credentials
-        response = perform(:post, '/login', username: PlentyClient::Config.api_user,
-                                            password: PlentyClient::Config.api_password)
-        result = parse_body(response)
+        result = perform(:post, '/login', username: PlentyClient::Config.api_user,
+                                          password: PlentyClient::Config.api_password)
         PlentyClient::Config.access_token  = result['accessToken']
         PlentyClient::Config.refresh_token = result['refreshToken']
         PlentyClient::Config.expiry_date   = Time.now + result['expiresIn']
       end
 
       def perform(http_method, path, params = {})
-        begin
-          retries ||= 0
-          conn = Faraday.new(url: PlentyClient::Config.site_url) do |faraday|
-            faraday = headers(faraday)
-            if PlentyClient::Config.log
-              faraday.response :logger do |logger|
-                logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
-              end
+        conn = Faraday.new(url: PlentyClient::Config.site_url) do |faraday|
+          faraday = headers(faraday)
+          if PlentyClient::Config.log
+            faraday.response :logger do |logger|
+              logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
             end
           end
-          conn.adapter :typhoeus
-          converted_parameters = %w[get delete].include?(http_method.to_s.downcase) ? params : params.to_json
-          req = conn.send(http_method.to_s.downcase, base_url(path), converted_parameters)
-          if req.env.response_headers['Content-Type']&.include?('html')
-            raise PlentyClient::ResponseError, 'HTML Response, trying again'
-          end
-          req
-        rescue PlentyClient::ResponseError
-          retry if (retries += 1) < 3
         end
-        req
+        conn.adapter :typhoeus
+        verb = http_method.to_s.downcase
+        converted_parameters = %w[get delete].include?(verb) ? params : params.to_json
+        response = conn.send(verb, base_url(path), converted_parameters)
+        parse_body(response)
       end
 
       def headers(adapter)
@@ -108,31 +106,25 @@ module PlentyClient
       end
 
       def parse_body(response)
-        begin
-          result = JSON.parse(response.body)
-        rescue JSON::ParserError
-          result = ['invalid response']
+        content_type = response.env.response_headers['Content-Type']
+        case content_type
+        when %r{application/json}
+          json = JSON.parse(response.body)
+          errors = error_check(json)
+          raise PlentyClient::ResponseError, errors if errors.present?
+          json
+        when %r{application/pdf}
+          response.body
         end
-        errors = error_check(result)
-        raise PlentyClient::ResponseError, [*errors].join(', ') unless !errors || errors&.empty?
-        result
       end
 
       def error_check(response)
-        rval = []
-        return rval if !response || response&.empty?
-        if response.is_a?(Array) && response.length == 1
-          rval << response.first
-        elsif response.is_a?(Array) && response.first.key?('error')
-          check_for_invalid_credentials(response.first)
-          response.each do |res|
-            rval << extract_message(res)
-          end
-        elsif response.is_a?(Hash) && response.key?('error')
-          check_for_invalid_credentials(response)
-          rval << extract_message(response)
-        end
-        rval
+        return if response.blank?
+        return response if response.is_a?(Array) && response.length == 1
+        response = response.first if response.is_a?(Array)
+        return unless response.key?('error')
+        check_for_invalid_credentials(response)
+        extract_message(response)
       end
 
       def check_for_invalid_credentials(response)
@@ -140,13 +132,13 @@ module PlentyClient
       end
 
       def extract_message(response)
-        if response.key?('validation_errors') && response['validation_errors'] && !response['validation_errors']&.empty?
+        if response.key?('validation_errors') && response['validation_errors'].present?
           errors = response['validation_errors']
           rval = errors.values         if response['validation_errors'].is_a?(Hash)
           rval = errors.flatten.values if response['validation_errors'].is_a?(Array)
           rval.flatten.join(', ')
         else
-          response['error']['message']
+          response.dig('error', 'message')
         end
       end
     end
