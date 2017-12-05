@@ -68,7 +68,7 @@ module PlentyClient
           faraday = headers(faraday)
           if PlentyClient::Config.log
             faraday.response :logger do |logger|
-              logger.filter(/(password=)(\w+)/, '\1[FILTERED]')
+              logger.filter(/password=([^&]+)/, 'password=[FILTERED]')
             end
           end
         end
