@@ -116,13 +116,14 @@ module PlentyClient
         when %r{application/pdf}
           response.body
         end
+      rescue JSON::ParserError
+        raise PlentyClient::ResponseError, 'invalid response'
       end
 
       def error_check(response)
         return if response.nil? || response&.empty?
-        return response if response.is_a?(Array) && response.length == 1
         response = response.first if response.is_a?(Array)
-        return unless response.key?('error')
+        return unless response&.key?('error')
         check_for_invalid_credentials(response)
         extract_message(response)
       end
