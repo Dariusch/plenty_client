@@ -4,8 +4,6 @@ require 'typhoeus/adapters/faraday'
 module PlentyClient
   module Request
     module ClassMethods
-      ATTEMPT_COUNT = 3
-
       def request(http_method, path, params = {})
         return false if http_method.nil? || path.nil?
         return false unless %w[post put patch delete get].include?(http_method.to_s)
@@ -14,11 +12,12 @@ module PlentyClient
 
         params = params.stringify_keys
 
-        ATTEMPT_COUNT.times do
+        attempts = PlentyClient::Config.attempt_count
+        attempts.times do
           response = perform(http_method, path, params)
           return response if response
         end
-        raise PlentyClient::AttemptsExceeded, "unable to get valid response after #{ATTEMPT_COUNT} attempts"
+        raise PlentyClient::AttemptsExceeded, "unable to get valid response after #{attempts} attempts"
       end
 
       def post(path, body = {})
