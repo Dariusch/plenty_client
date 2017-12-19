@@ -29,6 +29,7 @@ module PlentyClient
 
   module Account
     autoload :Contact, 'plenty_client/account/contact'
+    autoload :Address, 'plenty_client/account/address'
 
     module Contact
       autoload :Address,  'plenty_client/account/contact/address'
