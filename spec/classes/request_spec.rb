@@ -141,26 +141,29 @@ RSpec.describe PlentyClient::Request::ClassMethods do
   end
 
   describe 'wrong conent type' do
-    context 'when response has mimetype text/html' do
-      before do
-        stub_api_tokens
-      end
+    before do
+      stub_api_tokens
+      PlentyClient::Config.attempt_count = 3
+    end
 
-      it 'fails and raises error' do
+    context 'when API responds with text/html response too many times' do
+      it 'raises PlentyClient::AttemptsExceeded' do
         stub_request(:post, /index\.html/)
           .to_return(headers: response_headers('text/html'),
                      body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
         expect { request_client.request(:post, '/index.html') }
-          .to raise_exception(PlentyClient::ResponseError)
+          .to raise_exception(PlentyClient::AttemptsExceeded)
       end
+    end
 
-      it 'fails and retries' do
+    context 'when API responds with text/html response once' do
+      it 'does not raise PlentyClient::AttemptsExceeded' do
         stub_request(:post, /index\.html/)
           .to_return(headers: response_headers('text/html'),
                      body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
           .to_return(headers: response_headers, body: {}.to_json)
         expect { request_client.request(:post, '/index.html') }
-          .not_to raise_exception(PlentyClient::ResponseError)
+          .not_to raise_exception
       end
     end
   end

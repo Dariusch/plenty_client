@@ -10,7 +10,7 @@ module PlentyClient
 
         login_check unless PlentyClient::Config.tokens_valid?
 
-        params = params.stringify_keys
+        params = stringify_symbol_keys(params)
 
         attempts = PlentyClient::Config.attempt_count
         attempts.times do
@@ -54,6 +54,15 @@ module PlentyClient
       end
 
       private
+
+      def stringify_symbol_keys(hash)
+        new_hash = {}
+        hash.each do |k, v|
+          k = k.to_s if k.is_a?(Symbol)
+          new_hash[k] = v
+        end
+        new_hash
+      end
 
       def login_check
         PlentyClient::Config.validate_credentials
