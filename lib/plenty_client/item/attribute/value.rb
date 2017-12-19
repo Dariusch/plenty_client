@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Attribute
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_ATTRIBUTE_PATH = '/items/attributes'.freeze
+        ITEM_ATTRIBUTE_PATH = '/items/attributes'
 
-        CREATE_ITEM_ATTRIBUTE_VALUES  = '/{attributeId}/values'.freeze
-        LIST_ITEM_ATTRIBUTE_VALUE     = '/{attributeId}/values'.freeze
-        GET_ITEMS_ATTRIBUTE_VALUE     = '/{attributeId}/values/{valueId}'.freeze
-        UPDATE_ITEMS_ATTRIBUTE_VALUE  = '/{attributeId}/values/{valueId}'.freeze
-        DELETE_ITEMS_ATTRIBUTE_VALUE  = '/{attributeId}/values/{valueId}'.freeze
+        CREATE_ITEM_ATTRIBUTE_VALUES  = '/{attributeId}/values'
+        LIST_ITEM_ATTRIBUTE_VALUE     = '/{attributeId}/values'
+        GET_ITEMS_ATTRIBUTE_VALUE     = '/{attributeId}/values/{valueId}'
+        UPDATE_ITEMS_ATTRIBUTE_VALUE  = '/{attributeId}/values/{valueId}'
+        DELETE_ITEMS_ATTRIBUTE_VALUE  = '/{attributeId}/values/{valueId}'
 
         class << self
           def create(attribute_id, body = {})

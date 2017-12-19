@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Comment
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    FIND_COMMENT    = '/comments/{commentId}'.freeze
-    LIST_COMMENTS   = '/comments/{referenceType}/{referenceValue}'.freeze
-    CREATE_COMMENT  = '/comments'.freeze
-    DELETE_COMMENT  = '/comments/{commentId}'.freeze
+    FIND_COMMENT    = '/comments/{commentId}'
+    LIST_COMMENTS   = '/comments/{referenceType}/{referenceValue}'
+    CREATE_COMMENT  = '/comments'
+    DELETE_COMMENT  = '/comments/{commentId}'
 
     class << self
       def list(reference_type, reference_value, headers = {}, &block)

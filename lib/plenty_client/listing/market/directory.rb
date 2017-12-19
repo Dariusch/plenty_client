@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Listing
     module Market
@@ -5,10 +7,10 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        FIND_LISTING_MARKET   = '/listings/markets/directories/{directoryId}'.freeze
-        CREATE_LISTING_MARKET = '/listings/markets/directories'.freeze
-        UPDATE_LISTING_MARKET = '/listings/markets/directories/{directoryId}'.freeze
-        DELETE_LISTING_MARKET = '/listings/markets/directories/{directoryId}'.freeze
+        FIND_LISTING_MARKET   = '/listings/markets/directories/{directoryId}'
+        CREATE_LISTING_MARKET = '/listings/markets/directories'
+        UPDATE_LISTING_MARKET = '/listings/markets/directories/{directoryId}'
+        DELETE_LISTING_MARKET = '/listings/markets/directories/{directoryId}'
 
         class << self
           def find(directory_id, headers = {}, &block)

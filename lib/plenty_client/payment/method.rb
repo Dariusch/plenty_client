@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     module Method
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_PAYMENT_METHODS          = '/payments/methods'.freeze
-      FIND_PAYMENT_METHOD           = '/payments/methods/{paymentMethodId}'.freeze
-      FIND_PLUGIN_PAYMENT_METHOD    = '/payments/methods/{pluginKey}'.freeze
-      CREATE_PAYMENT_METHOD         = '/payments/methods'.freeze
-      UPDATE_PAYMENT_METHOD         = '/payments/methods'.freeze
-      UPDATE_PAYMENT_METHOD_WITH_ID = '/payments/methods/{pluginKey}'.freeze
-      LIST_PAYMENT_EBICS_ACCOUNTS   = '/payments/methods/ebics'.freeze
-      CREATE_PAYMENT_EBICS_ACCOUNT  = '/payments/methods/ebics'.freeze
+      LIST_PAYMENT_METHODS          = '/payments/methods'
+      FIND_PAYMENT_METHOD           = '/payments/methods/{paymentMethodId}'
+      FIND_PLUGIN_PAYMENT_METHOD    = '/payments/methods/{pluginKey}'
+      CREATE_PAYMENT_METHOD         = '/payments/methods'
+      UPDATE_PAYMENT_METHOD         = '/payments/methods'
+      UPDATE_PAYMENT_METHOD_WITH_ID = '/payments/methods/{pluginKey}'
+      LIST_PAYMENT_EBICS_ACCOUNTS   = '/payments/methods/ebics'
+      CREATE_PAYMENT_EBICS_ACCOUNT  = '/payments/methods/ebics'
 
       class << self
         def list(headers = {}, &block)

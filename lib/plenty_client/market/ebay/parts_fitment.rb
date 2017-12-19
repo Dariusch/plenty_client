@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Market
     module Ebay
@@ -5,12 +7,12 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_MARKET_EBAY_PARTS_FITMENTS   = '/markets/ebay/parts-fitments'.freeze
-        FIND_MARKET_EBAY_PARTS_FITMENT    = '/markets/ebay/parts-fitments/{fitmentId}'.freeze
-        CREATE_MARKET_EBAY_PARTS_FITMENT  = '/markets/ebay/parts-fitments'.freeze
-        UPDATE_MARKET_EBAY_PARTS_FITMENT  = '/markets/ebay/parts-fitments/{fitmentId}'.freeze
-        DELETE_MARKET_EBAY_PARTS_FITMENT  = '/markets/ebay/parts-fitments/{fitmentId}'.freeze
-        SEARCH_MARKET_EBAY_PARTS_FITMENTS = '/markets/ebay/parts-fitments/search'.freeze
+        LIST_MARKET_EBAY_PARTS_FITMENTS   = '/markets/ebay/parts-fitments'
+        FIND_MARKET_EBAY_PARTS_FITMENT    = '/markets/ebay/parts-fitments/{fitmentId}'
+        CREATE_MARKET_EBAY_PARTS_FITMENT  = '/markets/ebay/parts-fitments'
+        UPDATE_MARKET_EBAY_PARTS_FITMENT  = '/markets/ebay/parts-fitments/{fitmentId}'
+        DELETE_MARKET_EBAY_PARTS_FITMENT  = '/markets/ebay/parts-fitments/{fitmentId}'
+        SEARCH_MARKET_EBAY_PARTS_FITMENTS = '/markets/ebay/parts-fitments/search'
 
         class << self
           def list(headers = {}, &block)

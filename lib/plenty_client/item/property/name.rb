@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Property
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_PROPERTY_PATH      = '/items/properties'.freeze
+        ITEM_PROPERTY_PATH      = '/items/properties'
 
-        CREATE_ITEM_PROPERTIES  = '/{propertyId}/names'.freeze
-        LIST_ITEM_PROPERTY      = '/{propertyId}/names'.freeze
-        GET_ITEMS_PROPERTY      = '/{propertyId}/names/{lang}'.freeze
-        UPDATE_ITEMS_PROPERTY   = '/{propertyId}/names/{lang}'.freeze
-        DELETE_ITEMS_PROPERTY   = '/{propertyId}/names/{lang}'.freeze
+        CREATE_ITEM_PROPERTIES  = '/{propertyId}/names'
+        LIST_ITEM_PROPERTY      = '/{propertyId}/names'
+        GET_ITEMS_PROPERTY      = '/{propertyId}/names/{lang}'
+        UPDATE_ITEMS_PROPERTY   = '/{propertyId}/names/{lang}'
+        DELETE_ITEMS_PROPERTY   = '/{propertyId}/names/{lang}'
 
         class << self
           def create(property_id, headers = {})

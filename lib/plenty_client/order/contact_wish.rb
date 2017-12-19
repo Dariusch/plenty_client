@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module ContactWish
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_ORDER_COTACT_WISH = '/orders/{orderId}/contactWish'.freeze
+      FIND_ORDER_COTACT_WISH = '/orders/{orderId}/contactWish'
 
       class << self
         def find(order_id, headers = {}, &block)

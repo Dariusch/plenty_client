@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_VARIATION_SKU_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
+        ITEM_VARIATION_SKU_PATH    = '/items/{itemId}/variations/{variationId}'
 
-        LIST_ITEM_VARIATIONS_SKU   = '/variation_skus'.freeze
-        GET_ITEM_VARIATIONS_SKU    = '/variation_skus/{skuId}'.freeze
-        CREATE_ITEM_VARIATIONS_SKU = '/variation_skus'.freeze
-        UPDATE_ITEM_VARIATIONS_SKU = '/variation_skus/{skuId}'.freeze
-        DELETE_ITEM_VARIATIONS_SKU = '/variation_skus/{skuId}'.freeze
+        LIST_ITEM_VARIATIONS_SKU   = '/variation_skus'
+        GET_ITEM_VARIATIONS_SKU    = '/variation_skus/{skuId}'
+        CREATE_ITEM_VARIATIONS_SKU = '/variation_skus'
+        UPDATE_ITEM_VARIATIONS_SKU = '/variation_skus/{skuId}'
+        DELETE_ITEM_VARIATIONS_SKU = '/variation_skus/{skuId}'
 
         class << self
           def list(item_id, variation_id, headers = {}, &block)

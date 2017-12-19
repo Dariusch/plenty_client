@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Warehouse
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_WAREHOUSES  = '/stockmanagement/warehouses'.freeze
-    FIND_WAREHOUSE   = '/stockmanagement/warehouses/{warehouseId}'.freeze
-    CREATE_WAREHOUSE = '/stockmanagement/warehouses'.freeze
+    LIST_WAREHOUSES  = '/stockmanagement/warehouses'
+    FIND_WAREHOUSE   = '/stockmanagement/warehouses/{warehouseId}'
+    CREATE_WAREHOUSE = '/stockmanagement/warehouses'
 
     class << self
       def list(headers = {}, &block)

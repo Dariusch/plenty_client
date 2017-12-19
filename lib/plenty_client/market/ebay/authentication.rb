@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Market
     module Ebay
@@ -5,8 +7,8 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        FIND_MARKET_EBAY_AUTH_URL       = '/markets/ebay/auth/login'.freeze
-        REFRESH_MARKET_EBAY_AUTH_TOKEN  = '/markets/ebay/auth/refresh-token'.freeze
+        FIND_MARKET_EBAY_AUTH_URL       = '/markets/ebay/auth/login'
+        REFRESH_MARKET_EBAY_AUTH_TOKEN  = '/markets/ebay/auth/refresh-token'
 
         class << self
           def find_login_url(headers = {}, &block)

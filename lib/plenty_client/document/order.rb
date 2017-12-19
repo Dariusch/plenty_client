@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Document
     class Order
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      DOWNLOAD_ORDERS_DOCUMENTS         = '/orders/{orderId}/documents/downloads/{type}'.freeze
-      DOWNLOAD_ORDER_DOCUMENTS_BY_TYPE  = '/orders/documents/downloads/{type}'.freeze
-      LIST_ORDER_DOCUMENTS              = '/orders/{orderId}/documents/{type}'.freeze
-      LIST_ORDER_DOCUMENTS_BY_TYPE      = '/orders/documents/{type}'.freeze
-      UPLOAD_ORDER_DOCUMENT             = '/orders/{orderId}/documents/{type}'.freeze
+      DOWNLOAD_ORDERS_DOCUMENTS         = '/orders/{orderId}/documents/downloads/{type}'
+      DOWNLOAD_ORDER_DOCUMENTS_BY_TYPE  = '/orders/documents/downloads/{type}'
+      LIST_ORDER_DOCUMENTS              = '/orders/{orderId}/documents/{type}'
+      LIST_ORDER_DOCUMENTS_BY_TYPE      = '/orders/documents/{type}'
+      UPLOAD_ORDER_DOCUMENT             = '/orders/{orderId}/documents/{type}'
 
       class << self
         def download(order_id, type_string, headers = {}, &block)

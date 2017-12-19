@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module Shipping
@@ -5,10 +7,10 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        BASE_ORDERS_SHIPPING_SERVICE_PROVIDER_PATH = '/orders/shipping'.freeze
+        BASE_ORDERS_SHIPPING_SERVICE_PROVIDER_PATH = '/orders/shipping'
 
-        LIST_ORDERS_SHIPPING_SERVICE_PROVIDER = '/shipping_service_providers'.freeze
-        FIND_ORDER_SHIPPING_SERVICE_PROVIDER  = '/shipping_service_providers/{shippingServiceProviderID}'.freeze
+        LIST_ORDERS_SHIPPING_SERVICE_PROVIDER = '/shipping_service_providers'
+        FIND_ORDER_SHIPPING_SERVICE_PROVIDER  = '/shipping_service_providers/{shippingServiceProviderID}'
 
         class << self
           def list(headers = {}, &block)

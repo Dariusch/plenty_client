@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Market
     module Ebay
@@ -5,7 +7,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_MARKET_EBAY_SHOP_CATEGORIES = '/markets/ebay/shop_categories'.freeze
+        LIST_MARKET_EBAY_SHOP_CATEGORIES = '/markets/ebay/shop_categories'
 
         class << self
           def list(headers = {}, &block)

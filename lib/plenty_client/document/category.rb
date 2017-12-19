@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Document
     class Category
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      DOWNLOAD_CATEGORY_DOCUMENT  = '/categories/{categoryId}/documents/downloads'.freeze
-      LIST_CATEGORY_DOCUMENTS     = '/categories/{categoryId}/documents/'.freeze
-      UPLOAD_CATEGORY_DOCUMENT    = '/categories/{categoryId}/documents'.freeze
-      DELTE_CATEGORY_DOCUMENTS    = '/categories/{categoryId}/documents/{documentId}'.freeze
+      DOWNLOAD_CATEGORY_DOCUMENT  = '/categories/{categoryId}/documents/downloads'
+      LIST_CATEGORY_DOCUMENTS     = '/categories/{categoryId}/documents/'
+      UPLOAD_CATEGORY_DOCUMENT    = '/categories/{categoryId}/documents'
+      DELTE_CATEGORY_DOCUMENTS    = '/categories/{categoryId}/documents/{documentId}'
 
       class << self
         def download(category_id, headers = {}, &block)

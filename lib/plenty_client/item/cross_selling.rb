@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     class CrossSelling
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      CREATE_ITEMS_CROSS_SELLING = '/items/{itemId}/item_cross_selling'.freeze
-      GET_ITEMS_CROSS_SELLING    = '/items/{itemId}/item_cross_selling'.freeze
-      DELETE_ITEMS_CROSS_SELLING = '/items/{itemId}/item_cross_selling/{crossItemId}'.freeze
+      CREATE_ITEMS_CROSS_SELLING = '/items/{itemId}/item_cross_selling'
+      GET_ITEMS_CROSS_SELLING    = '/items/{itemId}/item_cross_selling'
+      DELETE_ITEMS_CROSS_SELLING = '/items/{itemId}/item_cross_selling/{crossItemId}'
 
       class << self
         def create(item_id, headers = {})

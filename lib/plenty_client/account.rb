@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Account
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_ACCOUNTS           = '/accounts'.freeze
-    FIND_ACCOUNT            = '/accounts/{accountId}'.freeze
-    CREATE_ACCOUNT          = '/accounts'.freeze
-    UPDATE_ACCOUNT          = '/accounts/{accountId}'.freeze
-    DELETE_ACCOUNT          = '/accounts/{accountId}'.freeze
-    LIST_ACCOUNTS_CONTACTS  = '/accounts/{accountId}/contacts'.freeze
+    LIST_ACCOUNTS           = '/accounts'
+    FIND_ACCOUNT            = '/accounts/{accountId}'
+    CREATE_ACCOUNT          = '/accounts'
+    UPDATE_ACCOUNT          = '/accounts/{accountId}'
+    DELETE_ACCOUNT          = '/accounts/{accountId}'
+    LIST_ACCOUNTS_CONTACTS  = '/accounts/{accountId}/contacts'
 
-    ACCOUNT_LOGIN   = '/account/login'.freeze
-    ACCOUNT_REFRESH = '/account/login/refresh'.freeze
-    ACCOUNT_LOGOUT  = '/account/logout'.freeze
+    ACCOUNT_LOGIN   = '/account/login'
+    ACCOUNT_REFRESH = '/account/login/refresh'
+    ACCOUNT_LOGOUT  = '/account/logout'
 
     class << self
       def list(headers = {}, &block)

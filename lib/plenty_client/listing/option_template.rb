@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Listing
     class OptionTemplate
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      PREVIEW_LISTINGS_OPTION_TEMPLATE  = '/listings/option_templates/preview'.freeze
-      FIND_LISTINGS_OPTION_TEMPLATE     = '/listings/option_templates/{optionTemplateId}'.freeze
-      CREATE_LISTINGS_OPTION_TEMPLATE   = '/listings/option_templates'.freeze
-      UPDATE_LISTINGS_OPTION_TEMPLATE   = '/listings/option_templates/{optionTemplateId}'.freeze
-      DELTE_LISTINGS_OPTION_TEMPLATE    = '/listings/option_templates/{optionTemplateId}'.freeze
+      PREVIEW_LISTINGS_OPTION_TEMPLATE  = '/listings/option_templates/preview'
+      FIND_LISTINGS_OPTION_TEMPLATE     = '/listings/option_templates/{optionTemplateId}'
+      CREATE_LISTINGS_OPTION_TEMPLATE   = '/listings/option_templates'
+      UPDATE_LISTINGS_OPTION_TEMPLATE   = '/listings/option_templates/{optionTemplateId}'
+      DELTE_LISTINGS_OPTION_TEMPLATE    = '/listings/option_templates/{optionTemplateId}'
 
       class << self
         def preview(headers = {}, &block)

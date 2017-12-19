@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     module MethodName
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_METHOD_NAMES                             = '/payments/methodNames'.freeze
-      LIST_METHOD_NAMES_FOR_PAYMENT_METHOD          = '/payments/methodNames/{paymentMethodId}'.freeze
-      FIND_METHOD_NAMES_FOR_PAYMENT_METHOD_BY_LANG  = '/payments/methodNames/{paymentMethodId}/{land}'.freeze
+      LIST_METHOD_NAMES                             = '/payments/methodNames'
+      LIST_METHOD_NAMES_FOR_PAYMENT_METHOD          = '/payments/methodNames/{paymentMethodId}'
+      FIND_METHOD_NAMES_FOR_PAYMENT_METHOD_BY_LANG  = '/payments/methodNames/{paymentMethodId}/{land}'
 
       class << self
         def list(headers = {}, &block)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Account
     module Contact
@@ -5,11 +7,11 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_A_CONTACT_PAYMENTS   = '/accounts/contacts/{contactId}/banks'.freeze
-        FIND_A_CONTACT_PAYMENT    = '/accounts/contacts/banks/{contactBankId}'.freeze
-        CREATE_A_CONTACT_PAYMENT  = '/accounts/contacts/banks'.freeze
-        UPDATE_A_CONTACT_PAYMENT  = '/accounts/contacts/banks/{contactBankId}'.freeze
-        DELETE_A_CONTACT_PAYMENT  = '/accounts/contacts/banks/{contactBankId}'.freeze
+        LIST_A_CONTACT_PAYMENTS   = '/accounts/contacts/{contactId}/banks'
+        FIND_A_CONTACT_PAYMENT    = '/accounts/contacts/banks/{contactBankId}'
+        CREATE_A_CONTACT_PAYMENT  = '/accounts/contacts/banks'
+        UPDATE_A_CONTACT_PAYMENT  = '/accounts/contacts/banks/{contactBankId}'
+        DELETE_A_CONTACT_PAYMENT  = '/accounts/contacts/banks/{contactBankId}'
 
         class << self
           def list(contact_id, headers = {}, &block)

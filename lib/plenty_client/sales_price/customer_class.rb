@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class CustomerClass
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      SALES_PRICE_PATH = '/items/sales_prices/{salesPriceId}'.freeze
-      LIST_SALES_PRICE_CUSTOMER_CLASSES       = '/customer_classes'.freeze
-      ACTIVATE_SALES_PRICE_CUSTOMER_CLASSES   = '/customer_classes'.freeze
-      DEACTIVATE_SALES_PRICE_CUSTOMER_CLASSES = '/customer_classes/{customerClassId}'.freeze
+      SALES_PRICE_PATH = '/items/sales_prices/{salesPriceId}'
+      LIST_SALES_PRICE_CUSTOMER_CLASSES       = '/customer_classes'
+      ACTIVATE_SALES_PRICE_CUSTOMER_CLASSES   = '/customer_classes'
+      DEACTIVATE_SALES_PRICE_CUSTOMER_CLASSES = '/customer_classes/{customerClassId}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Property
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_PROPERTY_MARKET_REFERENCE_PATH     = '/items/properties'.freeze
+        ITEM_PROPERTY_MARKET_REFERENCE_PATH     = '/items/properties'
 
-        CREATE_ITEM_PROPERTY_MARKET_REFERENCE   = '/{propertyId}/market_references'.freeze
-        LIST_ITEM_PROPERTY_MARKET_REFERENCE     = '/{propertyId}/market_references'.freeze
-        GET_ITEMS_PROPERTY_MARKET_REFERENCE     = '/{propertyId}/market_references/{marketId}'.freeze
-        UPDATE_ITEMS_PROPERTY_MARKET_REFERENCE  = '/{propertyId}/market_references/{marketId}'.freeze
-        DELETE_ITEMS_PROPERTY_MARKET_REFERENCE  = '/{propertyId}/market_references/{marketId}'.freeze
+        CREATE_ITEM_PROPERTY_MARKET_REFERENCE   = '/{propertyId}/market_references'
+        LIST_ITEM_PROPERTY_MARKET_REFERENCE     = '/{propertyId}/market_references'
+        GET_ITEMS_PROPERTY_MARKET_REFERENCE     = '/{propertyId}/market_references/{marketId}'
+        UPDATE_ITEMS_PROPERTY_MARKET_REFERENCE  = '/{propertyId}/market_references/{marketId}'
+        DELETE_ITEMS_PROPERTY_MARKET_REFERENCE  = '/{propertyId}/market_references/{marketId}'
 
         class << self
           def create(property_id, headers = {})

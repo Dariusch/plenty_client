@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module ItemSet
     class Component
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ITEM_SET_COMPONENT     = '/item_sets/{itemSetId}/components/{componentId}'.freeze
-      LIST_ITEM_SETS_COMPONENT    = '/item_sets/{itemSetId}/components'.freeze
-      CREATE_ITEM_SET_COMPONENTS  = '/item_sets/{itemSetId}/components'.freeze
-      UPDATE_ITEM_SET_COMPONENT   = '/item_sets/{itemSetId}/components/{componentId}'.freeze
-      UPDATE_ITEM_SETS_COMPONENTS = '/item_sets/{itemSetId}/components'.freeze
-      DELETE_ITEM_SET_COMPONENT   = '/item_sets/{itemSetId}/components/{componentId}'.freeze
-      DELETE_ITEM_SETS_COMPONENTS = '/item_sets/{itemSetId}/components'.freeze
+      LIST_ITEM_SET_COMPONENT     = '/item_sets/{itemSetId}/components/{componentId}'
+      LIST_ITEM_SETS_COMPONENT    = '/item_sets/{itemSetId}/components'
+      CREATE_ITEM_SET_COMPONENTS  = '/item_sets/{itemSetId}/components'
+      UPDATE_ITEM_SET_COMPONENT   = '/item_sets/{itemSetId}/components/{componentId}'
+      UPDATE_ITEM_SETS_COMPONENTS = '/item_sets/{itemSetId}/components'
+      DELETE_ITEM_SET_COMPONENT   = '/item_sets/{itemSetId}/components/{componentId}'
+      DELETE_ITEM_SETS_COMPONENTS = '/item_sets/{itemSetId}/components'
 
       class << self
         def list_item_set_component(item_set_id, component_id, headers = {}, &block)

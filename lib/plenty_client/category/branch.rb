@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Category
     class Branch
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_CATEGORY_BRANCH = '/category_branches/{catId}'.freeze
-      LIST_CATEGORY_BRANCH = '/category_branches'.freeze
+      FIND_CATEGORY_BRANCH = '/category_branches/{catId}'
+      LIST_CATEGORY_BRANCH = '/category_branches'
 
       class << self
         def list(headers = {}, &block)

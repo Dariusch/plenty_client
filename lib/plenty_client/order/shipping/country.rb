@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module Shipping
@@ -5,7 +7,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_SHIPPING_COUNTRIES = '/orders/shipping/countries'.freeze
+        LIST_SHIPPING_COUNTRIES = '/orders/shipping/countries'
 
         class << self
           def list(headers = {}, &block)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
@@ -5,7 +7,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_VARIATION_BARCODE_PATH     = '/items/{itemId}/variations/{variationId}'.freeze
+        ITEM_VARIATION_BARCODE_PATH     = '/items/{itemId}/variations/{variationId}'
 
         LIST_ITEM_VARIATION_BARCODES    = "#{ITEM_VARIATION_BARCODE_PATH}/variation_barcodes".freeze
         GET_ITEM_VARIATIONS_BARCODE     = "#{ITEM_VARIATION_BARCODE_PATH}/variation_barcodes/{barcodeId}".freeze

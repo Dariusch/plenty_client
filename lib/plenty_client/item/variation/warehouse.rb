@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_VARIATION_WAREHOUSE_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
+        ITEM_VARIATION_WAREHOUSE_PATH    = '/items/{itemId}/variations/{variationId}'
 
-        LIST_ITEM_VARIATIONS_WAREHOUSE   = '/variation_warehouses'.freeze
-        GET_ITEM_VARIATIONS_WAREHOUSE    = '/variation_warehouses/{warehouseId}'.freeze
-        CREATE_ITEM_VARIATIONS_WAREHOUSE = '/variation_warehouses'.freeze
-        UPDATE_ITEM_VARIATIONS_WAREHOUSE = '/variation_warehouses/{warehouseId}'.freeze
-        DELETE_ITEM_VARIATIONS_WAREHOUSE = '/variation_warehouses/{warehouseId}'.freeze
+        LIST_ITEM_VARIATIONS_WAREHOUSE   = '/variation_warehouses'
+        GET_ITEM_VARIATIONS_WAREHOUSE    = '/variation_warehouses/{warehouseId}'
+        CREATE_ITEM_VARIATIONS_WAREHOUSE = '/variation_warehouses'
+        UPDATE_ITEM_VARIATIONS_WAREHOUSE = '/variation_warehouses/{warehouseId}'
+        DELETE_ITEM_VARIATIONS_WAREHOUSE = '/variation_warehouses/{warehouseId}'
 
         class << self
           def list(item_id, variation_id, headers = {}, &block)

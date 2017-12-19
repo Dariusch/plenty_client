@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class Name
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_SALES_PRICE_NAMES        = '/items/sales_prices/{salesPriceId}/names'.freeze
-      GET_SALES_PRICE_NAMES_BY_LANG = '/items/sales_prices/{salesPriceId}/names/{lang}'.freeze
-      CREATE_SALES_PRICE_NAME       = '/items/sales_prices/{salesPriceId}/names'.freeze
-      UPDATE_SALES_PRICE_NAME       = '/items/sales_prices/{salesPriceId}/names/{lang}'.freeze
-      DELETE_SALES_PRICE_NAME       = '/items/sales_prices/{salesPriceId}/names/{lang}'.freeze
+      LIST_SALES_PRICE_NAMES        = '/items/sales_prices/{salesPriceId}/names'
+      GET_SALES_PRICE_NAMES_BY_LANG = '/items/sales_prices/{salesPriceId}/names/{lang}'
+      CREATE_SALES_PRICE_NAME       = '/items/sales_prices/{salesPriceId}/names'
+      UPDATE_SALES_PRICE_NAME       = '/items/sales_prices/{salesPriceId}/names/{lang}'
+      DELETE_SALES_PRICE_NAME       = '/items/sales_prices/{salesPriceId}/names/{lang}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_IMAGE_BASE_PATH        = '/items/{itemId}'.freeze
+        ITEM_IMAGE_BASE_PATH        = '/items/{itemId}'
 
-        LIST_IMAGES_IMAGE_LINKS     = '/images/{imageId}/variation_images'.freeze
-        LIST_VARIATION_IMAGE_LINKS  = '/variations/{variationId}/variation_images'.freeze
-        GET_ITEM_IMAGES             = '/variation_images'.freeze
-        UPDATE_ITEM_IMAGES          = '/variations/{variationId}/variation_images'.freeze
-        DELETE_ITEM_IMAGES          = '/variations/{variationId}/variation_images/{imageId}'.freeze
+        LIST_IMAGES_IMAGE_LINKS     = '/images/{imageId}/variation_images'
+        LIST_VARIATION_IMAGE_LINKS  = '/variations/{variationId}/variation_images'
+        GET_ITEM_IMAGES             = '/variation_images'
+        UPDATE_ITEM_IMAGES          = '/variations/{variationId}/variation_images'
+        DELETE_ITEM_IMAGES          = '/variations/{variationId}/variation_images/{imageId}'
 
         class << self
           def list_images_image_links(item_id, image_id, headers = {}, &block)

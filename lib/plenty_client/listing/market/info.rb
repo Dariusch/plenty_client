@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Listing
     module Market
@@ -5,7 +7,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_LISTINGS_MARKET_INFO = '/listings/markets/info'.freeze
+        LIST_LISTINGS_MARKET_INFO = '/listings/markets/info'
 
         class << self
           def list(headers = {}, &block)

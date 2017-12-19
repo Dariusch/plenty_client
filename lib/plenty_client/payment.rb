@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_PAYMENTS       = '/payments'.freeze
-    FIND_PAYMENT        = '/payments/{paymentId}'.freeze
-    CREATE_PAYMENT      = '/payments'.freeze
-    UPDATE_PAYMENT      = '/payments/{paymentId}'.freeze
-    PAYMENT_ENTRYDATE   = '/payments/entrydate'.freeze
-    PAYMENT_IMPORTDATE  = '/payments/importdate'.freeze
+    LIST_PAYMENTS       = '/payments'
+    FIND_PAYMENT        = '/payments/{paymentId}'
+    CREATE_PAYMENT      = '/payments'
+    UPDATE_PAYMENT      = '/payments/{paymentId}'
+    PAYMENT_ENTRYDATE   = '/payments/entrydate'
+    PAYMENT_IMPORTDATE  = '/payments/importdate'
 
     class << self
       def list(headers = {}, &block)

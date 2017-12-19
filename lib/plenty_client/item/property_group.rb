@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     class PropertyGroup
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ALL_PROPERTY_GROUPS  = '/items/property_groups'.freeze
-      GET_PROPERTY_GROUP        = '/items/property_groups/{propertyGroupId}'.freeze
-      CREATE_PROPERTY_GROUP     = '/items/property_groups'.freeze
-      UPDATE_PROPERTY_GROUP     = '/items/property_groups/{propertyGroupId}'.freeze
-      DELETE_PROPERTY_GROUP     = '/items/property_groups/{propertyGroupId}'.freeze
+      LIST_ALL_PROPERTY_GROUPS  = '/items/property_groups'
+      GET_PROPERTY_GROUP        = '/items/property_groups/{propertyGroupId}'
+      CREATE_PROPERTY_GROUP     = '/items/property_groups'
+      UPDATE_PROPERTY_GROUP     = '/items/property_groups/{propertyGroupId}'
+      DELETE_PROPERTY_GROUP     = '/items/property_groups/{propertyGroupId}'
 
       class << self
         def list(headers = {}, &block)

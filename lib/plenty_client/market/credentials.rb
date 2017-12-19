@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Market
     module Credentials
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_MARKET_CREDENTIALS   = '/markets/credentials'.freeze
-      FIND_MARKET_CREDENTIALS   = '/markets/credentials/{credentialsId}'.freeze
-      CREATE_MARKET_CREDENTIALS = '/markets/credentials'.freeze
-      UPDATE_MARKET_CREDENTIALS = '/markets/credentials/{credentialsId}'.freeze
-      DELETE_MARKET_CREDENTIALS = '/markets/credentials/{credentialsId}'.freeze
+      LIST_MARKET_CREDENTIALS   = '/markets/credentials'
+      FIND_MARKET_CREDENTIALS   = '/markets/credentials/{credentialsId}'
+      CREATE_MARKET_CREDENTIALS = '/markets/credentials'
+      UPDATE_MARKET_CREDENTIALS = '/markets/credentials/{credentialsId}'
+      DELETE_MARKET_CREDENTIALS = '/markets/credentials/{credentialsId}'
 
       class << self
         def list(headers = {}, &block)

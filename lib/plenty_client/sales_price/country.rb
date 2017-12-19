@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class Country
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_SALES_PRICE_COUNTRIES      = '/items/sales_prices/{salesPriceId}/countries'.freeze
-      ACTIVATE_SALES_PRICE_COUNTRY    = '/items/sales_prices/{salesPriceId}/countries'.freeze
-      DEACTIVATE_SALES_PRICE_COUNTRY  = '/items/sales_prices/{salesPriceId}/countries/{countryId}'.freeze
+      LIST_SALES_PRICE_COUNTRIES      = '/items/sales_prices/{salesPriceId}/countries'
+      ACTIVATE_SALES_PRICE_COUNTRY    = '/items/sales_prices/{salesPriceId}/countries'
+      DEACTIVATE_SALES_PRICE_COUNTRY  = '/items/sales_prices/{salesPriceId}/countries/{countryId}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

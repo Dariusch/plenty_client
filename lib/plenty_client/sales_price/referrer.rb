@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class Referrer
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_SALES_PRICE_REFERRER       = '/items/sales_prices/{salesPriceId}/referrers'.freeze
-      ACTIVATE_SALES_PRICE_REFERRER   = '/items/sales_prices/{salesPriceId}/referrers'.freeze
-      DEACTIVATE_SALES_PRICE_REFERRER = '/items/sales_prices/{salesPriceId}/referrers/{referrerId}'.freeze
+      LIST_SALES_PRICE_REFERRER       = '/items/sales_prices/{salesPriceId}/referrers'
+      ACTIVATE_SALES_PRICE_REFERRER   = '/items/sales_prices/{salesPriceId}/referrers'
+      DEACTIVATE_SALES_PRICE_REFERRER = '/items/sales_prices/{salesPriceId}/referrers/{referrerId}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

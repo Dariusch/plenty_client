@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     class Contact
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      CREATE_PAYMENT_CONTACT_RELATION = '/payment/{paymentId}/contact/{contactId}'.freeze
-      DELETE_CONTACTS_PAYMENT         = '/payment/{paymentId}/contact'.freeze
+      CREATE_PAYMENT_CONTACT_RELATION = '/payment/{paymentId}/contact/{contactId}'
+      DELETE_CONTACTS_PAYMENT         = '/payment/{paymentId}/contact'
 
       class << self
         def create(payment_id, contact_id, body = {})

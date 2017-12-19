@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      ALL_VARIATIONS          = '/items/variations'.freeze
-      DELETE_ITEMS_VARIATION  = '/items/{itemId}/variations/{variationId}'.freeze
-      GET_ITEMS_VARIATION     = '/items/{itemId}/variations/{variationId}'.freeze
-      GET_ITEMS_VARIATIONS    = '/items/{itemId}/variations'.freeze
-      POST_ITEMS_VARIATION    = '/items/{itemId}/variations'.freeze
-      UPDATE_ITEMS_VARIATION  = '/items/{itemId}/variations/{variationId}'.freeze
+      ALL_VARIATIONS          = '/items/variations'
+      DELETE_ITEMS_VARIATION  = '/items/{itemId}/variations/{variationId}'
+      GET_ITEMS_VARIATION     = '/items/{itemId}/variations/{variationId}'
+      GET_ITEMS_VARIATIONS    = '/items/{itemId}/variations'
+      POST_ITEMS_VARIATION    = '/items/{itemId}/variations'
+      UPDATE_ITEMS_VARIATION  = '/items/{itemId}/variations/{variationId}'
 
       class << self
         def all(headers = {}, &block)

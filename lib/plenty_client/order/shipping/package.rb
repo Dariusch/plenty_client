@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module Shipping
@@ -5,14 +7,14 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        BASE_ORDERS_SHIPPING_PATH = '/orders/{orderId}/shipping'.freeze
+        BASE_ORDERS_SHIPPING_PATH = '/orders/{orderId}/shipping'
 
-        FIND_ORDERS_SHIPPING_PACKAGE    = '/packages/{orderShippingPackageId}'.freeze
-        LIST_ORDERS_SHIPPING_PACKAGE    = '/packages'.freeze
-        CREATE_ORDER_SHIPPING_PACKAGE   = '/packages'.freeze
-        UPDATE_ORDER_SHIPPING_PACKAGE   = '/packages/{orderShippingPackageId}'.freeze
-        DELETE_ORDER_SHIPPING_PACKAGE   = '/packages/{orderShippingPackageId}'.freeze
-        DELETE_ORDER_SHIPPING_PACKAGES  = '/packages'.freeze
+        FIND_ORDERS_SHIPPING_PACKAGE    = '/packages/{orderShippingPackageId}'
+        LIST_ORDERS_SHIPPING_PACKAGE    = '/packages'
+        CREATE_ORDER_SHIPPING_PACKAGE   = '/packages'
+        UPDATE_ORDER_SHIPPING_PACKAGE   = '/packages/{orderShippingPackageId}'
+        DELETE_ORDER_SHIPPING_PACKAGE   = '/packages/{orderShippingPackageId}'
+        DELETE_ORDER_SHIPPING_PACKAGES  = '/packages'
 
         class << self
           def list(order_id, headers = {}, &block)

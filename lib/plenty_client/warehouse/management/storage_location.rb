@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Warehouse
     module Management
@@ -5,10 +7,10 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        WM_STORAGE_LOCATION_BASE_PATH = '/stockmanagement/warehouses/{warehouseId}/management'.freeze
-        WM_SL_LIST_STORAGE_LOCATIONS  = '/racks/{rackId}/shelves/{shelfId}/storageLocations'.freeze
-        WM_SL_FIND_STORAGE_LOCATIONS  = '/racks/{rackId}/shelves/{shelfId}/storageLocations/{storageLocationId}'.freeze
-        WM_SL_CREATE_STORAGE_LOCATION = '/racks/{rackId}/shelves/{shelfId}/storageLocations'.freeze
+        WM_STORAGE_LOCATION_BASE_PATH = '/stockmanagement/warehouses/{warehouseId}/management'
+        WM_SL_LIST_STORAGE_LOCATIONS  = '/racks/{rackId}/shelves/{shelfId}/storageLocations'
+        WM_SL_FIND_STORAGE_LOCATIONS  = '/racks/{rackId}/shelves/{shelfId}/storageLocations/{storageLocationId}'
+        WM_SL_CREATE_STORAGE_LOCATION = '/racks/{rackId}/shelves/{shelfId}/storageLocations'
 
         class << self
           def list(warehouse_id, rack_id, shelf_id, headers = {}, &block)

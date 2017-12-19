@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    CREATE_ORDER                = '/orders'.freeze
-    LIST_ORDERS                 = '/orders'.freeze
-    FIND_ORDER                  = '/orders/{orderId}'.freeze
-    LIST_CONTACTS_ORDERS        = '/orders/contacts/{contactId}'.freeze
-    UPDATE_ORDER                = '/orders/{orderId}'.freeze
-    LIST_ORDERS_PACKAGE_NUMBERS = '/orders/{orderId}/packagenumbers'.freeze
-    DELETE_ORDER                = '/orders/{orderId}'.freeze
+    CREATE_ORDER                = '/orders'
+    LIST_ORDERS                 = '/orders'
+    FIND_ORDER                  = '/orders/{orderId}'
+    LIST_CONTACTS_ORDERS        = '/orders/contacts/{contactId}'
+    UPDATE_ORDER                = '/orders/{orderId}'
+    LIST_ORDERS_PACKAGE_NUMBERS = '/orders/{orderId}/packagenumbers'
+    DELETE_ORDER                = '/orders/{orderId}'
 
     class << self
       def create(body = {})

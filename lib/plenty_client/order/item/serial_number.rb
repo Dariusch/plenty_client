@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module Item
@@ -5,8 +7,8 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_SERIAL_NUMBERS             = '/orders/{orderId}/items/serialNumbers'.freeze
-        LIST_ORDER_ITEM_SERIAL_NUMBERS  = '/orders/{orderId}/items/{orderItemId}/serialNumbers'.freeze
+        LIST_SERIAL_NUMBERS             = '/orders/{orderId}/items/serialNumbers'
+        LIST_ORDER_ITEM_SERIAL_NUMBERS  = '/orders/{orderId}/items/{orderItemId}/serialNumbers'
 
         class << self
           def list(order_id, headers = {}, &block)

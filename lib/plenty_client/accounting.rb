@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Accounting
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_VAT_OF_LOCATION    = '/vat/locations/{locationId}'.freeze
-    LIST_VAT_OF_COUNTRY     = '/vat/locations/{locationId}/countries/{countryId}'.freeze
-    LIST_VAT_CONFIGURATIONS = '/vat'.freeze
-    LIST_VAT_STANDARD       = '/vat/standard'.freeze
+    LIST_VAT_OF_LOCATION    = '/vat/locations/{locationId}'
+    LIST_VAT_OF_COUNTRY     = '/vat/locations/{locationId}/countries/{countryId}'
+    LIST_VAT_CONFIGURATIONS = '/vat'
+    LIST_VAT_STANDARD       = '/vat/standard'
 
     class << self
       def list(headers = {}, &block)

@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Attribute
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      CREATE_ATTRIBUTE  = '/items/attributes'.freeze
-      LIST_ATTRIBUTES   = '/items/attributes'.freeze
-      GET_ATTRIBUTE     = '/items/attributes/{attributeId}'.freeze
-      UPDATE_ATTRIBUTE  = '/items/attributes/{attributeId}'.freeze
-      DELETE_ATTRIBUTE  = '/items/attributes/{attributeId}'.freeze
+      CREATE_ATTRIBUTE  = '/items/attributes'
+      LIST_ATTRIBUTES   = '/items/attributes'
+      GET_ATTRIBUTE     = '/items/attributes/{attributeId}'
+      UPDATE_ATTRIBUTE  = '/items/attributes/{attributeId}'
+      DELETE_ATTRIBUTE  = '/items/attributes/{attributeId}'
 
       class << self
         def list(headers = {}, &block)

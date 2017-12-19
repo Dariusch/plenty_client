@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Account
     module Contact
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        CONTACT_ADDRESS_BASE_PATH   = '/accounts/contacts/{contactId}'.freeze
+        CONTACT_ADDRESS_BASE_PATH   = '/accounts/contacts/{contactId}'
 
-        LIST_A_CONTACT_ADDRESSES    = '/addresses/{addressTypeId}'.freeze
-        CREATE_A_CONTACT_ADDRESS    = '/addresses'.freeze
-        UPDATE_A_CONTACT_ADDRESS    = '/addresses/{addressId}'.freeze
-        DELETE_A_CONTACT_ADDRESS    = '/addresses/{addressId}'.freeze
-        SET_PRIMARY_CONTACT_ADDRESS = '/addresses/{addressId}/types/{addressTypeId}/primary'.freeze
+        LIST_A_CONTACT_ADDRESSES    = '/addresses/{addressTypeId}'
+        CREATE_A_CONTACT_ADDRESS    = '/addresses'
+        UPDATE_A_CONTACT_ADDRESS    = '/addresses/{addressId}'
+        DELETE_A_CONTACT_ADDRESS    = '/addresses/{addressId}'
+        SET_PRIMARY_CONTACT_ADDRESS = '/addresses/{addressId}/types/{addressTypeId}/primary'
 
         class << self
           def list(contact_id, address_type = '', headers = {}, &block)

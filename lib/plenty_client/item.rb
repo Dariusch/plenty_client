@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_ITEMS    = '/items'.freeze
-    CREATE_ITEM   = '/items'.freeze
-    UPDATE_ITEM   = '/items/{itemId}'.freeze
-    GET_ITEM      = '/items/{itemId}'.freeze
-    DELETE_ITEM   = '/items/{itemId}'.freeze
+    LIST_ITEMS    = '/items'
+    CREATE_ITEM   = '/items'
+    UPDATE_ITEM   = '/items/{itemId}'
+    GET_ITEM      = '/items/{itemId}'
+    DELETE_ITEM   = '/items/{itemId}'
 
     class << self
       def list(headers = {}, &block)

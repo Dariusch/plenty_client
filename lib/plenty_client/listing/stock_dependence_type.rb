@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Listing
     class StockDependenceType
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_LISTINGS_STOCK_DEPENCENCE_TYPE   = '/listings/types/{typeId}'.freeze
-      LIST_LISTINGS_STOCK_DEPENCENCE_TYPES  = '/listings/types'.freeze
+      FIND_LISTINGS_STOCK_DEPENCENCE_TYPE   = '/listings/types/{typeId}'
+      LIST_LISTINGS_STOCK_DEPENCENCE_TYPES  = '/listings/types'
 
       class << self
         def find(type_id, headers = {}, &block)

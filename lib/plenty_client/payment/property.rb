@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     module Property
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_PAYMENT_PROPERTIES             = '/payments/properties'.freeze
-      LIST_PAYMENT_PROPERTIES_BY_PAYMENT  = '/payments/{paymentId}/properties'.freeze
-      FIND_PLUGIN_PAYMENT_PROPERTY        = '/payments/properties/{propertyId}'.freeze
-      CREATE_PAYMENT_PROPERTY             = '/payments/properties'.freeze
-      UPDATE_PAYMENT_PROPERTY_WITH_ID     = '/payments/properties/{propertyId}'.freeze
-      UPDATE_PAYMENT_PROPERTY             = '/payments/properties'.freeze
-      LIST_P_PROPERTIES_BY_TYPE_AND_VALUE = '/payments/property/{propertyTypeId}/{propertyValue}'.freeze
+      LIST_PAYMENT_PROPERTIES             = '/payments/properties'
+      LIST_PAYMENT_PROPERTIES_BY_PAYMENT  = '/payments/{paymentId}/properties'
+      FIND_PLUGIN_PAYMENT_PROPERTY        = '/payments/properties/{propertyId}'
+      CREATE_PAYMENT_PROPERTY             = '/payments/properties'
+      UPDATE_PAYMENT_PROPERTY_WITH_ID     = '/payments/properties/{propertyId}'
+      UPDATE_PAYMENT_PROPERTY             = '/payments/properties'
+      LIST_P_PROPERTIES_BY_TYPE_AND_VALUE = '/payments/property/{propertyTypeId}/{propertyValue}'
       class << self
         def list(headers = {}, &block)
           get(build_endpoint(LIST_PAYMENT_PROPERTIES), headers, &block)

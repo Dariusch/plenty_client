@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Image
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_IMAGE_NAME_PATH = '/items/{itemId}/images'.freeze
+        ITEM_IMAGE_NAME_PATH = '/items/{itemId}/images'
 
-        CREATE_ITEM_IMAGE_NAMES  = '/{imageId}/names'.freeze
-        LIST_ITEM_IMAGE_NAME     = '/{imageId}/names'.freeze
-        GET_ITEMS_IMAGE_NAME     = '/{imageId}/names/{lang}'.freeze
-        UPDATE_ITEMS_IMAGE_NAME  = '/{imageId}/names/{lang}'.freeze
-        DELETE_ITEMS_IMAGE_NAME  = '/{imageId}/names/{lang}'.freeze
+        CREATE_ITEM_IMAGE_NAMES  = '/{imageId}/names'
+        LIST_ITEM_IMAGE_NAME     = '/{imageId}/names'
+        GET_ITEMS_IMAGE_NAME     = '/{imageId}/names/{lang}'
+        UPDATE_ITEMS_IMAGE_NAME  = '/{imageId}/names/{lang}'
+        DELETE_ITEMS_IMAGE_NAME  = '/{imageId}/names/{lang}'
 
         class << self
           def create(item_id, image_id, headers = {})

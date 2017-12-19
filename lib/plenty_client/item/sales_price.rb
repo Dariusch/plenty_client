@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     class SalesPrice
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ALL_SALES_PRICES = '/items/sales_prices'.freeze
-      GET_SALES_PRICE       = '/items/sales_prices/{salesPriceId}'.freeze
-      CREATE_SALES_PRICE    = '/items/sales_prices'.freeze
-      UPDATE_SALES_PRICE    = '/items/sales_prices/{salesPriceId}'.freeze
-      DELETE_SALES_PRICE    = '/items/sales_prices/{salesPriceId}'.freeze
+      LIST_ALL_SALES_PRICES = '/items/sales_prices'
+      GET_SALES_PRICE       = '/items/sales_prices/{salesPriceId}'
+      CREATE_SALES_PRICE    = '/items/sales_prices'
+      UPDATE_SALES_PRICE    = '/items/sales_prices/{salesPriceId}'
+      DELETE_SALES_PRICE    = '/items/sales_prices/{salesPriceId}'
 
       class << self
         def list(headers = {}, &block)
