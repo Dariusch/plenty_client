@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Basket
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    FIND_BASKET = '/basket'.freeze
+    FIND_BASKET = '/basket'
 
     class << self
       def find(headers = {}, &block)

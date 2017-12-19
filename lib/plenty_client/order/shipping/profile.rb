@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module Shipping
@@ -5,8 +7,8 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_SHIPPING_PRESET  = '/orders/shipping/presets'.freeze
-        FIND_SHIPPING_PRESETS = '/orders/shipping/presets/{presetId}'.freeze
+        LIST_SHIPPING_PRESET  = '/orders/shipping/presets'
+        FIND_SHIPPING_PRESETS = '/orders/shipping/presets/{presetId}'
 
         class << self
           def list(headers = {}, &block)

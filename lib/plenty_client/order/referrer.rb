@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     class Referrer
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_REFERRERS        = '/orders/referrers'.freeze
-      CREATE_ORDER_REFERRER = '/orders/referrers/{parentReferrerId}'.freeze
+      LIST_REFERRERS        = '/orders/referrers'
+      CREATE_ORDER_REFERRER = '/orders/referrers/{parentReferrerId}'
 
       class << self
         def list(headers = {})

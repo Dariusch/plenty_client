@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     class Date
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ORDER_DATE_TYPE_NAMES  = '/orders/dates/types/{typeId}/names'.freeze
-      FIND_ORDER_DATE_TYPE_NAME   = '/orders/dates/types/{typeId}/names/{lang}'.freeze
-      LIST_ORDER_DATES            = '/orders/{orderId}/dates'.freeze
-      FIND_ORDER_DATE             = '/orders/{orderId}/dates/{typeId}'.freeze
+      LIST_ORDER_DATE_TYPE_NAMES  = '/orders/dates/types/{typeId}/names'
+      FIND_ORDER_DATE_TYPE_NAME   = '/orders/dates/types/{typeId}/names/{lang}'
+      LIST_ORDER_DATES            = '/orders/{orderId}/dates'
+      FIND_ORDER_DATE             = '/orders/{orderId}/dates/{typeId}'
 
       class << self
         def list_date_type_names(type_id, headers = {}, &block)

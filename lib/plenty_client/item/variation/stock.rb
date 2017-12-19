@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
@@ -5,14 +7,14 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_VARIATION_STOCK_PATH = '/items/{itemId}/variations/{variationId}'.freeze
+        ITEM_VARIATION_STOCK_PATH = '/items/{itemId}/variations/{variationId}'
 
-        LIST_ITEM_VARIATIONS_STOCK                    = '/stock'.freeze
-        LIST_ITEM_VARIATIONS_STOCK_STORAGE_LOCATIONS  = '/stock/storageLocations'.freeze
-        LIST_ITEM_VARIATIONS_STOCK_MOVEMENTS          = '/stock/movements'.freeze
-        UPDATE_ITEM_VARIATIONS_STOCK_INCOMING_ITEMS   = '/stock/bookIncomingItems'.freeze
-        UPDATE_ITEM_VARIATIONS_STOCK_CORRECTION       = '/stock/correction'.freeze
-        UPDATE_ITEM_VARIATIONS_STOCK_REDISTRIBUTE     = '/stock/redistribute'.freeze
+        LIST_ITEM_VARIATIONS_STOCK                    = '/stock'
+        LIST_ITEM_VARIATIONS_STOCK_STORAGE_LOCATIONS  = '/stock/storageLocations'
+        LIST_ITEM_VARIATIONS_STOCK_MOVEMENTS          = '/stock/movements'
+        UPDATE_ITEM_VARIATIONS_STOCK_INCOMING_ITEMS   = '/stock/bookIncomingItems'
+        UPDATE_ITEM_VARIATIONS_STOCK_CORRECTION       = '/stock/correction'
+        UPDATE_ITEM_VARIATIONS_STOCK_REDISTRIBUTE     = '/stock/redistribute'
 
         class << self
           def list(item_id, variation_id, headers = {}, &block)

@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Warehouse
     class Stock
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      STOCK_MANAGEMENT_BY_WAREHOUSE_BASE_PATH = '/stockmanagement/warehouses/{warehouseId}'.freeze
+      STOCK_MANAGEMENT_BY_WAREHOUSE_BASE_PATH = '/stockmanagement/warehouses/{warehouseId}'
 
-      LIST_STOCK              = '/stock'.freeze
-      LIST_STOCK_BY_LOCATION  = '/stock/storageLocations'.freeze
-      LIST_STOCK_MOVEMENTS    = '/stock/movements'.freeze
-      CORRECT_STOCK           = '/stock/correction'.freeze
-      BOOK_INCOMING_STOCK     = '/stock/bookIncomingItems'.freeze
+      LIST_STOCK              = '/stock'
+      LIST_STOCK_BY_LOCATION  = '/stock/storageLocations'
+      LIST_STOCK_MOVEMENTS    = '/stock/movements'
+      CORRECT_STOCK           = '/stock/correction'
+      BOOK_INCOMING_STOCK     = '/stock/bookIncomingItems'
 
       class << self
         def list(warehouse_id, headers = {}, &block)

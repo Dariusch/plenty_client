@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Account
     module Contact
@@ -5,11 +7,11 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_A_CONTACT_TYPES   = '/accounts/contacts/types'.freeze
-        FIND_A_CONTACT_TYPE    = '/accounts/contacts/types/{typeId}'.freeze
-        CREATE_A_CONTACT_TYPE  = '/accounts/contacts/types'.freeze
-        UPDATE_A_CONTACT_TYPE  = '/accounts/contacts/types/{typeId}'.freeze
-        DELETE_A_CONTACT_TYPE  = '/accounts/contacts/types/{typeId}'.freeze
+        LIST_A_CONTACT_TYPES   = '/accounts/contacts/types'
+        FIND_A_CONTACT_TYPE    = '/accounts/contacts/types/{typeId}'
+        CREATE_A_CONTACT_TYPE  = '/accounts/contacts/types'
+        UPDATE_A_CONTACT_TYPE  = '/accounts/contacts/types/{typeId}'
+        DELETE_A_CONTACT_TYPE  = '/accounts/contacts/types/{typeId}'
 
         class << self
           def list(headers = {}, &block)

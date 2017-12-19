@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module CouponCode
@@ -5,7 +7,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        VALIDATE_COUPON = '/orders/coupons/codes/{coupon}'.freeze
+        VALIDATE_COUPON = '/orders/coupons/codes/{coupon}'
 
         class << self
           def update(coupon_string, headers = {}, &block)

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Stock
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_STOCK         = '/stockmanagement/stock'.freeze
-    LIST_STOCK_BY_TYPE = '/stockmanagement/stock/types/{type}'.freeze
-    REDISTRIBUTE_STOCK = '/stockmanagement/stock/redistribute'.freeze
+    LIST_STOCK         = '/stockmanagement/stock'
+    LIST_STOCK_BY_TYPE = '/stockmanagement/stock/types/{type}'
+    REDISTRIBUTE_STOCK = '/stockmanagement/stock/redistribute'
 
     class << self
       def list(headers = {}, &block)

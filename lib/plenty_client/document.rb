@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Document
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    DOWNLOAD_DOCUMENT = '/documents/{documentId}'.freeze
+    DOWNLOAD_DOCUMENT = '/documents/{documentId}'
 
     class << self
       def download(document_id, headers = {}, &block)

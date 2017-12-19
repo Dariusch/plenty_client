@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Manufacturer
@@ -5,13 +7,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_MANUFACTURER_COMMISSION          = '/items/manufacturers/{manufacturerId}'.freeze
+        ITEM_MANUFACTURER_COMMISSION          = '/items/manufacturers/{manufacturerId}'
 
-        LIST_ITEM_MANUFACTURER_COMMISSION     = '/commissions'.freeze
-        GET_ITEMS_MANUFACTURER_COMMISSION     = '/commissions/{commissionId}'.freeze
-        CREATE_ITEM_MANUFACTURER_COMMISSION   = '/commissions'.freeze
-        UPDATE_ITEMS_MANUFACTURER_COMMISSION  = '/commissions/{commissionId}'.freeze
-        DELETE_ITEMS_MANUFACTURER_COMMISSION  = '/commissions/{commissionId}'.freeze
+        LIST_ITEM_MANUFACTURER_COMMISSION     = '/commissions'
+        GET_ITEMS_MANUFACTURER_COMMISSION     = '/commissions/{commissionId}'
+        CREATE_ITEM_MANUFACTURER_COMMISSION   = '/commissions'
+        UPDATE_ITEMS_MANUFACTURER_COMMISSION  = '/commissions/{commissionId}'
+        DELETE_ITEMS_MANUFACTURER_COMMISSION  = '/commissions/{commissionId}'
 
         class << self
           def list(manufacturer_id, headers = {}, &block)

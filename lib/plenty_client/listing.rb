@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Listing
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    FIND_LISTING           = '/listings/{listingId}'.freeze
-    LIST_LISTINGS          = '/listings'.freeze
-    CREATE_LISTING         = '/listings'.freeze
-    UPDATE_LISTING         = '/listings/{listingId}'.freeze
-    DELETE_LISTING         = '/listings/{listingId}'.freeze
+    FIND_LISTING           = '/listings/{listingId}'
+    LIST_LISTINGS          = '/listings'
+    CREATE_LISTING         = '/listings'
+    UPDATE_LISTING         = '/listings/{listingId}'
+    DELETE_LISTING         = '/listings/{listingId}'
 
     class << self
       def list(headers = {}, &block)

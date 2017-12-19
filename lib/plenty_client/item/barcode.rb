@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     class Barcode
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ALL_BARCODES         = '/items/barcodes'.freeze
-      CREATE_BARCODE            = '/items/barcodes'.freeze
-      GET_BARCODE               = '/items/barcodes/{barcodeId}'.freeze
-      UPDATE_BARCODE            = '/items/barcodes/{barcodeId}'.freeze
-      DELETE_BARCODE            = '/items/barcodes/{barcodeId}'.freeze
-      DEACTIVATE_REFERRER       = '/items/barcodes/{barcodeId}/referrer/{referrerId}'.freeze
-      ACTIVATE_RERERRER         = '/items/barcodes/{barcodeId}/referrer'.freeze
-      LIST_BARCODES_BY_TYPE     = '/items/barcodes/type/{type}'.freeze
-      LIST_BARCODES_BY_REFERRER = '/items/barcodes/referrer/{referrerId}'.freeze
+      LIST_ALL_BARCODES         = '/items/barcodes'
+      CREATE_BARCODE            = '/items/barcodes'
+      GET_BARCODE               = '/items/barcodes/{barcodeId}'
+      UPDATE_BARCODE            = '/items/barcodes/{barcodeId}'
+      DELETE_BARCODE            = '/items/barcodes/{barcodeId}'
+      DEACTIVATE_REFERRER       = '/items/barcodes/{barcodeId}/referrer/{referrerId}'
+      ACTIVATE_RERERRER         = '/items/barcodes/{barcodeId}/referrer'
+      LIST_BARCODES_BY_TYPE     = '/items/barcodes/type/{type}'
+      LIST_BARCODES_BY_REFERRER = '/items/barcodes/referrer/{referrerId}'
 
       class << self
         def list(headers = {}, &block)

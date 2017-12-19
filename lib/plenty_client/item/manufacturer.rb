@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Manufacturer
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ALL_MANUFACTURERS  = '/items/manufacturers'.freeze
-      GET_MANUFACTURER        = '/items/manufacturers/{manufacturerId}'.freeze
-      CREATE_MANUFACTURER     = '/items/manufacturers'.freeze
-      UPDATE_MANUFACTURER     = '/items/manufacturers/{manufacturerId}'.freeze
-      DELETE_MANUFACTURER     = '/items/manufacturers/{manufacturerId}'.freeze
+      LIST_ALL_MANUFACTURERS  = '/items/manufacturers'
+      GET_MANUFACTURER        = '/items/manufacturers/{manufacturerId}'
+      CREATE_MANUFACTURER     = '/items/manufacturers'
+      UPDATE_MANUFACTURER     = '/items/manufacturers/{manufacturerId}'
+      DELETE_MANUFACTURER     = '/items/manufacturers/{manufacturerId}'
 
       class << self
         def list(headers = {}, &block)

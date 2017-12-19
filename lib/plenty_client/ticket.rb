@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Ticket
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_TICKETS  = '/tickets'.freeze
-    CREATE_TICKET = '/tickets'.freeze
-    ADD_MESSAGE   = '/tickets/{ticketId}'.freeze
-    GET_TICKET    = '/tickets/{ticketId}'.freeze
+    LIST_TICKETS  = '/tickets'
+    CREATE_TICKET = '/tickets'
+    ADD_MESSAGE   = '/tickets/{ticketId}'
+    GET_TICKET    = '/tickets/{ticketId}'
 
     class << self
       def list(headers = {}, &block)

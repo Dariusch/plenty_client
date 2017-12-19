@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     class Order
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_ORDERS_PAYMENTS          = '/payments/orders/{orderId}'.freeze
-      CREATE_PAYMENT_ORDER_RELATION = '/payment/{paymentId}/order/{orderId}'.freeze
-      DELETE_ORDERS_PAYMENT         = '/payment/{paymentId}/order'.freeze
+      LIST_ORDERS_PAYMENTS          = '/payments/orders/{orderId}'
+      CREATE_PAYMENT_ORDER_RELATION = '/payment/{paymentId}/order/{orderId}'
+      DELETE_ORDERS_PAYMENT         = '/payment/{paymentId}/order'
 
       class << self
         def list(order_id, headers = {}, &block)

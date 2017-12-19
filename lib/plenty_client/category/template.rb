@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Category
     class Template
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_CATEGORY_TEMPLATE    = '/categories/{catId}/templates'.freeze
-      UPDATE_CATEGORY_TEMPLATE  = '/categories/{catId}/templates'.freeze
-      DELETE_CATEGORY_TEMPLATE  = '/categories/{catId}/templates'.freeze
+      FIND_CATEGORY_TEMPLATE    = '/categories/{catId}/templates'
+      UPDATE_CATEGORY_TEMPLATE  = '/categories/{catId}/templates'
+      DELETE_CATEGORY_TEMPLATE  = '/categories/{catId}/templates'
 
       class << self
         def list(cat_id, headers = {}, &block)

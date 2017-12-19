@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Image
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      ITEM_IMAGE_BASE_PATH      = '/items/{itemId}'.freeze
+      ITEM_IMAGE_BASE_PATH      = '/items/{itemId}'
 
-      LIST_ALL_ITEM_IMAGES      = '/images'.freeze
-      CREATE_ITEM_IMAGES        = '/images/upload'.freeze
-      GET_ITEM_IMAGES           = '/images/{imageId}'.freeze
-      UPDATE_ITEM_IMAGES        = '/images/{imageId}'.freeze
-      DELETE_ITEM_IMAGES        = '/images/{imageId}'.freeze
-      LIST_ITEM_VARIATION_IMAGE = '/variations/{variationId}/images'.freeze
+      LIST_ALL_ITEM_IMAGES      = '/images'
+      CREATE_ITEM_IMAGES        = '/images/upload'
+      GET_ITEM_IMAGES           = '/images/{imageId}'
+      UPDATE_ITEM_IMAGES        = '/images/{imageId}'
+      DELETE_ITEM_IMAGES        = '/images/{imageId}'
+      LIST_ITEM_VARIATION_IMAGE = '/variations/{variationId}/images'
 
       class << self
         def list(item_id, headers = {}, &block)

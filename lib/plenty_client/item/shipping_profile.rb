@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     class ShippingProfile
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      GET_ITEMS_SHIPPING_PROFILE    = '/items/{itemId}/item_shipping_profiles'.freeze
-      CREATE_ITEMS_SHIPPING_PROFILE = '/items/{itemId}/item_shipping_profiles'.freeze
-      DELETE_ITEMS_SHIPPING_PROFILE = '/items/{itemId}/item_shipping_profiles/{shippingProfileId}'.freeze
+      GET_ITEMS_SHIPPING_PROFILE    = '/items/{itemId}/item_shipping_profiles'
+      CREATE_ITEMS_SHIPPING_PROFILE = '/items/{itemId}/item_shipping_profiles'
+      DELETE_ITEMS_SHIPPING_PROFILE = '/items/{itemId}/item_shipping_profiles/{shippingProfileId}'
 
       class << self
         def list(item_id, headers = {}, &block)

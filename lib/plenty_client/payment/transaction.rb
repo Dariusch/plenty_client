@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     class Transaction
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_PAYMENT_TRANSACTIONS = '/payments/transactions/{transactionTypeId}'.freeze
+      FIND_PAYMENT_TRANSACTIONS = '/payments/transactions/{transactionTypeId}'
 
       class << self
         def find(transaction_type_id, headers = {}, &block)

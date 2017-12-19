@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Webstore
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_WEBSTORES = '/webstores'.freeze
+    LIST_WEBSTORES = '/webstores'
 
     class << self
       def list(headers = {}, &block)

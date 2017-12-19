@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Category
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    FIND_CATEGORY           = '/categories/{catId}'.freeze
-    LIST_CATEGORIES         = '/categories'.freeze
-    CREATE_CATEGORY         = '/categories'.freeze
-    UPDATE_CATEGORY         = '/categories/{catId}'.freeze
-    UPDATE_CATEGORIES       = '/categories'.freeze
-    DELETE_CATEGORY         = '/categories/{catId}'.freeze
-    DELETE_CATEGORY_DETAILS = '/categories/{catId}/details'.freeze
-    DELETE_CATEGORY_CLIENTS = '/categories/{catId}/clients'.freeze
+    FIND_CATEGORY           = '/categories/{catId}'
+    LIST_CATEGORIES         = '/categories'
+    CREATE_CATEGORY         = '/categories'
+    UPDATE_CATEGORY         = '/categories/{catId}'
+    UPDATE_CATEGORIES       = '/categories'
+    DELETE_CATEGORY         = '/categories/{catId}'
+    DELETE_CATEGORY_DETAILS = '/categories/{catId}/details'
+    DELETE_CATEGORY_CLIENTS = '/categories/{catId}/clients'
 
     class << self
       def list(headers = {}, &block)

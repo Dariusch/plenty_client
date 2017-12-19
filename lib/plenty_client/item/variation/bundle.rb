@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # TODO: Fix class, PlentyMarkets changed syntax
 module PlentyClient
   module Item
@@ -6,13 +8,13 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        ITEM_VARIATION_BUNDLE_PATH    = '/items/{itemId}/variations/{variationId}'.freeze
+        ITEM_VARIATION_BUNDLE_PATH    = '/items/{itemId}/variations/{variationId}'
 
-        LIST_ITEM_VARIATIONS_BUNDLE   = '/variation_bundles'.freeze
-        GET_ITEM_VARIATIONS_BUNDLE    = '/variation_bundles/{bundleId}'.freeze
-        CREATE_ITEM_VARIATIONS_BUNDLE = '/variation_bundles'.freeze
-        UPDATE_ITEM_VARIATIONS_BUNDLE = '/variation_bundles/{bundleId}'.freeze
-        DELETE_ITEM_VARIATIONS_BUNDLE = '/variation_bundles/{bundleId}'.freeze
+        LIST_ITEM_VARIATIONS_BUNDLE   = '/variation_bundles'
+        GET_ITEM_VARIATIONS_BUNDLE    = '/variation_bundles/{bundleId}'
+        CREATE_ITEM_VARIATIONS_BUNDLE = '/variation_bundles'
+        UPDATE_ITEM_VARIATIONS_BUNDLE = '/variation_bundles/{bundleId}'
+        DELETE_ITEM_VARIATIONS_BUNDLE = '/variation_bundles/{bundleId}'
 
         class << self
           def list(item_id, variation_id, headers = {}, &block)

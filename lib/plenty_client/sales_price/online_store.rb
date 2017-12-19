@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class OnlineStore
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_SALES_PRICE_ONLINE_STORES      = '/items/sales_prices/{salesPriceId}/online_stores'.freeze
-      ACTIVATE_SALES_PRICE_ONLINE_STORE   = '/items/sales_prices/{salesPriceId}/online_stores'.freeze
-      DEACTIVATE_SALES_PRICE_ONLINE_STORE = '/items/sales_prices/{salesPriceId}/online_stores/{webstoreId}'.freeze
+      LIST_SALES_PRICE_ONLINE_STORES      = '/items/sales_prices/{salesPriceId}/online_stores'
+      ACTIVATE_SALES_PRICE_ONLINE_STORE   = '/items/sales_prices/{salesPriceId}/online_stores'
+      DEACTIVATE_SALES_PRICE_ONLINE_STORE = '/items/sales_prices/{salesPriceId}/online_stores/{webstoreId}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

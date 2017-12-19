@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class Currency
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_SALES_PRICE_CURRENCIES      = '/items/sales_prices/{salesPriceId}/currencies'.freeze
-      ACTIVATE_SALES_PRICE_CURRENCY    = '/items/sales_prices/{salesPriceId}/currencies'.freeze
-      DEACTIVATE_SALES_PRICE_CURRENCY  = '/items/sales_prices/{salesPriceId}/currencies/{currencyIso}'.freeze
+      LIST_SALES_PRICE_CURRENCIES      = '/items/sales_prices/{salesPriceId}/currencies'
+      ACTIVATE_SALES_PRICE_CURRENCY    = '/items/sales_prices/{salesPriceId}/currencies'
+      DEACTIVATE_SALES_PRICE_CURRENCY  = '/items/sales_prices/{salesPriceId}/currencies/{currencyIso}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

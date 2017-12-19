@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Item
     module Variation
@@ -6,13 +8,13 @@ module PlentyClient
           include PlentyClient::Endpoint
           include PlentyClient::Request
 
-          VARIATION_PROPERTY_TEXT_BASE_PATH   = '/items/{itemId}/variations/{variationId}'.freeze
+          VARIATION_PROPERTY_TEXT_BASE_PATH   = '/items/{itemId}/variations/{variationId}'
 
-          GET_VARIATION_PROPERTY_TEXT         = '/variation_properties/{propertyId}/texts'.freeze
-          GET_VARIATION_PROPERTY_TEXT_BY_LANG = '/variation_properties/{propertyId}/texts/{lang}'.freeze
-          CREATE_VARIATION_PROPERTY_TEXT      = '/variation_properties/{propertyId}/texts'.freeze
-          UPDATE_VARIATION_PROPERTY_TEXT      = '/variation_properties/{propertyId}/texts/{lang}'.freeze
-          DELETE_VARIATION_PROPERTY_TEXT      = '/variation_properties/{propertyId}/texts/{lang}'.freeze
+          GET_VARIATION_PROPERTY_TEXT         = '/variation_properties/{propertyId}/texts'
+          GET_VARIATION_PROPERTY_TEXT_BY_LANG = '/variation_properties/{propertyId}/texts/{lang}'
+          CREATE_VARIATION_PROPERTY_TEXT      = '/variation_properties/{propertyId}/texts'
+          UPDATE_VARIATION_PROPERTY_TEXT      = '/variation_properties/{propertyId}/texts/{lang}'
+          DELETE_VARIATION_PROPERTY_TEXT      = '/variation_properties/{propertyId}/texts/{lang}'
 
           class << self
             def find(item_id, variation_id, property_id, headers = {}, &block)

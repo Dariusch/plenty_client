@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module OrderSummary
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    LIST_ORDER_SUMMARYS           = '/order_summaries'.freeze
-    CREATE_ORDER_SUMMARY          = '/order_summaries'.freeze
-    FIND_ORDER_SUMMARY            = '/order_summaries/{orderSummaryId}'.freeze
-    FIND_ORDER_SUMMARY_BY_CONTACT = '/order_summaries/contacts/{contactId}'.freeze
-    FIND_ORDER_SUMMARY_BY_ADDRESS = '/order_summaries/orders/{addressId}'.freeze
-    UPDATE_ORDER_SUMMARY          = '/order_summaries/{orderSummaryId}'.freeze
-    DELETE_ORDER_SUMMARY          = '/order_summaries/{orderSummaryId}'.freeze
+    LIST_ORDER_SUMMARYS           = '/order_summaries'
+    CREATE_ORDER_SUMMARY          = '/order_summaries'
+    FIND_ORDER_SUMMARY            = '/order_summaries/{orderSummaryId}'
+    FIND_ORDER_SUMMARY_BY_CONTACT = '/order_summaries/contacts/{contactId}'
+    FIND_ORDER_SUMMARY_BY_ADDRESS = '/order_summaries/orders/{addressId}'
+    UPDATE_ORDER_SUMMARY          = '/order_summaries/{orderSummaryId}'
+    DELETE_ORDER_SUMMARY          = '/order_summaries/{orderSummaryId}'
 
     class << self
       def create(body = {})

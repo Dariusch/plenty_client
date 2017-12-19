@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module SalesPrice
     class Account
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      LIST_REFERRER_ACCOUNTS      = '/items/sales_prices/{salesPriceId}/accounts'.freeze
-      ACTIVATE_REFERRER_ACCOUNT   = '/items/sales_prices/{salesPriceId}/accounts'.freeze
-      DEACTIVATE_REFERRER_ACCOUNT = '/items/sales_prices/{salesPriceId}/accounts/{accountType}/{accountId}'.freeze
+      LIST_REFERRER_ACCOUNTS      = '/items/sales_prices/{salesPriceId}/accounts'
+      ACTIVATE_REFERRER_ACCOUNT   = '/items/sales_prices/{salesPriceId}/accounts'
+      DEACTIVATE_REFERRER_ACCOUNT = '/items/sales_prices/{salesPriceId}/accounts/{accountType}/{accountId}'
 
       class << self
         def list(sales_price_id, headers = {}, &block)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Payment
     module Property
@@ -6,11 +8,11 @@ module PlentyClient
           include PlentyClient::Endpoint
           include PlentyClient::Request
 
-          LIST_PAYMENT_PROPERTY_TYPE_NAMES           = '/payments/properties/types/names/{lang}'.freeze
-          FIND_PAYMENT_PROPERTY_TYPE_NAME            = '/payments/properties/types/names/{nameId}'.freeze
-          CREATE_PAYMENT_PROPERTY_TYPE_NAME          = '/payments/properties/types/names'.freeze
-          UPDATE_PAYMENT_PROPERTY_TYPE_NAME_WITH_ID  = '/payments/properties/types/names/{nameId}'.freeze
-          UPDATE_PAYMENT_PROPERTY_TYPE_NAME          = '/payments/properties/types/names'.freeze
+          LIST_PAYMENT_PROPERTY_TYPE_NAMES           = '/payments/properties/types/names/{lang}'
+          FIND_PAYMENT_PROPERTY_TYPE_NAME            = '/payments/properties/types/names/{nameId}'
+          CREATE_PAYMENT_PROPERTY_TYPE_NAME          = '/payments/properties/types/names'
+          UPDATE_PAYMENT_PROPERTY_TYPE_NAME_WITH_ID  = '/payments/properties/types/names/{nameId}'
+          UPDATE_PAYMENT_PROPERTY_TYPE_NAME          = '/payments/properties/types/names'
 
           class << self
             def list(lang, headers = {}, &block)

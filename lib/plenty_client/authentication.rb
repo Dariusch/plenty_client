@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Authentication
     include PlentyClient::Endpoint
     include PlentyClient::Request
 
-    AUTH_LOGIN    = '/login'.freeze
-    AUTH_REFRESH  = '/login/refresh'.freeze
-    AUTH_TOKEN    = '/oauth/access_token'.freeze
-    AUTH_LOGOUT   = '/logout'.freeze
-    AUTH_CLIENT   = '/client-login'.freeze
+    AUTH_LOGIN    = '/login'
+    AUTH_REFRESH  = '/login/refresh'
+    AUTH_TOKEN    = '/oauth/access_token'
+    AUTH_LOGOUT   = '/logout'
+    AUTH_CLIENT   = '/client-login'
 
     class << self
       def access_token(headers = {}, &block)

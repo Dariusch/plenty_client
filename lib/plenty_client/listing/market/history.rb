@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Listing
     module Market
@@ -5,11 +7,11 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        FIND_LISTING_MARKET_HISTORY   = '/listings/markets/histories/{marketListingHistoryId}'.freeze
-        LIST_LISTING_MARKET_HISTORIES = '/listings/markets/histories'.freeze
-        END_LISTING_MARKET_HISTORY    = '/listings/markets/histories/end/{marketListingHistoryId}'.freeze
-        RELIST_LISTING_MARKET_HISTORY = '/listings/markets/histories/relist/{marketListingHistoryId}'.freeze
-        UPDATE_LISTING_MARKET_HISTORY = '/listings/markets/histories/update/{marketListingHistoryId}'.freeze
+        FIND_LISTING_MARKET_HISTORY   = '/listings/markets/histories/{marketListingHistoryId}'
+        LIST_LISTING_MARKET_HISTORIES = '/listings/markets/histories'
+        END_LISTING_MARKET_HISTORY    = '/listings/markets/histories/end/{marketListingHistoryId}'
+        RELIST_LISTING_MARKET_HISTORY = '/listings/markets/histories/relist/{marketListingHistoryId}'
+        UPDATE_LISTING_MARKET_HISTORY = '/listings/markets/histories/update/{marketListingHistoryId}'
 
         class << self
           def find(market_listing_history_id, headers = {}, &block)

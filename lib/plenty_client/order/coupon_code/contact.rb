@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlentyClient
   module Order
     module CouponCode
@@ -5,7 +7,7 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        LIST_COUPON_CONTACTS = '/orders/coupons/codes/contacts/{contactId}'.freeze
+        LIST_COUPON_CONTACTS = '/orders/coupons/codes/contacts/{contactId}'
 
         class << self
           def update(contact_id, headers = {}, &block)
