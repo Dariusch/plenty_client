@@ -12,11 +12,13 @@ module PlentyClient
 
         login_check unless PlentyClient::Config.tokens_valid?
 
+        params = params.stringify_keys
+
         ATTEMPT_COUNT.times do
           response = perform(http_method, path, params)
           return response if response
         end
-        raise PlentyClient::ResponseError, "unable to get valid response after #{ATTEMPT_COUNT} attempts"
+        raise PlentyClient::AttemptsExceeded, "unable to get valid response after #{ATTEMPT_COUNT} attempts"
       end
 
       def post(path, body = {})
