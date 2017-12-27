@@ -151,6 +151,7 @@ module PlentyClient
     autoload :Property,         'plenty_client/order/property'
     autoload :Referrer,         'plenty_client/order/referrer'
     autoload :Shipping,         'plenty_client/order/shipping'
+    autoload :StatusHistory,    'plenty_client/order/status_history'
 
     module Item
       autoload :Date,         'plenty_client/order/item/date'
