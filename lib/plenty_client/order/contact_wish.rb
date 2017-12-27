@@ -6,11 +6,11 @@ module PlentyClient
       include PlentyClient::Endpoint
       include PlentyClient::Request
 
-      FIND_ORDER_COTACT_WISH = '/orders/{orderId}/contactWish'
+      FIND_ORDER_CONTACT_WISH = '/orders/{orderId}/contactWish'
 
       class << self
         def find(order_id, headers = {}, &block)
-          get(build_endpoint(FIND_ORDER_COTACT_WISH, order: order_id), headers, &block)
+          get(build_endpoint(FIND_ORDER_CONTACT_WISH, order: order_id), headers, &block)
         end
       end
     end
