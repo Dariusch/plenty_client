@@ -10,7 +10,7 @@ module PlentyClient
 
         login_check unless PlentyClient::Config.tokens_valid?
 
-        params = stringify_symbol_keys(params)
+        params = stringify_symbol_keys(params) if params.is_a?(Hash)
 
         attempts = PlentyClient::Config.attempt_count
         attempts.times do
