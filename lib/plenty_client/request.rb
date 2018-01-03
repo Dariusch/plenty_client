@@ -121,6 +121,7 @@ module PlentyClient
         when %r{application/json}
           json = JSON.parse(response.body)
           errors = error_check(json)
+          raise PlentyClient::NotFound, errors if errors.is_a?(String) && errors =~ /no query results/i
           raise PlentyClient::ResponseError, errors if errors && !errors&.empty?
           json
         when %r{application/pdf}

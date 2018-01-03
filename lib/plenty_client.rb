@@ -3,6 +3,7 @@ require 'json'
 module PlentyClient
   class ResponseError < StandardError; end
   class AttemptsExceeded < StandardError; end
+  class NotFound < ResponseError; end
 
   autoload :Config,       'plenty_client/config'
   autoload :Constants,    'plenty_client/constants'
