@@ -117,6 +117,7 @@ module PlentyClient
 
       def parse_body(response)
         content_type = response.env.response_headers['Content-Type']
+        binding.pry
         case content_type
         when %r{application/json}
           json = JSON.parse(response.body)
