@@ -16,7 +16,7 @@ module PlentyClient
           end
 
           def create(item_id, variation_id, headers = {})
-            post(build_endpoint(VARIATION_PROPERTY_BASE_PATH, item: item_id, variation: variation_id), headers, &block)
+            post(build_endpoint(VARIATION_PROPERTY_BASE_PATH, item: item_id, variation: variation_id), headers)
           end
 
           def destroy_all(item_id, variation_id)
