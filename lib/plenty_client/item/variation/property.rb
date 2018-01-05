@@ -23,14 +23,6 @@ module PlentyClient
             delete(build_endpoint(VARIATION_PROPERTY_BASE_PATH, item: item_id, variation: variation_id))
           end
 
-          def bulk_create(item_id, variation_id, headers = {})
-            post(build_endpoint(VARIATION_PROPERTY_BASE_PATH, item: item_id, variation: variation_id), headers)
-          end
-
-          def bulk_update(item_id, variation_id, headers = {})
-            put(build_endpoint(VARIATION_PROPERTY_BASE_PATH, item: item_id, variation: variation_id), headers)
-          end
-
           def find(item_id, variation_id, property_id, headers = {}, &block)
             get(build_endpoint(SINGLE_PROPERTY_PATH,
                                item: item_id, variation: variation_id, property: property_id), headers, &block)
