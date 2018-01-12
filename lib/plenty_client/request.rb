@@ -59,9 +59,14 @@ module PlentyClient
         new_hash = {}
         hash.each do |k, v|
           k = k.to_s if k.is_a?(Symbol)
+          v = to_w3c_time(v) if v.respond_to?(:strftime)
           new_hash[k] = v
         end
         new_hash
+      end
+
+      def to_w3c_time(val)
+        val.strftime('%Y-%m-%dT%H:%M:%S%:z')
       end
 
       def login_check
