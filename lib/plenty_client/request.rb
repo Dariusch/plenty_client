@@ -118,7 +118,7 @@ module PlentyClient
       def parse_body(response)
         content_type = response.env.response_headers['Content-Type']
         case content_type
-        when %r{application/json}
+        when %r{(?:application|text)/json}
           json = JSON.parse(response.body)
           errors = error_check(json)
           raise PlentyClient::NotFound, errors if errors.is_a?(String) && errors =~ /no query results/i
