@@ -22,11 +22,11 @@ module PlentyClient
       end
 
       def create(body = {})
-        post(CREATE_CATEGORY, body)
+        post(CREATE_COMMENT, body)
       end
 
       def destroy(cat_id, body = {})
-        delete(build_endpoint(DELETE_CATEGORY, comment: cat_id), body)
+        delete(build_endpoint(DELETE_COMMENT, comment: cat_id), body)
       end
     end
   end
