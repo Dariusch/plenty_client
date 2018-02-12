@@ -26,14 +26,12 @@ module PlentyClient
                                 order: order_id), body)
           end
 
-          def update_status(order_id, body = {})
-            put(build_endpoint("#{BASE_ORDERS_SHIPPING_INFORMATION_PATH}#{UPDATE_ORDER_SHIPPING_STATUS}",
-                               order: order_id), body)
+          def update_status(body = {})
+            put(UPDATE_ORDER_SHIPPING_STATUS, body)
           end
 
-          def update_data(order_id, body = {})
-            put(build_endpoint("#{BASE_ORDERS_SHIPPING_INFORMATION_PATH}#{UPDATE_ORDER_SHIPPING_DATA}",
-                               order: order_id), body)
+          def update_data(body = {})
+            put(UPDATE_ORDER_SHIPPING_DATA, body)
           end
 
           def destroy(order_id, body = {})
