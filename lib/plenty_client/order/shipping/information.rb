@@ -7,36 +7,31 @@ module PlentyClient
         include PlentyClient::Endpoint
         include PlentyClient::Request
 
-        BASE_ORDERS_SHIPPING_INFORMATION_PATH = '/orders/{orderId}/shipping'
+        SINGLE_PATH               = '/orders/{orderId}/shipping/shipping_information'
+        MULTIPLE_PATH             = '/orders/shipping/shipping_information'
 
-        LIST_ORDERS_SHIPPING_INFORMATION  = '/shipping_information'
-        DELETE_ORDER_SHIPPING_INFORMATION = '/shipping_information'
-        CREATE_ORDER_SHIPPING_INFORMATION = '/shipping_information'
-        UPDATE_ORDER_SHIPPING_STATUS      = '/shipping_information/status'
-        UPDATE_ORDER_SHIPPING_DATA        = '/shipping_information/additional_data'
+        UPDATE_STATUS             = SINGLE_PATH + '/status'
+        UPDATE_ADDITIONAL_DATA    = SINGLE_PATH + '/additional_data'
 
         class << self
           def list(order_id, headers = {}, &block)
-            get(build_endpoint("#{BASE_ORDERS_SHIPPING_INFORMATION_PATH}#{LIST_ORDERS_SHIPPING_INFORMATION}",
-                               order: order_id), headers, &block)
+            get(build_endpoint(SINGLE_PATH, order: order_id), headers, &block)
           end
 
-          def create(order_id, body = {})
-            post(build_endpoint("#{BASE_ORDERS_SHIPPING_INFORMATION_PATH}#{CREATE_ORDER_SHIPPING_INFORMATION}",
-                                order: order_id), body)
+          def create(body = {})
+            post(MULTIPLE_PATH, body)
           end
 
-          def update_status(body = {})
-            put(UPDATE_ORDER_SHIPPING_STATUS, body)
+          def update_status(order_id, body = {})
+            put(build_endpoint(UPDATE_STATUS, order: order_id), body)
           end
 
-          def update_data(body = {})
-            put(UPDATE_ORDER_SHIPPING_DATA, body)
+          def update_data(order_id, body = {})
+            put(build_endpoint(UPDATE_ADDITIONAL_DATA, order: order_id), body)
           end
 
           def destroy(order_id, body = {})
-            delete(build_endpoint("#{BASE_ORDERS_SHIPPING_INFORMATION_PATH}#{DELETE_ORDER_SHIPPING_INFORMATION}",
-                                  order: order_id), body)
+            delete(build_endpoint(SINGLE_PATH, order: order_id), body)
           end
         end
       end
