@@ -41,7 +41,7 @@ module PlentyClient
           end
 
           def destroy_all(item_id, variation_id)
-            delete(build_endpoint(SINGULAR_PATH, item: item_id, variation: variation_id))
+            delete(build_endpoint(BASE_PATH, item: item_id, variation: variation_id))
           end
         end
       end
