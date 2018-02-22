@@ -52,7 +52,7 @@ module PlentyClient
           order_item:                 /\{orderItemId\}/,
           order_summary:              /\{orderSummaryId\}/,
           payment:                    /\{paymentId\}/,
-          payment_method:             /\{paymenMethodId\}/,
+          payment_method:             /\{paymentMethodId\}/,
           parent_referrer:            /\{parentReferrerId\}/,
           plenty:                     /\{plentyId\}/,
           plugin_key:                 /\{pluginKey\}/,
