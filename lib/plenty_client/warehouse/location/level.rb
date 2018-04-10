@@ -1,35 +1,24 @@
 # frozen_string_literal: true
 
+# PlentyClient::Warehouse::Location::Level
 module PlentyClient
   module Warehouse
     module Location
       module Level
         include PlentyClient::Request
+        extend PlentyClient::Concerns::SinglePaths
 
-        BASE_PATH = '/warehouses/locations/levels'
-        SINGLE_PATH = BASE_PATH + '%<id>d'
+        LIST_URL = '/warehouses/%<warehouse_id>d/locations/levels'
 
         class << self
-          def create(headers = {}, &block)
-            post(BASE_PATH, headers, &block)
-          end
-
-          def find(id, headers = {}, &block)
-            get(single_path(id), headers, &block)
-          end
-
-          def update(id, headers = {}, &block)
-            put(single_path(id), headers, &block)
-          end
-
-          def destroy(id, headers = {}, &block)
-            delete(single_path(id), headers, &block)
+          def list(warehouse_id, body = {}, &block)
+            get(format(LIST_URL, warehouse_id: warehouse_id), body, &block)
           end
 
           private
 
-          def single_path(id)
-            format(SINGLE_PATH, id: id)
+          def base_path
+            '/warehouses/locations/levels'
           end
         end
       end
