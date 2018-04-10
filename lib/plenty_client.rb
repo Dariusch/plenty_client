@@ -29,6 +29,10 @@ module PlentyClient
   autoload :Warehouse,      'plenty_client/warehouse'
   autoload :Webstore,       'plenty_client/webstore'
 
+  module Concerns
+    autoload :SinglePaths, 'plenty_client/concerns/single_paths'
+  end
+
   module Account
     autoload :Contact, 'plenty_client/account/contact'
     autoload :Address, 'plenty_client/account/address'
@@ -205,6 +209,10 @@ module PlentyClient
       autoload :Rack,             'plenty_client/warehouse/management/rack'
       autoload :Shelf,            'plenty_client/warehouse/management/shelf'
       autoload :StorageLocation,  'plenty_client/warehouse/management/storage_location'
+    end
+
+    module Location
+      autoload :Dimension,  'plenty_client/warehouse/location/dimension'
     end
   end
 end
