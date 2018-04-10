@@ -205,12 +205,6 @@ module PlentyClient
     autoload :Stock,      'plenty_client/warehouse/stock'
     autoload :Management, 'plenty_client/warehouse/management'
 
-    module Management
-      autoload :Rack,             'plenty_client/warehouse/management/rack'
-      autoload :Shelf,            'plenty_client/warehouse/management/shelf'
-      autoload :StorageLocation,  'plenty_client/warehouse/management/storage_location'
-    end
-
     module Location
       autoload :Dimension,  'plenty_client/warehouse/location/dimension'
     end
