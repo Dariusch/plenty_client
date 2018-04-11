@@ -5,7 +5,7 @@ module PlentyClient
   module Warehouse
     module Location
       include PlentyClient::Request
-      extend PlentyClient::Concerns::RestPaths
+      extend PlentyClient::Concerns::RestRoutes
 
       LIST_URL = '/warehouses/%<warehouse_id>d/locations'
 

@@ -6,7 +6,7 @@ module PlentyClient
     module Location
       module Dimension
         include PlentyClient::Request
-        extend PlentyClient::Concerns::RestPaths
+        extend PlentyClient::Concerns::RestRoutes
 
         LIST_URL = '/warehouses/%<warehouse_id>d/locations/dimensions'
 
