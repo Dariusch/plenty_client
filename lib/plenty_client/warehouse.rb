@@ -2,25 +2,13 @@
 
 module PlentyClient
   module Warehouse
-    include PlentyClient::Endpoint
     include PlentyClient::Request
+    extend PlentyClient::Concerns::RestPaths
 
-    LIST_WAREHOUSES  = '/stockmanagement/warehouses'
-    FIND_WAREHOUSE   = '/stockmanagement/warehouses/{warehouseId}'
-    CREATE_WAREHOUSE = '/stockmanagement/warehouses'
+    skip_rest_paths :update, :destroy
 
-    class << self
-      def list(headers = {}, &block)
-        get(build_endpoint(LIST_WAREHOUSES), headers, &block)
-      end
-
-      def find(warehouse_id, headers = {}, &block)
-        get(build_endpoint(FIND_WAREHOUSE, warehouse: warehouse_id), headers, &block)
-      end
-
-      def create(body = {})
-        post(build_endpoint(CREATE_WAREHOUSE), body)
-      end
+    private_class_method def self.base_path
+      '/stockmanagement/warehouses'
     end
   end
 end
