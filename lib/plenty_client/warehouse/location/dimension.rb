@@ -6,10 +6,20 @@ module PlentyClient
     module Location
       module Dimension
         include PlentyClient::Request
-        extend PlentyClient::Concerns::SinglePaths
+        extend PlentyClient::Concerns::RestPaths
 
-        private_class_method def self.base_path
-          '/warehouses/locations/dimensions'
+        LIST_URL = '/warehouses/%<warehouse_id>d/locations/dimensions'
+
+        class << self
+          def list(warehouse_id, body = {}, &block)
+            get(format(LIST_URL, warehouse_id: warehouse_id), body, &block)
+          end
+
+          private
+
+          def base_path
+            '/warehouses/locations/dimensions'
+          end
         end
       end
     end

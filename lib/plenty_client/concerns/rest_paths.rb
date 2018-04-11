@@ -6,9 +6,9 @@
 # PUT BASE_PATH/:id => update
 # DELETE BASE_PATH/:id => destroy
 # You can undefine unnecessary methods by adding a call to
-# #skip_single_paths in the class body:
+# #skip_rest_paths in the class body:
 # class Someclass
-#   skip_single_paths :find, :destroy
+#   skip_rest_paths :find, :destroy
 # end
 
 # Usage:
@@ -16,7 +16,7 @@
 # Do keep in mind that this method should be private or protected.
 #
 # class Someclass
-#   extend PlentyClient::Concerns::SinglePaths
+#   extend PlentyClient::Concerns::RestPaths
 #
 #   # method definition returns method name as a Symbol
 #   private_class_method def self.base_path
@@ -41,10 +41,10 @@
 
 module PlentyClient
   module Concerns
-    module SinglePaths
+    module RestPaths
       # Undefines class methods in modules/classes extending this module.
       # You don't have to do it if you overload the method explicitly.
-      def skip_single_paths(*paths)
+      def skip_rest_paths(*paths)
         instance_exec(paths) do |p|
           p.each { |mn| undef :"#{mn}" }
         end
@@ -52,6 +52,10 @@ module PlentyClient
 
       def create(headers = {}, &block)
         post(base_path, headers, &block)
+      end
+
+      def list(headers = {}, &block)
+        get(base_path, headers, &block)
       end
 
       def find(id, headers = {}, &block)

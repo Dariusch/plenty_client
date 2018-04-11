@@ -6,7 +6,7 @@ module PlentyClient
     module Location
       module Level
         include PlentyClient::Request
-        extend PlentyClient::Concerns::SinglePaths
+        extend PlentyClient::Concerns::RestPaths
 
         LIST_URL = '/warehouses/%<warehouse_id>d/locations/levels'
 

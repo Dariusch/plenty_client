@@ -30,7 +30,7 @@ module PlentyClient
   autoload :Webstore,       'plenty_client/webstore'
 
   module Concerns
-    autoload :SinglePaths, 'plenty_client/concerns/single_paths'
+    autoload :RestPaths, 'plenty_client/concerns/rest_paths'
   end
 
   module Account
