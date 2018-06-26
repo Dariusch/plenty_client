@@ -14,8 +14,11 @@ module PlentyClient
 
         attempts = PlentyClient::Config.attempt_count
         attempts.times do
-          response = perform(http_method, path, params)
-          return response if response
+          begin
+            response = perform(http_method, path, params)
+            return response if response
+          rescue Faraday::ConnectionFailed => e
+          end
         end
         raise PlentyClient::AttemptsExceeded, "unable to get valid response after #{attempts} attempts"
       end

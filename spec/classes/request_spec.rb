@@ -46,6 +46,19 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         end
       end
 
+      context 'on Faraday::ConnectionFailed error' do
+        it 'redo' do
+          expect(request_client)
+            .to receive(:perform)
+            .with(:post, '/index.php', {})
+            .and_raise(Faraday::ConnectionFailed, 'Server returned nothing (no headers, no data)').once
+          expect(request_client)
+            .to receive(:perform)
+            .with(:post, '/index.php', {}).and_return('some rval')
+          request_client.request(:post, '/index.php')
+        end
+      end
+
       context 'without path' do
         it 'returns false' do
           response = request_client.request(:post, nil)
