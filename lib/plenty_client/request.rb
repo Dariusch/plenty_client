@@ -5,8 +5,10 @@ module PlentyClient
   module Request
     module ClassMethods
       def request(http_method, path, params = {})
-        return false if http_method.nil? || path.nil?
-        return false unless %w[post put patch delete get].include?(http_method.to_s)
+        raise ArgumentError, "http_method or path is missing" if http_method.nil? || path.nil?
+        unless %w[post put patch delete get].include?(http_method.to_s)
+          raise ArgumentError, "unsupported http_method: #{http_method}"
+        end
 
         login_check unless PlentyClient::Config.tokens_valid?
 
