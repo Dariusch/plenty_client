@@ -40,14 +40,8 @@ RSpec.describe PlentyClient::Request::ClassMethods do
       end
 
       context 'without http_method' do
-        it 'returns false' do
-          response = request_client.request(nil, '/index.html')
-          expect(response).to be false
-        end
-
-        it 'does not make a HTTP call' do
-          expect(WebMock).not_to have_requested(:any, /example/)
-          request_client.request(nil, '/index.html')
+        it 'raises an ArgumentError' do
+          expect { request_client.request(nil, '/index.html') }.to raise_exception(ArgumentError)
         end
       end
 
@@ -65,14 +59,8 @@ RSpec.describe PlentyClient::Request::ClassMethods do
       end
 
       context 'without path' do
-        it 'returns false' do
-          response = request_client.request(:post, nil)
-          expect(response).to be false
-        end
-
-        it 'does not make a HTTP call' do
-          expect(WebMock).not_to have_requested(:any, /example/)
-          request_client.request(:post, nil)
+        it 'raises an ArgumentError' do
+          expect { request_client.request(:post) }.to raise_exception(ArgumentError)
         end
       end
     end
