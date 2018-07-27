@@ -84,6 +84,7 @@ module PlentyClient
         verb = http_method.to_s.downcase
         params = params.to_json unless %w[get delete].include?(verb)
         response = conn.send(verb, base_url(path), params)
+        assert_success_status_code(response)
         parse_body(response)
       end
 
@@ -152,6 +153,17 @@ module PlentyClient
           rval.flatten.join(', ')
         else
           response.dig('error', 'message')
+        end
+      end
+
+      def assert_success_status_code(response)
+        case response.status
+        when 300..399
+          raise RedirectionError, "Invalid response: HTTP status: #{response.status}"
+        when 400..499
+          raise ClientError, "Invalid response: HTTP status: #{response.status}"
+        when 500..599
+          raise ServerError, "Invalid response: HTTP status: #{response.status}"
         end
       end
     end

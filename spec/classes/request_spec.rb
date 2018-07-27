@@ -63,6 +63,30 @@ RSpec.describe PlentyClient::Request::ClassMethods do
           expect { request_client.request(:post) }.to raise_exception(ArgumentError)
         end
       end
+
+      context 'on 3xx response' do
+        it 'raises a RedirectionError' do
+          stub_request(:post, 'https://www.example.com/rest/index.php').to_return(status: 300)
+
+          expect { request_client.request(:post, '/index.php') }.to raise_exception(PlentyClient::RedirectionError)
+        end
+      end
+
+      context 'on 4xx Error' do
+        it 'raises a ClientError' do
+          stub_request(:post, 'https://www.example.com/rest/index.php').to_return(status: 400)
+
+          expect { request_client.request(:post, '/index.php') }.to raise_exception(PlentyClient::ClientError)
+        end
+      end
+
+      context 'on 5xx Error' do
+        it 'raises a ServerError' do
+          stub_request(:post, 'https://www.example.com/rest/index.php').to_return(status: 500)
+
+          expect { request_client.request(:post, '/index.php') }.to raise_exception(PlentyClient::ServerError)
+        end
+      end
     end
 
     describe 'wrappers for #request' do
