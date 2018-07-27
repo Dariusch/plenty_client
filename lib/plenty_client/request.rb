@@ -12,15 +12,7 @@ module PlentyClient
 
         params = stringify_symbol_keys(params) if params.is_a?(Hash)
 
-        attempts = PlentyClient::Config.attempt_count
-        attempts.times do
-          begin
-            response = perform(http_method, path, params)
-            return response if response
-          rescue Faraday::ConnectionFailed => e
-          end
-        end
-        raise PlentyClient::AttemptsExceeded, "unable to get valid response after #{attempts} attempts"
+        perform(http_method, path, params)
       end
 
       def post(path, body = {})
@@ -84,6 +76,7 @@ module PlentyClient
               logger.filter(/password=([^&]+)/, 'password=[FILTERED]')
             end
           end
+        faraday.request :retry, max: PlentyClient::Config.attempt_count
         end
         conn.adapter :typhoeus
         verb = http_method.to_s.downcase
@@ -119,6 +112,7 @@ module PlentyClient
       end
 
       def parse_body(response)
+        return nil if response.body.strip == ""
         content_type = response.env.response_headers['Content-Type']
         case content_type
         when %r{(?:application|text)/json}
@@ -129,6 +123,8 @@ module PlentyClient
           json
         when %r{application/pdf}
           response.body
+        else
+          raise PlentyClient::ResponseError, "unsupported response Content-Type: #{content_type}"
         end
       rescue JSON::ParserError
         raise PlentyClient::ResponseError, 'invalid response'

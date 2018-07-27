@@ -5,6 +5,9 @@ RSpec.describe PlentyClient::Request::ClassMethods do
 
   before(:each) do
     PlentyClient::Config.site_url = 'https://www.example.com'
+    PlentyClient::Config.api_user = 'example'
+    PlentyClient::Config.api_password = 'secret'
+    PlentyClient::Config.access_token = 'ACCESS_TOKEN'
   end
 
   def stub_api_tokens(access_token: 'foobar', expiry_date: Time.now + 86400, refresh_token: 'foobar')
@@ -23,12 +26,14 @@ RSpec.describe PlentyClient::Request::ClassMethods do
     describe '#request' do
       before(:each) do
         stub_api_tokens
-        stub_request(:any, /example/)
-          .to_return(status: 200, body: '{}', headers: response_headers)
       end
 
       context 'with valid arguments' do
         it 'makes a HTTP call' do
+          stub_request(:post, 'https://www.example.com/rest/index.html').to_return(
+            status: 200, body: '{}', headers: response_headers
+          )
+
           request_client.request(:post, '/index.html')
           expect(WebMock).to have_requested(:post, /example/)
         end
@@ -46,16 +51,16 @@ RSpec.describe PlentyClient::Request::ClassMethods do
         end
       end
 
-      context 'on Faraday::ConnectionFailed error' do
+      context 'on conection timeout' do
         it 'redo' do
-          expect(request_client)
-            .to receive(:perform)
-            .with(:post, '/index.php', {})
-            .and_raise(Faraday::ConnectionFailed, 'Server returned nothing (no headers, no data)').once
-          expect(request_client)
-            .to receive(:perform)
-            .with(:post, '/index.php', {}).and_return('some rval')
-          request_client.request(:post, '/index.php')
+          stub_request(:post, 'https://www.example.com/rest/index.php').to_timeout
+          stub_request(:post, 'https://www.example.com/rest/index.php').to_return(
+            status: 200, body: '{}', headers: response_headers
+          )
+
+          response = request_client.request(:post, '/index.php')
+
+          expect(response).to eq({})
         end
       end
 
@@ -122,6 +127,7 @@ RSpec.describe PlentyClient::Request::ClassMethods do
 
         context 'when called with a block' do
           before do
+            stub_api_tokens
             stub_request(:get, /example/)
               .to_return do |r|
               query = CGI.parse(r.uri.query)
@@ -156,24 +162,23 @@ RSpec.describe PlentyClient::Request::ClassMethods do
   describe 'wrong conent type' do
     before do
       stub_api_tokens
-      PlentyClient::Config.attempt_count = 3
     end
 
-    context 'when API responds with text/html response too many times' do
-      it 'raises PlentyClient::AttemptsExceeded' do
+    context 'when API responds with non empty text/html response' do
+      it 'raises PlentyClient::ResponseError' do
         stub_request(:post, /index\.html/)
           .to_return(headers: response_headers('text/html'),
                      body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
         expect { request_client.request(:post, '/index.html') }
-          .to raise_exception(PlentyClient::AttemptsExceeded)
+          .to raise_exception(PlentyClient::ResponseError)
       end
     end
 
-    context 'when API responds with text/html response once' do
-      it 'does not raise PlentyClient::AttemptsExceeded' do
+      context 'when API responds with an empty text/html response' do
+      it 'does not raises PlentyClient::ResponseError' do
         stub_request(:post, /index\.html/)
           .to_return(headers: response_headers('text/html'),
-                     body: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head></head><body></body></html>')
+                     body: ' ')
           .to_return(headers: response_headers, body: {}.to_json)
         expect { request_client.request(:post, '/index.html') }
           .not_to raise_exception
