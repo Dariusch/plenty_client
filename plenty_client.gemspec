@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 3.0'
   spec.add_development_dependency 'guard-rspec', '~> 4.7'
   spec.add_development_dependency 'pry', '~> 0.11'
+  spec.add_development_dependency 'byebug'
 
   spec.add_runtime_dependency 'json', '~> 1.8', '>= 1.8.0'
   spec.add_runtime_dependency 'faraday', '~> 0.9'

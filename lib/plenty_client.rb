@@ -1,8 +1,11 @@
 require 'json'
 
 module PlentyClient
-  class ResponseError < StandardError; end
-  class AttemptsExceeded < StandardError; end
+  class ConnectionError < StandardError; end
+  class ClientError < ConnectionError; end
+  class RedirectionError < ConnectionError; end
+  class ServerError < ConnectionError; end
+  class ResponseError < ConnectionError; end
   class NotFound < ResponseError; end
 
   autoload :Config,       'plenty_client/config'
