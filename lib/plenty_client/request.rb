@@ -5,22 +5,16 @@ module PlentyClient
   module Request
     module ClassMethods
       def request(http_method, path, params = {})
-        return false if http_method.nil? || path.nil?
-        return false unless %w[post put patch delete get].include?(http_method.to_s)
+        raise ArgumentError, "http_method or path is missing" if http_method.nil? || path.nil?
+        unless %w[post put patch delete get].include?(http_method.to_s)
+          raise ArgumentError, "unsupported http_method: #{http_method}"
+        end
 
         login_check unless PlentyClient::Config.tokens_valid?
 
         params = stringify_symbol_keys(params) if params.is_a?(Hash)
 
-        attempts = PlentyClient::Config.attempt_count
-        attempts.times do
-          begin
-            response = perform(http_method, path, params)
-            return response if response
-          rescue Faraday::ConnectionFailed => e
-          end
-        end
-        raise PlentyClient::AttemptsExceeded, "unable to get valid response after #{attempts} attempts"
+        perform(http_method, path, params)
       end
 
       def post(path, body = {})
@@ -84,11 +78,13 @@ module PlentyClient
               logger.filter(/password=([^&]+)/, 'password=[FILTERED]')
             end
           end
+        faraday.request :retry, max: PlentyClient::Config.attempt_count
         end
         conn.adapter :typhoeus
         verb = http_method.to_s.downcase
         params = params.to_json unless %w[get delete].include?(verb)
         response = conn.send(verb, base_url(path), params)
+        assert_success_status_code(response)
         parse_body(response)
       end
 
@@ -119,6 +115,7 @@ module PlentyClient
       end
 
       def parse_body(response)
+        return nil if response.body.strip == ""
         content_type = response.env.response_headers['Content-Type']
         case content_type
         when %r{(?:application|text)/json}
@@ -129,6 +126,8 @@ module PlentyClient
           json
         when %r{application/pdf}
           response.body
+        else
+          raise PlentyClient::ResponseError, "unsupported response Content-Type: #{content_type}"
         end
       rescue JSON::ParserError
         raise PlentyClient::ResponseError, 'invalid response'
@@ -154,6 +153,17 @@ module PlentyClient
           rval.flatten.join(', ')
         else
           response.dig('error', 'message')
+        end
+      end
+
+      def assert_success_status_code(response)
+        case response.status
+        when 300..399
+          raise RedirectionError, "Invalid response: HTTP status: #{response.status}"
+        when 400..499
+          raise ClientError, "Invalid response: HTTP status: #{response.status}"
+        when 500..599
+          raise ServerError, "Invalid response: HTTP status: #{response.status}"
         end
       end
     end
