@@ -21,12 +21,12 @@ module PlentyClient
           get(build_endpoint(DOWNLOAD_ORDER_DOCUMENTS_BY_TYPE, type_string: type_string), headers, &block)
         end
 
-        def list(order_id, type_sting = nil, headers = {}, &block)
-          get(build_endpoint(LIST_ORDER_DOCUMENTS, order: order_id, type_sting: type_sting), headers, &block)
+        def list(order_id, type_string = nil, headers = {}, &block)
+          get(build_endpoint(LIST_ORDER_DOCUMENTS, order: order_id, type_string: type_string), headers, &block)
         end
 
-        def list_by_type(order_id, type_sting = nil, headers = {}, &block)
-          get(build_endpoint(LIST_ORDER_DOCUMENTS_BY_TYPE, order: order_id, type_sting: type_sting), headers, &block)
+        def list_by_type(type_string = nil, headers = {}, &block)
+          get(build_endpoint(LIST_ORDER_DOCUMENTS_BY_TYPE, type_string: type_string), headers, &block)
         end
 
         def upload(order_id, type_string, body = {})
