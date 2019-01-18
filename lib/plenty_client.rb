@@ -1,8 +1,11 @@
 require 'json'
 
 module PlentyClient
-  class ResponseError < StandardError; end
-  class AttemptsExceeded < StandardError; end
+  class ConnectionError < StandardError; end
+  class ClientError < ConnectionError; end
+  class RedirectionError < ConnectionError; end
+  class ServerError < ConnectionError; end
+  class ResponseError < ConnectionError; end
   class NotFound < ResponseError; end
 
   autoload :Config,       'plenty_client/config'
@@ -28,6 +31,10 @@ module PlentyClient
   autoload :Stock,          'plenty_client/stock'
   autoload :Warehouse,      'plenty_client/warehouse'
   autoload :Webstore,       'plenty_client/webstore'
+
+  module Concerns
+    autoload :RestRoutes, 'plenty_client/concerns/rest_routes'
+  end
 
   module Account
     autoload :Contact, 'plenty_client/account/contact'
@@ -200,11 +207,11 @@ module PlentyClient
   module Warehouse
     autoload :Stock,      'plenty_client/warehouse/stock'
     autoload :Management, 'plenty_client/warehouse/management'
+    autoload :Location,   'plenty_client/warehouse/location'
 
-    module Management
-      autoload :Rack,             'plenty_client/warehouse/management/rack'
-      autoload :Shelf,            'plenty_client/warehouse/management/shelf'
-      autoload :StorageLocation,  'plenty_client/warehouse/management/storage_location'
+    module Location
+      autoload :Dimension,  'plenty_client/warehouse/location/dimension'
+      autoload :Level,      'plenty_client/warehouse/location/level'
     end
   end
 end

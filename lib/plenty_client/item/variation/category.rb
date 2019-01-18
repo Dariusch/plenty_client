@@ -15,6 +15,8 @@ module PlentyClient
         UPDATE_ITEM_VARIATIONS_CATEGORY = '/variation_categories/{catId}'
         DELETE_ITEM_VARIATIONS_CATEGORY = '/variation_categories/{catId}'
 
+        MASS_CATEGORY_ASSIGNMENT        = '/items/variations/variation_categories'
+
         class << self
           def list(item_id, variation_id, headers = {}, &block)
             get(build_endpoint("#{ITEM_VARIATION_CATEGORY_PATH}#{LIST_ITEM_VARIATIONS_CATEGORY}",
@@ -33,6 +35,10 @@ module PlentyClient
             post(build_endpoint("#{ITEM_VARIATION_CATEGORY_PATH}#{CREATE_ITEM_VARIATIONS_CATEGORY}",
                                 item: item_id,
                                 variation: variation_id), body)
+          end
+
+          def bulk_assign(body)
+            post(MASS_CATEGORY_ASSIGNMENT, body)
           end
 
           def update(item_id, variation_id, category_id, body = {})
