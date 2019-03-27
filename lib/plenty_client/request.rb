@@ -159,11 +159,11 @@ module PlentyClient
       def assert_success_status_code(response)
         case response.status
         when 300..399
-          raise RedirectionError, "Invalid response: HTTP status: #{response.status}"
+          raise RedirectionError, "Invalid response: HTTP status: #{response.status}: #{response.body}"
         when 400..499
-          raise ClientError, "Invalid response: HTTP status: #{response.status}"
+          raise ClientError, "Invalid response: HTTP status: #{response.status}: #{response.body}"
         when 500..599
-          raise ServerError, "Invalid response: HTTP status: #{response.status}"
+          raise ServerError, "Invalid response: HTTP status: #{response.status}: #{response.body}"
         end
       end
     end
