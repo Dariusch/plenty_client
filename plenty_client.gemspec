@@ -20,15 +20,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.13'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'webmock', '~> 3.0'
   spec.add_development_dependency 'guard-rspec', '~> 4.7'
   spec.add_development_dependency 'pry', '~> 0.11'
   spec.add_development_dependency 'byebug'
 
-  spec.add_runtime_dependency 'json', '~> 1.8', '>= 1.8.0'
-  spec.add_runtime_dependency 'faraday', '~> 0.9'
-  spec.add_runtime_dependency 'typhoeus', '~> 1.3', '>= 1.3.0'
+  spec.add_runtime_dependency 'json', '>= 1.8.0'
+  spec.add_runtime_dependency 'faraday', '>= 0.9'
+  spec.add_runtime_dependency 'typhoeus', '>= 1.3.0'
 end
