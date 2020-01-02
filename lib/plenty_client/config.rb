@@ -11,6 +11,7 @@ module PlentyClient
 
     class << self
       attr_accessor :site_url, :api_user, :api_password, :access_token, :refresh_token, :log, :expiry_date, :plenty_id
+      attr_accessor :request_wait_until
       attr_writer :attempt_count
 
       def validate_credentials
