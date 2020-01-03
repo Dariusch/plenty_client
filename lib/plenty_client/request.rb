@@ -124,7 +124,9 @@ module PlentyClient
         return unless delay_time
         return if Time.now > delay_time
 
-        sleep((delay_time - Time.now).round)
+        wait_until = (delay_time - Time.now)
+        STDOUT.write "Plenty client => delaying request:  #{wait_until} seconds"
+        sleep(wait_until.round)
       end
 
       def parse_body(response)
