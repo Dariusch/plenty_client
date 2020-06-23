@@ -114,7 +114,7 @@ module PlentyClient
         short_calls_left = response_header['X-Plenty-Global-Short-Period-Calls-Left']
         short_seconds_left = response_header['X-Plenty-Global-Short-Period-Decay']
         return if short_calls_left&.empty? || short_seconds_left&.empty?
-        return if short_calls_left.to_i > 10 && short_seconds_left.to_i > 3
+        return if short_calls_left.to_i > 1
 
         PlentyClient::Config.request_wait_until = Time.now + short_seconds_left.to_i
       end
