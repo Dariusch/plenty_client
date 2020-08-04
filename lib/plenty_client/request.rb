@@ -14,6 +14,8 @@ module PlentyClient
 
         params = stringify_symbol_keys(params) if params.is_a?(Hash)
 
+        throttle_delay_request
+
         perform(http_method, path, params)
       end
 
@@ -84,6 +86,7 @@ module PlentyClient
         verb = http_method.to_s.downcase
         params = params.to_json unless %w[get delete].include?(verb)
         response = conn.send(verb, base_url(path), params)
+        throttle_check_short_period(response)
         assert_success_status_code(response)
         parse_body(response)
       end
@@ -111,7 +114,19 @@ module PlentyClient
         short_calls_left = response_header['X-Plenty-Global-Short-Period-Calls-Left']
         short_seconds_left = response_header['X-Plenty-Global-Short-Period-Decay']
         return if short_calls_left&.empty? || short_seconds_left&.empty?
-        sleep(short_seconds_left.to_i + 1) if short_calls_left.to_i <= 10 && short_seconds_left.to_i < 3
+        return if short_calls_left.to_i > 1
+
+        PlentyClient::Config.request_wait_until = Time.now + short_seconds_left.to_i
+      end
+
+      def throttle_delay_request
+        delay_time = PlentyClient::Config.request_wait_until
+        return unless delay_time
+        return if Time.now > delay_time
+
+        wait_until = (delay_time - Time.now)
+        STDOUT.write "Plenty client => delaying request:  #{wait_until} seconds"
+        sleep(wait_until.round)
       end
 
       def parse_body(response)
