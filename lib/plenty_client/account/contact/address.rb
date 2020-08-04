@@ -23,8 +23,9 @@ module PlentyClient
                 headers, &block)
           end
 
-          def create(body = {})
-            post("#{CONTACT_ADDRESS_BASE_PATH}#{CREATE_A_CONTACT_ADDRESS}", body)
+          def create(contact_id, body = {})
+            post(build_endpoint("#{CONTACT_ADDRESS_BASE_PATH}#{CREATE_A_CONTACT_ADDRESS}",
+                                contact: contact_id), body)
           end
 
           def update(contact_id, address_id, body = {})
