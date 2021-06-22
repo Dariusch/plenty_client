@@ -1,3 +1,9 @@
+# Deprecation Notice
+
+This gem is no longer maintained.
+
+For an actively maintained fork please refer to [ReverseRetail/plenty_client](https://github.com/ReverseRetail/plenty_client).
+
 # PlentyClient
 [![Code Climate](https://codeclimate.com/github/Dariusch/plenty_client/badges/gpa.svg)](https://codeclimate.com/github/Dariusch/plenty_client)
 [![Issue Count](https://codeclimate.com/github/Dariusch/plenty_client/badges/issue_count.svg)](https://codeclimate.com/github/Dariusch/plenty_client)
