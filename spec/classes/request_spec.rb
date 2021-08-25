@@ -198,30 +198,37 @@ RSpec.describe PlentyClient::Request::ClassMethods do
     end
   end
 
-  xdescribe 'throttle check' do
+  describe 'throttle check' do
     context 'short period' do
       before do
         stub_api_tokens
       end
 
       it 'enough calls left' do
-        valid_request = stub_request(:post, /foobar/).to_return(
+        stub_request(:post, /foobar/).to_return(
           body: {}.to_json,
-          headers: { 'X-Plenty-Global-Short-Period-Calls-Left' => 50, 'X-Plenty-Global-Short-Period-Decay' => 5 }
+          headers: {
+            'X-Plenty-Global-Short-Period-Calls-Left' => 50,
+            'X-Plenty-Global-Short-Period-Decay' => 5
+          }.merge(response_headers)
         )
+        _success_request = request_client.request(:post, '/foobar')
         expect(Object).not_to receive(:sleep)
         request_client.request(:post, '/foobar')
-        expect(valid_request).to have_been_made.once
       end
 
       it 'limit reached' do
-        limited_request = stub_request(:post, /foobar/).to_return(
+        seconds_left = 2
+        stub_request(:post, /foobar/).to_return(
           body: {}.to_json,
-          headers: { 'X-Plenty-Global-Short-Period-Calls-Left' => 5, 'X-Plenty-Global-Short-Period-Decay' => 2 }
+          headers: {
+            'X-Plenty-Global-Short-Period-Calls-Left' => 5,
+            'X-Plenty-Global-Short-Period-Decay' => seconds_left
+          }.merge(response_headers)
         )
-        expect(Object).to receive(:sleep).with(3)
-        request_client.request(:post, '/foobar')
-        expect(limited_request).to have_been_made.once
+        _success_request = request_client.request(:post, '/foobar')
+        expect(Object).to receive(:sleep).with(seconds_left)
+        _delayed_request = request_client.request(:post, '/foobar')
       end
     end
   end
